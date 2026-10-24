@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Brisa al borde | Sal con frutas deshidratadas para michelas</title>
+<meta name="description" content="Brisa al borde produce sal marina con gulupa, limón mandarino y ají para escarchar michelas y cócteles. Conoce el producto, su propuesta de valor y cómo trabajamos con bares, hoteles y eventos.">
+<meta name="theme-color" content="#3a0e33">
+<link rel="icon" href="Emblema cóctel futurista brillante.png">
+<style>
+@font-face{font-family:'Bricolage Grotesque';src:url(fonts/bricolage-grotesque.woff2) format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:'Hanken Grotesk';src:url(fonts/hanken-grotesk.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Yellowtail';src:url(fonts/yellowtail.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+:root{
+  --plum:#3a0e33;--plum-2:#5a1848;--magenta:#c8237f;--orange:#f7a11a;--tang:#ef6b1a;
+  --cream:#fbf1d3;--cream-2:#f2dfa6;--leaf:#175a37;--leaf-2:#0f3f27;--teal:#17b2a5;--lime:#b9d33a;
+  --ink:#2a0a26;--paper:#fbf1d3;
+  --display:'Bricolage Grotesque','Trebuchet MS',sans-serif;
+  --body:'Hanken Grotesk','Segoe UI',sans-serif;
+  --script:'Yellowtail','Brush Script MT',cursive;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --vh:100vh;
+  --leafmask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M8 192C8 86 86 8 192 8c0 106-78 184-184 184Z'/></svg>");
+}
+@supports(height:100svh){:root{--vh:100svh}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.script{font-family:var(--script);font-weight:400;letter-spacing:0;font-style:normal}
+
+/* progress */
+#progress{position:fixed;z-index:100;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--orange),var(--magenta),var(--teal))}
+
+/* header */
+.header{position:fixed;z-index:60;top:0;left:0;right:0;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 4.4vw;color:#fff4e0;transition:height .4s var(--ease),background .4s,color .3s,box-shadow .4s}
+.header.compact{height:62px}
+.header.solid{background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);box-shadow:0 1px 0 #3a0e3322}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:44px;height:44px;object-fit:contain;transition:transform .6s var(--ease)}
+.logo:hover img{transform:rotate(24deg) scale(1.08)}
+.logo span{font-family:var(--script);font-size:30px;line-height:1;white-space:nowrap}
+.top-links{display:flex;gap:clamp(18px,2.6vw,40px);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.top-links a{position:relative;padding:6px 0}
+.top-links a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:currentColor;transition:right .35s var(--ease)}
+.top-links a:hover:after{right:0}
+.menu-toggle{width:46px;height:46px;border-radius:50%;border:1.5px solid currentColor;background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center;font-size:19px;transition:transform .3s,background .3s,color .3s;position:relative;z-index:70}
+.menu-toggle:hover{transform:rotate(90deg)}
+.menu-panel{position:fixed;z-index:65;top:0;right:0;bottom:0;width:min(560px,100vw);background:var(--plum);color:var(--cream);padding:120px 5vw 34px;display:flex;flex-direction:column;justify-content:space-between;transform:translateX(102%);transition:transform .78s var(--ease);box-shadow:-30px 0 80px #00000040;overflow:auto}
+.menu-panel.open{transform:translateX(0)}
+.menu-items{display:flex;flex-direction:column;gap:4px}
+.menu-items a,.menu-items button{font-family:var(--display);font-size:clamp(28px,4.2vw,46px);font-weight:700;line-height:1.12;letter-spacing:-.02em;text-align:left;background:none;border:0;color:inherit;cursor:pointer;display:flex;align-items:baseline;gap:14px;transition:transform .25s,color .25s}
+.menu-items a small,.menu-items button small{font-family:var(--body);font-size:11px;letter-spacing:.16em;color:var(--orange);font-weight:700}
+.menu-items a:hover,.menu-items button:hover{transform:translateX(8px);color:var(--orange)}
+.menu-foot{display:flex;justify-content:space-between;gap:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-top:30px}
+
+/* pinned horizontal stage */
+.horizontal-stage{height:500vh;position:relative;background:var(--plum)}
+.stage-pin{position:sticky;top:0;height:var(--vh);overflow:hidden;isolation:isolate}
+.horizontal-track{height:100%;display:flex;width:500vw;will-change:transform}
+.panel{height:100%;width:100vw;flex:0 0 100vw;position:relative;overflow:hidden;isolation:isolate;background:var(--bg);color:var(--pink,var(--paper))}
+.panel::before{content:"";position:absolute;width:64vw;height:64vw;border-radius:50%;top:-45vw;right:-24vw;border:1px solid color-mix(in srgb,currentColor 22%,transparent);pointer-events:none}
+.panel::after{content:"";position:absolute;width:50vw;height:50vw;border-radius:50%;bottom:-40vw;left:-15vw;border:1px solid color-mix(in srgb,currentColor 20%,transparent);pointer-events:none}
+.panel-copy{position:absolute;z-index:8;left:8vw;top:50%;translate:0 -50%;width:min(43vw,620px);will-change:transform,opacity}
+.overline{display:flex;align-items:center;gap:10px;text-transform:uppercase;font-size:12px;letter-spacing:.2em;font-weight:800;margin-bottom:clamp(16px,2.6vh,30px)}
+.overline:before,.eyebrow:before{content:"";width:20px;height:20px;flex:none;background:currentColor;-webkit-mask:var(--leafmask) center/contain no-repeat;mask:var(--leafmask) center/contain no-repeat;rotate:-8deg}
+.panel h1,.panel h2{font-family:var(--display);font-weight:800;line-height:.92;letter-spacing:-.015em;font-variation-settings:"opsz" 96}
+.panel h1{font-size:clamp(58px,9vw,148px);margin-bottom:clamp(18px,3vh,32px)}
+.panel h2{font-size:clamp(38px,5.1vw,84px);margin-bottom:clamp(14px,2.4vh,26px)}
+.panel .script{font-size:1.16em;line-height:.7;display:inline-block;transform:translateY(.05em)}
+.panel-desc{font-size:clamp(14px,1.12vw,17px);line-height:1.65;max-width:440px;margin-bottom:clamp(16px,2.6vh,26px);opacity:.92}
+.pill-link{display:inline-flex;align-items:center;gap:20px;border:1.5px solid currentColor;border-radius:100px;padding:13px 18px 13px 24px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;background:transparent;color:inherit;cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.pill-link b{font-size:18px;font-weight:500;transition:transform .25s}
+.pill-link:hover{background:var(--pink,var(--paper));color:var(--bg);transform:translateY(-3px)}
+.pill-link:hover b{transform:translate(3px,-2px)}
+.panel[data-tone=light] .pill-link:hover{color:#3a0e33}.panel[data-tone=dark] .pill-link:hover{color:#fbf1d3}
+.pill-link.solid{background:var(--accent,var(--orange));border-color:var(--accent,var(--orange));color:var(--ink)}
+.pill-link.solid:hover{background:var(--pink,var(--paper));border-color:var(--pink,var(--paper))}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* panel lists */
+.pl{list-style:none;display:grid;gap:clamp(10px,1.8vh,18px);margin-bottom:clamp(16px,2.6vh,26px);max-width:520px}
+.pl li{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start}
+.pl i{font-style:normal;font-family:var(--display);font-weight:800;font-size:14px;width:34px;height:34px;border-radius:70% 10% 70% 10%;display:grid;place-items:center;background:var(--accent,var(--orange));color:var(--ink)}
+.pl strong{display:block;font-family:var(--display);font-size:clamp(17px,1.5vw,22px);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.pl p{font-size:clamp(13px,1vw,15px);line-height:1.5;opacity:.88;margin-top:3px}
+.pl.grid2{grid-template-columns:1fr 1fr;gap:clamp(12px,2.2vh,22px) 26px;max-width:600px}
+.pl.grid2 li{grid-template-columns:1fr;gap:6px}
+.pl.grid2 i{width:30px;height:30px}
+.chip:hover,.chip:focus-visible{background:#ffffff66;transform:translateY(-3px)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:clamp(14px,2.4vh,24px);max-width:520px}
+.ings{display:flex;gap:clamp(12px,1.8vw,26px);margin:0 0 clamp(18px,3vh,30px);max-width:560px}
+.ing{background:none;border:0;color:inherit;font:inherit;cursor:pointer;display:grid;justify-items:center;align-content:start;gap:8px;padding:6px 2px 10px;position:relative;flex:1 1 0;min-width:0}
+.ing img{width:clamp(50px,5.2vw,78px);height:clamp(50px,5.2vw,78px);object-fit:contain;filter:drop-shadow(0 10px 8px #2a0a2652);transition:transform .55s var(--ease)}
+.ing span{font-family:var(--display);font-weight:700;font-size:clamp(13px,1.05vw,16px);line-height:1.1;text-align:center}
+.ing:after{content:"";position:absolute;left:50%;bottom:0;width:0;height:3px;border-radius:3px;background:currentColor;transform:translateX(-50%);transition:width .45s var(--ease)}
+.ing:hover img,.ing:focus-visible img{transform:translateY(-9px) rotate(-9deg) scale(1.14)}
+.ing:hover:after,.ing:focus-visible:after{width:62%}
+.stamps{display:flex;gap:clamp(12px,1.6vw,22px);align-items:center;margin:0 0 clamp(18px,3vh,28px);padding-left:4px}
+.stamp{display:grid;place-items:center;text-align:center;width:clamp(96px,8.4vw,122px);aspect-ratio:1;border-radius:58% 42% 55% 45%/48% 56% 44% 52%;rotate:-6deg;box-shadow:0 14px 22px #2a0a2645;transition:rotate .45s var(--ease),scale .45s var(--ease)}
+.stamp b{display:block;font-family:var(--display);font-size:clamp(28px,2.7vw,40px);font-weight:800;line-height:.9;letter-spacing:-.02em}
+.stamp small{display:block;margin-top:5px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.stamp.s1{background:var(--plum);color:var(--cream)}
+.stamp.s2{background:var(--leaf);color:var(--cream);rotate:5deg;border-radius:45% 55% 42% 58%/55% 45% 55% 45%}
+.stamp:hover{rotate:0deg;scale:1.07}
+.chip{font:inherit;color:inherit;cursor:pointer;transition:background .3s,transform .3s;display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:100px;font-size:13px;font-weight:700;background:#ffffff2e;border:1px solid #ffffff55;backdrop-filter:blur(4px)}
+.chip:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c,var(--cream))}
+.facts{display:flex;gap:clamp(14px,2.4vw,34px);flex-wrap:wrap;margin-bottom:clamp(16px,2.6vh,26px)}
+.facts div{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.facts div b{display:block;font-family:var(--display);font-size:clamp(26px,2.6vw,40px);letter-spacing:-.02em;text-transform:none;line-height:1}
+.tag{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;padding:4px 9px;border-radius:100px;background:var(--magenta);color:#fff;vertical-align:middle;margin-left:8px}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px;margin-bottom:clamp(14px,2.2vh,22px)}
+.phases div{border-top:3px solid var(--magenta);padding-top:8px;font-size:13px;line-height:1.4}
+.phases b{display:block;font-family:var(--display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta);margin-bottom:2px}
+
+/* artwork */
+.artwork{position:absolute;z-index:3;right:5vw;top:54%;translate:0 -50%;width:min(46vw,660px);height:min(76vh,780px);will-change:transform}
+.artwork img{position:absolute;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.art-shadow{filter:drop-shadow(0 34px 30px #2a0a2666)}
+.float-a{animation:floatA 7s ease-in-out infinite}
+.float-b{animation:floatB 8.4s ease-in-out infinite}
+@keyframes floatA{0%,100%{translate:0 0;rotate:-1deg}50%{translate:0 -14px;rotate:1.2deg}}
+@keyframes floatB{0%,100%{translate:0 0;rotate:3deg}50%{translate:0 12px;rotate:-1deg}}
+@keyframes glow{0%,100%{opacity:.85;scale:1}50%{opacity:1;scale:1.04}}
+.d{position:absolute;will-change:transform;translate:calc(var(--mx,0)*var(--k,1)*24px) calc(var(--my,0)*var(--k,1)*14px);transition:translate .7s var(--ease)}
+.ring{border-radius:50%;border:14px solid var(--orange);box-shadow:0 0 60px #f7a11a88,inset 0 0 40px #f7a11a55}
+.seal{position:absolute;left:1%;top:1%;width:clamp(70px,8vw,112px);filter:drop-shadow(0 10px 16px #2a0a2688);z-index:5}
+.disc{position:absolute;border-radius:50%;animation:glow 6s ease-in-out infinite}
+.leaf{position:absolute;z-index:2;width:clamp(70px,9vw,150px);height:auto;aspect-ratio:1;animation:sway 7s ease-in-out infinite}
+.leaf svg{width:100%;height:100%;display:block}
+@keyframes sway{0%,100%{rotate:var(--r,0deg)}50%{rotate:calc(var(--r,0deg) + 9deg)}}
+.grains{position:absolute;inset:0;z-index:1;pointer-events:none;will-change:transform}
+.grains span{position:absolute;border-radius:2px;animation:twinkle 4.4s ease-in-out infinite}
+.grains span:nth-child(3n){background:#fff4e0}.grains span:nth-child(3n+1){background:var(--orange)}.grains span:nth-child(3n+2){background:#ff8fb8}
+@keyframes twinkle{0%,100%{opacity:.25;translate:0 0}50%{opacity:.95;translate:0 -10px}}
+.panel-side{position:absolute;z-index:8;right:2.2vw;top:50%;translate:0 -50%;writing-mode:vertical-rl;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;opacity:.75}
+.panel-meta{position:absolute;z-index:30;left:4.4vw;right:4.4vw;bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;pointer-events:none;color:var(--ui,#fff4e0);transition:color .3s}
+.slide-count{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.slide-count strong{font-family:var(--display);font-size:20px;letter-spacing:-.02em}
+.h-hint{display:flex;align-items:center;gap:10px;opacity:.85}
+.hint-arrow{display:inline-block;font-size:18px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(8px)}}
+.product-nav{position:absolute;z-index:30;left:50%;bottom:58px;transform:translateX(-50%);display:flex;gap:clamp(14px,2.6vw,40px);align-items:center;white-space:nowrap;color:var(--ui,#fff4e0);transition:color .3s}
+.product-nav button{border:0;background:transparent;color:inherit;opacity:.6;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;cursor:pointer;padding:9px 0;position:relative;transition:opacity .3s}
+.product-nav button:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:currentColor;transition:right .38s var(--ease)}
+.product-nav button.active{opacity:1}
+.product-nav button.active:after{right:0}
+
+.perfil-old{clip-path:polygon(49.8% 0.6%,50.2% 0.8%,51.1% 3.9%,52.0% 7.0%,53.0% 10.2%,54.2% 13.3%,55.3% 16.4%,56.2% 19.5%,57.2% 22.7%,58.1% 25.8%,58.9% 28.9%,59.7% 32.0%,60.3% 35.2%,60.8% 38.3%,61.4% 41.4%,62.0% 44.5%,62.4% 47.7%,62.8% 50.8%,63.1% 53.9%,63.5% 57.0%,63.8% 60.2%,64.2% 63.3%,64.5% 66.4%,64.6% 69.5%,64.7% 72.7%,65.0% 75.8%,65.2% 78.9%,65.5% 82.0%,65.7% 85.2%,65.9% 88.3%,66.1% 91.4%,66.1% 94.5%,65.4% 97.7%,65.4% 97.7%,65.0% 98.4%,36.0% 98.4%,35.1% 97.7%,35.1% 97.7%,33.4% 94.5%,33.5% 91.4%,33.9% 88.3%,34.5% 85.2%,34.8% 82.0%,35.2% 78.9%,35.3% 75.8%,35.4% 72.7%,35.6% 69.5%,35.9% 66.4%,36.2% 63.3%,36.5% 60.2%,36.9% 57.0%,37.1% 53.9%,37.6% 50.8%,37.8% 47.7%,38.3% 44.5%,38.8% 41.4%,39.3% 38.3%,39.8% 35.2%,40.4% 32.0%,41.1% 28.9%,41.7% 25.8%,42.6% 22.7%,43.5% 19.5%,44.4% 16.4%,45.4% 13.3%,46.5% 10.2%,47.8% 7.0%,48.5% 3.9%,49.4% 0.8%);object-fit:fill}
+.pbox{position:absolute;aspect-ratio:2/3}.pbox .perfil{position:absolute;inset:0;width:100%;height:100%}
+[hidden]{display:none!important}
+.pill-link:disabled{opacity:.6;cursor:progress;transform:none}
+.f-status.ok{color:#14502f;font-weight:700}.f-status.err{color:#a3122a;font-weight:700}
+/* frutas recortadas */
+.artwork .d{z-index:2}.artwork .d.top{z-index:6}
+.floor{background:radial-gradient(ellipse at center,#00000099,transparent 70%);filter:blur(8px);z-index:1!important}
+.artwork .fx{height:auto}
+.artwork .fx img{position:static;width:100%;height:auto;display:block;filter:drop-shadow(0 16px 16px #2a0a2655)}
+.artwork [data-ing]{transition:opacity .45s var(--ease),scale .5s var(--ease),filter .5s}
+.artwork .dim{opacity:.5}
+.artwork .hl{scale:1.14;filter:drop-shadow(0 0 26px #fff9)}
+.frame{border-radius:46% 8% 46% 8%;overflow:hidden;box-shadow:0 36px 60px #2a0a2688;border:6px solid var(--orange)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pop{position:absolute;z-index:-1;pointer-events:none;filter:drop-shadow(0 14px 14px #0000004d);animation:bob 7s ease-in-out infinite}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.deco{position:absolute;z-index:0;pointer-events:none;filter:drop-shadow(0 16px 18px #2a0a2644)}
+.section>*:not(.deco):not(.c-ring):not(.c-bag){position:relative;z-index:1}
+.band{position:relative;overflow:hidden;min-height:clamp(560px,86vh,820px);display:grid;align-items:center;color:var(--cream);background:var(--plum)}
+.band-bg{position:absolute;left:0;right:0;top:-14%;bottom:-14%}
+.band-bg img{width:100%;height:100%;object-fit:cover}
+.band-shade{position:absolute;inset:0;background:linear-gradient(90deg,#2b0925f2 0%,#2b0925c8 42%,#2b092522 78%,transparent 100%)}
+.band-copy{position:relative;z-index:2;padding:clamp(70px,9vw,130px) 8vw;max-width:760px}
+.band h2{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,96px);line-height:.95;letter-spacing:-.015em;margin-bottom:26px}
+.band h2 .script{font-size:1.16em;line-height:.7;display:inline-block;color:var(--orange)}
+.band-list{display:grid;gap:18px;margin-top:30px}
+.band-item{display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:center}
+.band-item img{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 8px 10px #0006);transition:transform .5s var(--ease)}
+.band-item:hover img{transform:scale(1.18) rotate(-8deg)}
+.band-item strong{display:block;font-family:var(--display);font-size:clamp(20px,1.8vw,26px);font-weight:700;letter-spacing:-.01em}
+.band-item span{font-size:15px;opacity:.9}
+.band-pop{position:absolute;z-index:3;pointer-events:none;filter:drop-shadow(0 20px 20px #0007)}
+/* shared section styles */
+.section{position:relative;overflow:hidden;padding:clamp(90px,11vw,160px) 8vw}
+.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:800;margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.section h2{font-family:var(--display);font-weight:800;font-size:clamp(40px,6.2vw,100px);line-height:.94;letter-spacing:-.015em;margin-bottom:26px}
+.section h2 .script{font-size:1.14em;line-height:.7;display:inline-block}.section h2 .script.multi{display:inline;line-height:1}
+.lead{font-size:clamp(15px,1.3vw,19px);line-height:1.7;max-width:560px;opacity:.88}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+
+/* gallery */
+.gallery{background:var(--cream);color:var(--ink)}
+.gallery-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:clamp(40px,6vw,80px);flex-wrap:wrap}
+.g-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2vw,30px);align-items:start}
+.g-slot{position:relative}
+.g-slot:nth-child(1){grid-column:1/6}
+.g-slot:nth-child(2){grid-column:6/9;margin-top:9vw}
+.g-slot:nth-child(3){grid-column:9/13}
+.g-slot:nth-child(4){grid-column:3/11;margin-top:1vw}
+.g-slot:nth-child(odd) .g-card{border-radius:36px 120px 36px 120px}.g-slot:nth-child(even) .g-card{border-radius:120px 36px 120px 36px}
+.g-card{border-radius:36px;padding:clamp(18px,2.4vw,34px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;overflow:hidden;position:relative;transition:box-shadow .5s,rotate .6s var(--ease);will-change:transform}
+.g-card:hover{rotate:-1.2deg;box-shadow:0 30px 60px #3a0e3333}
+.g-card .g-img{width:100%;height:clamp(260px,34vw,520px);object-fit:contain;transition:transform .8s var(--ease);filter:drop-shadow(0 22px 22px #2a0a2655)}
+.g-imgwrap{height:clamp(260px,34vw,520px);aspect-ratio:2/3;margin:0 auto;max-width:100%;filter:drop-shadow(0 22px 22px #2a0a2655)}.g-imgwrap .g-img{width:100%;height:100%;filter:none}
+.g-card:hover .g-img{transform:scale(1.05) rotate(1.5deg)}
+.g-card.short .g-img{height:clamp(220px,24vw,360px)}
+.g-cap{padding:0 clamp(40px,4.4vw,72px) 8px;white-space:nowrap;display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+.g-cap span:last-child{opacity:.7}
+.g-note{display:flex;flex-direction:column;justify-content:center;background:var(--plum);color:var(--cream);min-height:260px}
+.g-note p{font-family:var(--display);font-size:clamp(24px,3vw,46px);font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.g-note .script{color:var(--orange);font-size:1.25em}
+
+/* compliance */
+.compromiso{background:var(--plum);color:var(--cream)}
+.compromiso:before{content:"";position:absolute;width:60vw;height:60vw;border-radius:50%;right:-25vw;top:-20vw;background:radial-gradient(circle,#c8237f55,transparent 65%);pointer-events:none}
+.c-head{display:grid;grid-template-columns:1.5fr 1fr;gap:6vw;align-items:end;margin-bottom:clamp(40px,5vw,70px)}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,26px);margin-bottom:clamp(14px,1.8vw,26px)}
+.fcard{position:relative;overflow:hidden;padding:clamp(26px,2.8vw,40px);isolation:isolate;transition:transform .5s var(--ease),box-shadow .5s;color:var(--cream)}
+.fcard:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 30px 50px #0000004d}
+.c-grid .fcard:nth-child(odd),.c-two .fcard:nth-child(odd){border-radius:120px 28px 120px 28px}
+.c-grid .fcard:nth-child(even),.c-two .fcard:nth-child(even){border-radius:28px 120px 28px 120px}
+.fcard h3{font-family:var(--display);font-size:clamp(22px,2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.12;margin:20px 0 12px}
+.fcard p,.fcard dd{font-size:15px;line-height:1.65}
+.fbadge{width:58px;height:58px;display:grid;place-items:center;background:var(--cream);color:var(--plum-2);border-radius:70% 12% 70% 12%;box-shadow:0 8px 16px #00000030}
+.fbadge svg{width:28px;height:28px}
+.f-gulupa{background:linear-gradient(145deg,#9a2d86,#4b1240)}
+.f-lima{background:linear-gradient(145deg,#2a8a4a,#14502f);--bd:var(--leaf)}
+.f-mandarina{background:linear-gradient(145deg,#fbbd33,#ef6b1a);color:var(--ink)}
+.f-mandarina .fbadge{color:var(--tang)}
+.f-lima .fbadge{color:var(--leaf)}
+.f-teal{background:linear-gradient(145deg,#1fc4b5,#0f8f86);color:var(--ink)}
+.f-teal .fbadge{color:#0f8f86}
+.f-cream{background:var(--cream);color:var(--ink)}
+.f-cream .fbadge{background:var(--magenta);color:#fff}
+.c-card{border:1px solid #fbf1d33a;border-radius:24px;padding:clamp(22px,2.4vw,34px);background:#ffffff0d;transition:transform .5s var(--ease),background .4s,border-color .4s}
+.c-card:hover{transform:translateY(-8px);background:#ffffff18;border-color:var(--orange)}
+.c-card .n{font-family:var(--display);font-weight:800;font-size:15px;color:var(--orange);letter-spacing:.1em}
+.c-card h3{font-family:var(--display);font-size:clamp(22px,2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:14px 0 12px}
+.c-card p{font-size:15px;line-height:1.65;opacity:.88}
+.c-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,26px)}
+.c-box{padding:clamp(22px,2.4vw,36px)}
+.c-box h3{font-family:var(--display);font-size:clamp(22px,2vw,30px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.c-box p{font-size:15px;line-height:1.65}
+.fcard dl{display:grid;gap:14px}
+.fcard dt{font-size:12px;color:var(--magenta);letter-spacing:.16em;text-transform:uppercase;font-weight:800}
+.fcard dd{margin-top:3px}
+.c-foot{margin-top:clamp(18px,2vw,28px);font-size:13px;line-height:1.7;opacity:.78;max-width:900px}
+
+/* maturity */
+.madurez{background:var(--cream-2);color:var(--ink)}
+.m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,26px);margin-top:clamp(30px,4vw,50px)}
+.m-card{background:var(--cream);border-radius:110px 28px 110px 28px;padding:clamp(28px,2.8vw,42px);position:relative;overflow:hidden;border:2px solid var(--bar);isolation:isolate;transition:transform .5s var(--ease),box-shadow .5s}
+.m-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px #3a0e3322}
+.m-grid .m-card:nth-child(even){border-radius:28px 110px 28px 110px}
+.m-card:before{content:"";position:absolute;z-index:-1;right:-46px;top:-46px;width:170px;height:170px;border-radius:50%;background:var(--bar);opacity:.16}
+.m-card .m-k{font-family:var(--display);font-weight:800;font-size:clamp(46px,5vw,76px);letter-spacing:-.04em;line-height:1;color:var(--bar)}
+.m-card h3{font-family:var(--display);font-size:20px;font-weight:700;margin:6px 0 14px;letter-spacing:-.01em}
+.m-state{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:var(--bar);color:var(--st,#fff);margin-bottom:18px}
+.m-card h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;margin:14px 0 6px}
+.m-card p{font-size:15px;line-height:1.6}
+.m-note{margin-top:26px;font-size:14px;max-width:760px;line-height:1.7;opacity:.85}
+
+/* contact */
+.contacto{background:linear-gradient(135deg,var(--tang),var(--magenta) 70%,var(--plum-2));color:#fff4e0;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(30px,5vw,80px);align-items:center}
+.contacto>*{min-width:0}
+.steps{list-style:none;display:grid;gap:14px;margin:0 0 28px;max-width:520px}
+.steps li{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:center;font-size:15px;line-height:1.45}
+.steps i{font-style:normal;font-family:var(--display);font-weight:800;width:40px;height:40px;display:grid;place-items:center;border-radius:70% 10% 70% 10%;background:var(--cream);color:var(--magenta)}
+.steps b{font-family:var(--display);font-weight:700;font-size:17px;display:block}
+.contacto h2{font-size:clamp(44px,6vw,104px)}
+.contacto .script{color:var(--cream-2)}
+.c-ring{position:absolute;width:62vw;height:62vw;border-radius:50%;right:-22vw;bottom:-30vw;border:1px solid #fff4e044;pointer-events:none}
+.c-bag{position:absolute;width:min(20vw,290px);right:-3vw;top:5vw;rotate:13deg;pointer-events:none;filter:drop-shadow(0 30px 30px #2a0a2688);z-index:1}
+form{min-width:0;background:var(--cream);color:var(--ink);border-radius:30px;padding:clamp(24px,3vw,44px);display:grid;gap:16px;box-shadow:0 40px 80px #2a0a2655;position:relative;z-index:2}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+input,textarea,select{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;font-weight:500;padding:13px 15px;border-radius:14px;border:1.5px solid #3a0e3340;background:#fff;color:var(--ink);width:100%}
+input[aria-invalid=true],textarea[aria-invalid=true],select[aria-invalid=true]{border-color:#b3122a;background:#fff4f4}
+input:focus,textarea:focus,select:focus{outline:3px solid var(--orange);border-color:var(--orange)}
+textarea{min-height:110px;resize:vertical}
+.check{grid-template-columns:22px 1fr;align-items:start;text-transform:none;letter-spacing:0;font-weight:500;font-size:13px;line-height:1.5;gap:12px}
+.check input{width:20px;height:20px;padding:0;accent-color:var(--magenta);margin-top:2px}
+.f-status{font-size:14px;line-height:1.6;min-height:22px}
+.f-out{font-size:14px;min-height:120px}
+.f-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.f-actions .pill-link{--bg:var(--cream);color:var(--ink)}
+.f-actions .pill-link.solid{background:var(--magenta);border-color:var(--magenta);color:#fff}
+.f-actions .pill-link.solid:hover{background:var(--plum);border-color:var(--plum);color:#fff}
+.c-side{position:relative;z-index:2}
+.c-side .lead{margin-bottom:26px}
+.c-links{display:grid;gap:10px;font-size:15px}
+.c-links a{display:inline-flex;gap:10px;align-items:center;border-bottom:1px solid #fff4e088;padding-bottom:6px;width:fit-content;font-weight:700;transition:gap .3s}
+.c-links a:hover{gap:18px}
+
+.footer{background:var(--plum);color:var(--cream);padding:30px 8vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;letter-spacing:.04em}
+.footer a{border-bottom:1px solid #fbf1d366}
+
+noscript style{display:none}
+
+/* responsive */
+@media(max-width:1080px){
+  .contacto{grid-template-columns:1fr}
+  .top-links{display:none}
+  .c-head{grid-template-columns:1fr}
+  .c-grid,.m-grid{grid-template-columns:1fr}
+  .c-two{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .header{height:64px}.logo span{font-size:25px}.logo img{width:38px;height:38px}
+  .panel-copy{left:6vw;top:11vh;translate:0 0;width:88vw}
+  .panel h1{font-size:clamp(46px,14vw,80px);margin-bottom:12px}
+  .panel h2{font-size:clamp(32px,9.6vw,50px);margin-bottom:10px}
+  .overline{font-size:10px;margin-bottom:12px}
+  .hide-m{display:none!important}
+  .panel-desc{font-size:14px;margin-bottom:14px}
+  .pl p{display:none}.pl li{grid-template-columns:30px 1fr}.pl i{width:30px;height:30px}
+  .pl strong{font-size:16px}
+  .pl.grid2{grid-template-columns:1fr 1fr;gap:10px 14px}.pl.grid2 strong{font-size:15px}
+  .pill-link{padding:11px 16px 11px 20px;font-size:11px}
+  .chip{padding:7px 12px;font-size:12px}
+  .ings{margin-bottom:10px;gap:6px}.ing img{width:44px;height:44px}.ing span{font-size:12px}.ing{padding-bottom:8px}
+  .facts div b{font-size:24px}.facts{margin-bottom:12px}
+  .phases{gap:8px}.phases div{font-size:12px}
+  .artwork{left:50%;right:auto;translate:-50% 0;top:auto;bottom:78px;width:80vw;height:28vh}
+  .btn-row{flex-wrap:nowrap;gap:10px}
+  .btn-row .pill-link{padding:12px 14px 12px 18px;gap:12px;font-size:11px;white-space:nowrap}
+  .panel .pill-link{position:relative;z-index:9;box-shadow:0 8px 18px #2a0a2655}
+  .panel[data-tone=light] .pill-link:not(.solid){background:#fff4e0;border-color:#fff4e0;color:#3a0e33}
+  .panel[data-tone=dark] .pill-link:not(.solid){background:#2a0a26;border-color:#2a0a26;color:#fbf1d3}
+  .panel .pill-link.solid{color:#2a0a26}
+  .panel:last-child .pill-link.solid{color:#fff}
+  .leaf{opacity:.5}
+  .g-imgwrap{height:300px}
+  .pl.keep p{display:block;font-size:13px;line-height:1.4}
+  .panel .phases{display:none}
+  .facts.hide-m{display:none}
+  .product-nav{bottom:40px;gap:10px}.product-nav button{font-size:10px;letter-spacing:.05em;padding:12px 2px}
+  .panel-meta{bottom:10px;font-size:9px}.panel-side{display:none}
+  .section{padding:90px 6vw}
+  .g-grid{display:grid;grid-template-columns:1fr}
+  .g-slot:nth-child(n){grid-column:1/-1;margin-top:0}
+  .g-card .g-img{height:300px}
+  .contacto{grid-template-columns:1fr}
+  .c-bag,.seal,.deco,.band-pop{display:none}
+  .band-shade{background:linear-gradient(180deg,#2b0925f2,#2b0925cc)}
+  .band-item{grid-template-columns:60px 1fr}.band-item img{width:60px;height:60px}
+  .f-row{grid-template-columns:1fr}
+  .footer{flex-direction:column;padding:26px 6vw}
+  .menu-panel{padding:100px 6vw 26px}
+}
+@media(max-width:400px){.btn-row .pill-link{padding:12px 14px;font-size:10.5px;letter-spacing:.1em;gap:8px}.btn-row .pill-link b{font-size:15px}.btn-row{gap:8px}}
+@media(max-height:650px) and (min-width:761px){
+  .panel h1{font-size:clamp(50px,7.4vw,110px)}.panel h2{font-size:clamp(34px,4.2vw,66px)}
+  .artwork{height:72vh}.pl{gap:8px}.pl p{font-size:13px}.panel-desc{margin-bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="leaf" viewBox="0 0 200 200"><path d="M8 192C8 86 86 8 192 8c0 106-78 184-184 184Z" fill="currentColor"/><path d="M8 192 150 50" stroke="#ffffff66" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<a class="sr-only" href="#galeria">Saltar a la galería</a>
+<div id="progress"></div>
+
+<header class="header" id="header">
+  <a class="logo" href="#inicio" data-go="0" aria-label="Brisa al borde, inicio">
+    <img src="Emblema cóctel futurista brillante.png" alt="">
+    <span>Brisa al borde</span>
+  </a>
+  <nav class="top-links" aria-label="Navegación principal">
+    <a href="#producto" data-go="1">Producto</a>
+    <a href="#galeria">Galería</a>
+    <a href="#compromiso">Compromiso</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuPanel" aria-label="Abrir menú"><span class="menu-glyph" aria-hidden="true">☰</span></button>
+</header>
+
+<nav class="menu-panel" id="menuPanel" aria-hidden="true" aria-label="Menú completo">
+  <div class="menu-items">
+    <button data-go="0">Inicio</button>
+    <button data-go="1">Nuestro producto</button>
+    <button data-go="2">¿A quién va dirigido?</button>
+    <button data-go="3">Propuesta de valor</button>
+    <button data-go="4">Presentación comercial</button>
+    <a href="#ingredientes">Ingredientes</a>
+    <a href="#galeria">Galería</a>
+    <a href="#compromiso">Compromiso y transparencia</a>
+    <a href="#madurez">CRL, BRL y TRL</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="menu-foot"><span>Brisa al borde</span><span>Sal con frutas deshidratadas para michelas</span></div>
+</nav>
+
+<main id="inicio">
+<section class="horizontal-stage" id="experiencia" aria-label="Recorrido por Brisa al borde. Desplázate para avanzar por las secciones.">
+ <div class="stage-pin">
+  <div class="horizontal-track" id="track">
+
+   <!-- 01 INICIO -->
+   <article class="panel" data-tone="light" style="--bg:radial-gradient(circle at 72% 46%,#8a2466 0%,#4b1240 45%,#2b0925 100%);--pink:#fff1d6;--accent:#f7a11a" aria-label="Inicio">
+    <div class="grains" data-depth=".5" data-grains="30"></div>
+    <div class="leaf d" style="left:44vw;top:12vh;color:#2f9a58;--r:-20deg" data-depth=".3"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="leaf d" style="left:-1vw;bottom:5vh;color:#f7a11a;--r:40deg;width:clamp(60px,7vw,110px)" data-depth=".6"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="panel-copy">
+      <div class="overline">Sal con frutas deshidratadas para michelas</div>
+      <h1>Dale <span class="script" style="color:var(--orange)">brisa</span><br>al borde.</h1>
+      <p class="panel-desc">Sal marina con gulupa, limón mandarino y ají para escarchar michelas y cócteles. Sabor tropical, 100 % natural, pensada para bares, hoteles y eventos.</p>
+      <div class="btn-row">
+        <button class="pill-link solid" data-go="1">Conoce el producto <b>↗</b></button>
+        <a class="pill-link" href="#contacto">Hablemos <b>↗</b></a>
+      </div>
+    </div>
+    <div class="artwork" data-art>
+      <div class="disc" style="width:92%;aspect-ratio:1;left:4.0%;top:4%;background:radial-gradient(circle,#d94a9c88,transparent 68%)"></div>
+      <div class="d fx " style="--k:0.8;right:-8%;top:-2%;width:34%;rotate:22deg" data-depth="0.34"><img class="float-a" src="img/hoja-morada.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:0.9;left:-12%;top:48%;width:48%;rotate:-8deg" data-depth="0.3"><img class="float-b" src="img/salpicadura-naranja.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.1;left:1%;top:3%;width:32%;rotate:-14deg" data-depth="0.22"><img class="float-a" src="img/gulupa-corte-fondo.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.2;right:-12%;top:34%;width:40%;rotate:14deg" data-depth="0.3"><img class="float-b" src="img/naranja-gajo.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1;left:-8%;bottom:2%;width:40%;rotate:-22deg" data-depth="0.26"><img class="float-a" src="img/aji.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:0.9;right:-2%;bottom:-2%;width:32%;rotate:-6deg" data-depth="0.2"><img class="float-b" src="img/limon.png" alt="" loading="lazy"></div>
+      <div class="d floor" style="--k:.6;left:24%;bottom:-2%;width:64%;height:7%" data-depth=".08"></div>
+      <div class="d top" style="--k:1.3;left:21%;top:0;height:96%;aspect-ratio:1008/1561" data-depth="0.08"><img class="art-shadow float-a" src="Diseño de bolsa tropical Brisa al Borde.png" alt="Frente de la bolsa de 2 kg de Brisa al borde, sal con frutas deshidratadas para michelas" fetchpriority="high" style="inset:0;width:100%;height:100%"></div>
+      <div class="d fx top" style="--k:1.6;left:10%;top:-4%;width:12%" data-depth="0.42"><img class="float-b" src="img/gotas.png" alt="" loading="lazy"></div>
+    </div>
+    <div class="panel-side" aria-hidden="true">Gulupa, limón mandarino y ají</div>
+   </article>
+
+   <!-- 02 PRODUCTO -->
+   <article class="panel" data-tone="dark" style="--bg:linear-gradient(120deg,#f9b52b 0%,#f7a11a 40%,#ef6b1a 100%);--pink:#2a0a26;--accent:#3a0e33" aria-label="Conoce nuestro producto">
+    <div class="grains" data-depth=".5" data-grains="26"></div>
+    <div class="leaf d" style="left:48vw;top:6vh;color:#175a37;--r:15deg" data-depth=".34"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="leaf d" style="left:36vw;bottom:10vh;color:#c8237f;--r:-30deg;width:clamp(60px,7vw,110px)" data-depth=".55"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="panel-copy">
+      <div class="overline">Conoce nuestro producto</div>
+      <h2>Sal con <span class="script" style="color:var(--plum-2)">frutas</span> deshidratadas.</h2>
+      <p class="panel-desc">Una mezcla de sal marina y fruta deshidratada que perfuma y da sabor al borde del vaso. Nuestra primera referencia combina gulupa, limón mandarino y ají.</p>
+      <div class="ings" role="group" aria-label="Ingredientes principales. Pasa el mouse para resaltar cada uno">
+        <button type="button" class="ing" data-chip="sal"><img src="img/sal-mezcla.png" alt=""><span>Sal marina</span></button>
+        <button type="button" class="ing" data-chip="gulupa"><img src="img/gulupa-corte-fondo.png" alt=""><span>Gulupa</span></button>
+        <button type="button" class="ing" data-chip="limon"><img src="img/limon.png" alt=""><span>Limón mandarino</span></button>
+        <button type="button" class="ing" data-chip="aji"><img src="img/aji.png" alt=""><span>Ají ácido</span></button>
+      </div>
+      <div class="stamps hide-m" aria-label="Presentación de 2 kg, 100 % natural">
+        <div class="stamp s1"><span><b>2 kg</b><small>por bolsa</small></span></div>
+        <div class="stamp s2"><span><b>100 %</b><small>natural</small></span></div>
+      </div>
+      <button class="pill-link" data-go="2">¿Para quién es? <b>↗</b></button>
+    </div>
+    <div class="artwork" data-art id="ingArt">
+      <div class="disc" style="width:86%;aspect-ratio:1;left:7.0%;top:4%;background:radial-gradient(circle,#fff1d688,transparent 68%)"></div>
+      <div class="d fx " style="--k:0.7;left:26%;top:-4%;width:46%;rotate:-6deg" data-depth="0.28"><img class="float-a" src="img/hojas.png" alt="" loading="lazy"></div>
+      <div class="d pbox top art-shadow" style="--k:.9;left:-13%;top:0;height:100%" data-depth=".08"><img class="perfil float-a" src="img/envase-perfil.png" alt="Perfil del empaque de Brisa al borde"></div>
+      <div class="d fx " style="--k:0.8;left:22%;bottom:-4%;width:66%" data-depth="0.18" data-ing="sal"><img class="float-b" src="img/sal-mezcla.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.2;right:10%;top:2%;width:27%;rotate:8deg" data-depth="0.26" data-ing="gulupa"><img class="float-a" src="img/gulupa-entera.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.1;left:34%;top:52%;width:32%;rotate:-10deg" data-depth="0.2" data-ing="gulupa"><img class="float-b" src="img/gulupa-corte-fondo.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1;right:-6%;top:26%;width:44%;rotate:6deg" data-depth="0.3" data-ing="limon"><img class="float-a" src="img/limon.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.2;right:2%;bottom:12%;width:46%;rotate:-14deg" data-depth="0.24" data-ing="aji"><img class="float-b" src="img/aji.png" alt="" loading="lazy"></div>
+    </div>
+    <div class="panel-side" aria-hidden="true">Sal con frutas deshidratadas, 2 kg</div>
+   </article>
+
+   <!-- 03 PUBLICO -->
+   <article class="panel" data-tone="light" style="--bg:radial-gradient(circle at 70% 50%,#1f7a49 0%,#175a37 50%,#0f3f27 100%);--pink:#fff1d6;--accent:#f7a11a" aria-label="¿A quién está dirigido?">
+    <div class="grains" data-depth=".5" data-grains="24"></div>
+    <div class="leaf d" style="left:50vw;top:10vh;color:#b9d33a;--r:10deg" data-depth=".3"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="panel-copy">
+      <div class="overline">¿A quién está dirigido?</div>
+      <h2>Hecha para quien <span class="script" style="color:var(--orange)">sirve</span> el trago.</h2>
+      <p class="panel-desc hide-m">Nos dirigimos a negocios que preparan michelas y cócteles y quieren una presentación con identidad propia.</p>
+      <ul class="pl">
+        <li><i>1</i><div><strong>Hoteles y resorts</strong><p>Bares de playa y piscina, restaurantes y eventos de destinos turísticos del Caribe.</p></div></li>
+        <li><i>2</i><div><strong>Bares y restaurantes</strong><p>Cartas de micheladas y coctelería de autor que buscan un sello propio.</p></div></li>
+        <li><i>3</i><div><strong>Catering y eventos</strong><p>Bodas, fiestas y activaciones que necesitan sabor tropical en volumen.</p></div></li>
+      </ul>
+      <p class="panel-desc hide-m" style="font-size:13px;opacity:.8;margin:0">Mercado de lanzamiento: República Dominicana, mediante exportación indirecta.</p>
+    </div>
+    <div class="artwork" data-art>
+      <div class="disc" style="width:80%;aspect-ratio:1;left:10.0%;top:4%;background:radial-gradient(circle,#f7a11a55,transparent 68%)"></div>
+      <div class="d fx " style="--k:0.7;left:-14%;top:0;width:74%;rotate:6deg" data-depth="0.3"><img class="float-a" src="img/hojas.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:0.8;right:-10%;bottom:2%;width:46%;rotate:6deg" data-depth="0.28"><img class="float-b" src="img/salpicadura-naranja.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.2;right:-12%;top:2%;width:36%;rotate:-8deg" data-depth="0.32"><img class="float-b" src="img/naranja-gajo.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1;left:-12%;bottom:0%;width:36%;rotate:8deg" data-depth="0.26"><img class="float-a" src="img/limon.png" alt="" loading="lazy"></div>
+      <div class="d floor" style="--k:.6;left:14%;bottom:-2%;width:70%;height:6%" data-depth=".08"></div>
+      <div class="d top" style="--k:1.1;left:12%;top:3%;height:90%;aspect-ratio:1120/1405" data-depth="0.1"><img class="art-shadow float-a" src="Etiqueta tropical de sal para micheladas Gulupa.png" alt="Reverso de la bolsa: ingredientes, conservación y modo de uso en cuatro pasos" style="inset:0;width:100%;height:100%"></div>
+    </div>
+    <div class="panel-side" aria-hidden="true">Bares, hoteles y eventos</div>
+   </article>
+
+   <!-- 04 PROPUESTA DE VALOR -->
+   <article class="panel" data-tone="light" style="--bg:linear-gradient(130deg,#d42a8a 0%,#8e1f68 45%,#4b1240 100%);--pink:#fff1d6;--accent:#f7a11a" aria-label="Propuesta de valor">
+    <div class="grains" data-depth=".5" data-grains="28"></div>
+    <div class="leaf d" style="left:46vw;bottom:8vh;color:#17b2a5;--r:-10deg" data-depth=".32"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="panel-copy">
+      <div class="overline">Propuesta de valor</div>
+      <h2>Un borde que <span class="script" style="color:var(--orange)">cuenta</span> de dónde viene.</h2>
+      <ul class="pl grid2">
+        <li><i>1</i><div><strong>Sabor propio</strong><p>Gulupa, limón mandarino y ají con sal marina en una sola mezcla.</p></div></li>
+        <li><i>2</i><div><strong>Fruta con origen</strong><p>Fruta colombiana que le da a la barra una historia para contar.</p></div></li>
+        <li><i>3</i><div><strong>Fácil de usar</strong><p>Se aplica en cuatro pasos: humedecer, escarchar, servir y disfrutar.</p></div></li>
+        <li><i>4</i><div><strong>Hecha para durar</strong><p>Producto no perecedero, en bolsa de 2 kg con barrera contra la humedad.</p></div></li>
+      </ul>
+      <button class="pill-link" data-go="4">Ver presentación comercial <b>↗</b></button>
+    </div>
+    <div class="artwork" data-art>
+      <div class="disc" style="width:94%;aspect-ratio:1;left:3.0%;top:4%;background:radial-gradient(circle,#f7a11a66,transparent 68%)"></div>
+      <div class="d frame" style="--k:.5;left:2%;top:20%;width:96%;aspect-ratio:3/2" data-depth=".1"><img src="img/frutas-composicion.jpg" alt="Gulupa, limón mandarino y ají frescos con hojas y gotas de jugo" loading="lazy"></div>
+      <div class="d fx " style="--k:0.9;left:-6%;top:6%;width:32%;rotate:-26deg" data-depth="0.34"><img class="float-a" src="img/hoja-morada.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.2;right:-8%;top:2%;width:46%;rotate:16deg" data-depth="0.28"><img class="float-b" src="img/aji.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.3;left:3%;bottom:6%;width:27%;rotate:-8deg" data-depth="0.32"><img class="float-a" src="img/gulupa-entera.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.1;right:4%;bottom:2%;width:38%;rotate:8deg" data-depth="0.26"><img class="float-b" src="img/naranja-gajo.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:0.9;left:34%;bottom:-5%;width:30%;rotate:-4deg" data-depth="0.2"><img class="float-a" src="img/limon.png" alt="" loading="lazy"></div>
+      <img class="seal" src="Emblema cóctel futurista brillante.png" alt="Emblema de Brisa al borde" style="left:auto;right:3%;top:auto;bottom:40%">
+    </div>
+    <div class="panel-side" aria-hidden="true">Sabor, origen y practicidad</div>
+   </article>
+
+   <!-- 05 PRESENTACION COMERCIAL -->
+   <article class="panel" data-tone="dark" style="--bg:linear-gradient(120deg,#fbf1d3 0%,#f6e4ae 100%);--pink:#2a0a26;--accent:#c8237f" aria-label="Presentación comercial y sostenibilidad económica">
+    <div class="grains" data-depth=".5" data-grains="22"></div>
+    <div class="leaf d" style="left:47vw;top:8vh;color:#175a37;--r:20deg" data-depth=".3"><svg aria-hidden="true"><use href="#leaf"/></svg></div>
+    <div class="panel-copy">
+      <div class="overline">Presentación comercial</div>
+      <h2>Cómo se <span class="script" style="color:var(--magenta)">vende</span> y cómo se sostiene.</h2>
+      <ul class="pl keep">
+        <li><i style="background:var(--plum);color:var(--cream)">1</i><div><strong>Presentación</strong><p>Bolsa de 2 kg con barrera contra la humedad, cajas máster y estibas para despacho.</p></div></li>
+        <li><i style="background:var(--plum);color:var(--cream)">2</i><div><strong>Precio estimado <span class="tag">Preliminar</span></strong><p>Referencia de USD 260 por tonelada CIF, por validar con costos completos y demanda real.</p></div></li>
+        <li><i style="background:var(--plum);color:var(--cream)">3</i><div><strong>Sostenibilidad económica</strong><p>Venta B2B recurrente, degustaciones y eventos, con crecimiento por fases.</p></div></li>
+      </ul>
+      <div class="phases hide-m">
+        <div><b>Fase 1</b>Validar en los hoteles iniciales</div>
+        <div><b>Fase 2</b>Escalar a toda la cadena</div>
+        <div><b>Fase 3</b>Diversificar en el Caribe</div>
+      </div>
+      <a class="pill-link solid" href="#galeria" style="color:#fff">Ver la galería <b>↓</b></a>
+    </div>
+    <div class="artwork" data-art>
+      <div class="disc" style="width:84%;aspect-ratio:1;left:8.0%;top:4%;background:radial-gradient(circle,#f7a11aaa,transparent 68%)"></div>
+      <div class="d fx " style="--k:0.7;right:-14%;top:-2%;width:56%;rotate:14deg" data-depth="0.3"><img class="float-a" src="img/hojas.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:0.8;left:2%;bottom:-10%;width:56%" data-depth="0.2"><img class="float-b" src="img/sal-mezcla.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:0.9;right:-12%;bottom:-8%;width:54%" data-depth="0.24"><img class="float-a" src="img/polvo-aji.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1.2;right:-10%;top:16%;width:36%;rotate:-10deg" data-depth="0.32"><img class="float-b" src="img/naranja-gajo.png" alt="" loading="lazy"></div>
+      <div class="d fx " style="--k:1;right:-8%;top:44%;width:30%;rotate:10deg" data-depth="0.26"><img class="float-a" src="img/limon.png" alt="" loading="lazy"></div>
+      <div class="d floor" style="--k:.6;left:14%;bottom:-1%;width:62%;height:6%" data-depth=".08"></div>
+      <div class="d top" style="--k:1.2;left:12%;top:2%;height:90%;aspect-ratio:1008/1561" data-depth="0.08"><img class="art-shadow float-a" src="Diseño de bolsa tropical Brisa al Borde.png" alt="Bolsa de 2 kg de Brisa al borde" style="inset:0;width:100%;height:100%"></div>
+    </div>
+    <div class="panel-side" aria-hidden="true">Bolsa de 2 kg, precio por validar</div>
+   </article>
+
+  </div>
+
+  <div class="product-nav" id="productNav" aria-label="Secciones del recorrido">
+    <button data-slide="0">Inicio</button><button data-slide="1">Producto</button><button data-slide="2">Público</button><button data-slide="3">Valor</button><button data-slide="4">Comercial</button>
+  </div>
+  <div class="panel-meta" id="panelMeta"><div class="slide-count"><strong id="currentSlide">01</strong><span>/ 05</span></div><div class="h-hint"><span>Desplázate</span><span class="hint-arrow" aria-hidden="true">→</span></div></div>
+ </div>
+</section>
+
+<!-- INGREDIENTES -->
+<section class="band" id="ingredientes" aria-label="Ingredientes">
+  <div class="band-bg" data-vspeed="-.16"><img src="img/frutas-composicion.jpg" alt="Gulupa, limón mandarino y ají frescos con hojas y gotas de jugo" loading="lazy"></div>
+  <div class="band-shade"></div>
+  <div class="band-copy">
+    <div class="eyebrow reveal">Ingredientes</div>
+    <h2 class="reveal d1">Fruta, sal y <span class="script">ají.</span></h2>
+    <p class="lead reveal d2">Tres ingredientes con carácter propio que se juntan en una sola mezcla para el borde del vaso.</p>
+    <div class="band-list">
+      <div class="band-item reveal d1"><img src="img/gulupa-corte-fondo.png" alt="" loading="lazy"><div><strong>Gulupa</strong><span>Aroma tropical y un toque ácido.</span></div></div>
+      <div class="band-item reveal d2"><img src="img/limon.png" alt="" loading="lazy"><div><strong>Limón mandarino</strong><span>Frescura cítrica para cada sorbo.</span></div></div>
+      <div class="band-item reveal d3"><img src="img/aji.png" alt="" loading="lazy"><div><strong>Ají</strong><span>Un golpe picante que acompaña la michelada.</span></div></div>
+    </div>
+  </div>
+  <img class="band-pop" src="img/gulupa-entera.png" alt="" style="right:6vw;bottom:-3vw;width:min(17vw,250px);rotate:-10deg" data-vspeed=".14" loading="lazy">
+  <img class="band-pop" src="img/naranja-gajo.png" alt="" style="right:20vw;top:6vw;width:min(18vw,270px);rotate:14deg" data-vspeed="-.1" loading="lazy">
+</section>
+
+<!-- 06 GALERIA -->
+<section class="section gallery" id="galeria">
+  <img class="deco" src="img/ola-jugo.png" alt="" style="right:4vw;top:3vw;width:min(24vw,340px);rotate:-6deg" data-vspeed=".1" loading="lazy">
+  <img class="deco" src="img/gotas.png" alt="" style="left:44vw;top:18vw;width:min(9vw,120px)" data-vspeed="-.12" loading="lazy">
+  <div class="gallery-head">
+    <div class="reveal"><div class="eyebrow">Galería</div><h2>El empaque, <span class="script" style="color:var(--magenta)">por dentro</span> y por fuera.</h2></div>
+    <p class="lead reveal d1">Frente, perfil y reverso. Cada vista lleva la misma identidad: hojas, fruta y una copa que invita a brindar.</p>
+  </div>
+  <div class="g-grid">
+    <div class="g-slot reveal"><div class="g-card" data-vspeed="-.05" style="background:var(--plum);color:var(--cream)">
+      <img class="g-img" src="Diseño de bolsa tropical Brisa al Borde.png" alt="Frente de la bolsa de 2 kg de Brisa al borde" loading="lazy">
+      <div class="g-cap"><span>Frente de la bolsa</span><span>2 kg</span></div></div></div>
+    <div class="g-slot reveal d1"><div class="g-card" data-vspeed=".06" style="background:var(--orange);color:var(--ink)">
+      <div class="g-imgwrap"><img class="g-img perfil" src="img/envase-perfil.png" alt="Perfil del empaque de gulupa de Brisa al borde" loading="lazy"></div>
+      <div class="g-cap"><span>Perfil</span><span>Gulupa</span></div></div></div>
+    <div class="g-slot reveal d2"><div class="g-card" data-vspeed="-.03" style="background:var(--leaf);color:var(--cream)">
+      <img class="g-img" src="Etiqueta tropical de sal para micheladas Gulupa.png" alt="Reverso de la bolsa con ingredientes, conservación y modo de uso" loading="lazy">
+      <div class="g-cap"><span>Reverso</span><span>Modo de uso</span></div></div></div>
+    <div class="g-slot reveal"><div class="g-card g-note" data-vspeed=".04">
+      <p>Cuatro pasos y listo: humedece el borde con limón, decora con <span class="script">Brisa al borde</span>, sirve y disfruta tu michelada.</p></div></div>
+  </div>
+</section>
+
+<!-- COMPROMISO Y TRANSPARENCIA -->
+<section class="section compromiso" id="compromiso">
+  <img class="deco" src="img/hoja-morada.png" alt="" style="left:-6vw;bottom:-3vw;width:min(26vw,380px);rotate:18deg" data-vspeed=".08" loading="lazy">
+  <div class="c-head">
+    <div class="reveal"><div class="eyebrow">Compromiso y transparencia</div><h2>Decimos lo que <span class="script multi" style="color:var(--orange)">hay en la bolsa.</span></h2></div>
+    <p class="lead reveal d1">La confianza de un cliente se gana con información clara. Estos son los compromisos que guían cómo presentamos y vendemos Brisa al borde.</p>
+  </div>
+  <div class="c-grid">
+    <article class="fcard f-gulupa reveal"><span class="fbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Transparencia comercial</h3><p>Publicamos solo lo que el producto tiene: ingredientes, peso y modo de uso tal como aparecen en la etiqueta. Los precios son estimados y se presentan como tales.</p><img class="pop" src="img/naranja-gajo.png" alt="" style="width:170px;right:-34px;top:-30px;rotate:18deg" loading="lazy"></article>
+    <article class="fcard f-lima reveal d1"><span class="fbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z"/></svg></span><h3>Ética empresarial</h3><p>Sin publicidad engañosa. Las imágenes, la marca y los textos son propios, y no usamos contenidos de terceros sin autorización.</p><img class="pop" src="img/limon.png" alt="" style="width:160px;right:-30px;top:-28px;rotate:12deg" loading="lazy"></article>
+    <article class="fcard f-mandarina reveal d2"><span class="fbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M7 20h10M5 8h14M5 8l-3 7a3 3 0 0 0 6 0zM19 8l-3 7a3 3 0 0 0 6 0z"/></svg></span><h3>Respeto al consumidor y a las reglas</h3><p>Actuamos conforme a la protección de los consumidores y la libertad económica (artículos 78 y 333 de la Constitución Política de Colombia) y a los requisitos sanitarios y de etiquetado.</p><img class="pop" src="img/gulupa-corte-fondo.png" alt="" style="width:150px;right:-30px;top:-26px;rotate:-14deg" loading="lazy"></article>
+  </div>
+  <div class="c-two">
+    <article class="fcard f-teal reveal"><span class="fbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h3>Tratamiento responsable de la información</h3><p>El formulario de contacto pide solo lo necesario: nombre, negocio, correo y mensaje. Usamos esos datos únicamente para responderte y no los vendemos. El mensaje viaja a través de un servicio de envío de formularios (FormSubmit) cuyo único fin es entregárnoslo por correo. Puedes pedir la corrección o eliminación de tus datos, en línea con la Ley 1581 de 2012.</p></article>
+    <article class="fcard f-cream reveal d1"><span class="fbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></span><h3>Un riesgo y cómo lo prevenimos</h3><dl>
+      <div><dt>Riesgo</dt><dd>Vender o exportar sin cumplir el registro sanitario (INVIMA) y el etiquetado del país de destino, o usar la afirmación «100 % natural» sin soporte.</dd></div>
+      <div><dt>Medida preventiva</dt><dd>No comercializar sin registro vigente, verificar con anticipación los requisitos sanitarios, de etiquetado e importación del mercado de destino y conservar las fichas técnicas de los proveedores que respaldan cada afirmación del empaque.</dd></div></dl><img class="pop" src="img/hojas.png" alt="" style="width:190px;right:-36px;bottom:-34px;rotate:-12deg" loading="lazy"></article>
+  </div>
+  <p class="c-foot reveal">Si el producto se comercializa en otros países, las condiciones pueden variar: etiquetado, publicidad, protección de datos e importación se verifican antes de iniciar cualquier operación, y los intermediarios comerciales se eligen tras una revisión previa.</p>
+</section>
+
+<!-- CRL BRL TRL -->
+<section class="section madurez" id="madurez">
+  <img class="deco" src="img/hojas.png" alt="" style="right:-3vw;top:4vw;width:min(24vw,340px);rotate:8deg" data-vspeed=".1" loading="lazy">
+  <img class="deco" src="img/gulupa-entera.png" alt="" style="right:14vw;top:12vw;width:min(10vw,150px);rotate:-12deg" data-vspeed="-.1" loading="lazy">
+  <div class="reveal"><div class="eyebrow">Madurez del proyecto</div><h2>CRL, BRL y TRL: <span class="script" style="color:var(--magenta)">dónde estamos.</span></h2></div>
+  <p class="lead reveal d1">Una autoevaluación honesta con las evidencias que existen hoy. Estamos en una etapa inicial en las tres dimensiones.</p>
+  <div class="m-grid">
+    <article class="m-card reveal" style="--bar:var(--magenta)"><div class="m-k">CRL</div><h3>Preparación frente al cliente</h3><span class="m-state">Etapa inicial</span>
+      <h4>Lo que tenemos</h4><p>Público objetivo descrito (hoteles, bares, catering) y un cliente ancla identificado en el mercado de lanzamiento.</p>
+      <h4>Lo que falta</h4><p>Retroalimentación real de compradores, degustaciones y pedidos de muestra.</p></article>
+    <article class="m-card reveal d1" style="--bar:var(--tang);--st:var(--ink)"><div class="m-k">BRL</div><h3>Preparación del negocio</h3><span class="m-state">Etapa inicial</span>
+      <h4>Lo que tenemos</h4><p>Propuesta de valor clara, precio de referencia preliminar y plan de crecimiento en tres fases.</p>
+      <h4>Lo que falta</h4><p>Costeo completo, validación de demanda y volumen de pedido, y acuerdo formal con el cliente.</p></article>
+    <article class="m-card reveal d2" style="--bar:var(--leaf)"><div class="m-k">TRL</div><h3>Madurez tecnológica</h3><span class="m-state">Etapa inicial</span>
+      <h4>Lo que tenemos</h4><p>Esta página con todas sus secciones y el diseño del empaque (frente, perfil y reverso) como representación digital del producto.</p>
+      <h4>Lo que falta</h4><p>Lote piloto validado, control de humedad por lote, confirmación de registros sanitarios y de marca. La página es informativa y no vende en línea.</p></article>
+  </div>
+  <p class="m-note reveal">Tener una página publicada no significa que exista demanda comprobada ni una alta madurez tecnológica. Esta valoración se actualizará a medida que aparezcan nuevas evidencias.</p>
+</section>
+
+<!-- 07 CONTACTO -->
+<section class="section contacto" id="contacto">
+  <div class="c-ring" aria-hidden="true"></div>
+  <img class="deco" src="img/salpicadura-naranja.png" alt="" style="left:-4vw;bottom:-2vw;width:min(28vw,400px);rotate:6deg" data-vspeed=".1" loading="lazy">
+  <img class="deco" src="img/aji.png" alt="" style="left:34vw;bottom:2vw;width:min(14vw,200px);rotate:-18deg" data-vspeed="-.08" loading="lazy">
+  <img class="c-bag" src="Diseño de bolsa tropical Brisa al Borde.png" alt="" data-vspeed=".12">
+  <div class="c-side">
+    <div class="eyebrow reveal">Contacto</div>
+    <h2 class="reveal d1">Lleva la <span class="script">brisa</span> a tu barra.</h2>
+    <p class="lead reveal d2">Escríbenos y empecemos a hablar de tu barra.</p>
+    <ol class="steps reveal d3"><li><i>1</i><div><b>Cuéntanos tu negocio</b>Tipo de local y cuánto servirías al mes.</div></li><li><i>2</i><div><b>Revisamos tu necesidad</b>Vemos qué presentación y volumen se ajustan.</div></li><li><i>3</i><div><b>Te respondemos</b>Con información del producto y condiciones comerciales.</div></li></ol>
+    <div class="c-links reveal d3">
+      <a href="https://canva.link/fngzqeram1mvojd" target="_blank" rel="noopener">Ver el prototipo de empaque en Canva <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <form id="contactForm" class="reveal d1" novalidate aria-label="Formulario de contacto">
+    <div class="f-row">
+      <label for="f-nombre">Nombre<input id="f-nombre" name="nombre" autocomplete="name" required></label>
+      <label for="f-negocio">Negocio<input id="f-negocio" name="negocio" autocomplete="organization" required></label>
+    </div>
+    <div class="f-row">
+      <label for="f-correo">Correo<input id="f-correo" name="correo" type="email" autocomplete="email" required></label>
+      <label for="f-tipo">Tipo de negocio
+        <select id="f-tipo" name="tipo" required><option value="">Selecciona</option><option>Hotel o resort</option><option>Bar o restaurante</option><option>Catering o eventos</option><option>Distribuidor</option><option>Otro</option></select></label>
+    </div>
+    <label for="f-msg">Mensaje<textarea id="f-msg" name="mensaje" required></textarea></label>
+    <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span>Autorizo el uso de estos datos únicamente para responder mi solicitud (Ley 1581 de 2012). El mensaje se entrega por correo mediante un servicio de formularios y no se usa para otros fines.</span></label>
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <div class="f-actions"><button type="submit" id="fSend" class="pill-link solid">Enviar mensaje <b>↗</b></button></div>
+    <p class="f-status" id="fStatus" role="status" aria-live="polite"></p>
+    <textarea class="f-out" id="fOut" readonly hidden aria-label="Mensaje preparado"></textarea>
+    <button type="button" class="pill-link" id="fCopy" hidden>Copiar mensaje <b>⧉</b></button>
+  </form>
+</section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year">2026</span> Brisa al borde. Sal con frutas deshidratadas para michelas.</span>
+  <span>Proyecto Integrador. Página informativa, sin ventas en línea.</span>
+  <a href="#inicio" data-go="0">Volver arriba ↑</a>
+</footer>
+
+<script>
+(()=>{
+ const CONTACT_EMAIL='dasotelo08@gmail.com';  /* correo que recibirá los mensajes */
+ const FORM_ENDPOINT='https://formsubmit.co/ajax/';
+
+ const stage=document.querySelector('.horizontal-stage'),track=document.getElementById('track');
+ const panels=[...document.querySelectorAll('.panel')],navButtons=[...document.querySelectorAll('[data-slide]')];
+ const current=document.getElementById('currentSlide'),progress=document.getElementById('progress'),header=document.getElementById('header');
+ const productNav=document.getElementById('productNav'),meta=document.getElementById('panelMeta');
+ const toggle=document.getElementById('menuToggle'),menu=document.getElementById('menuPanel'),glyph=toggle.querySelector('.menu-glyph');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let raf=0,position=0,target=0,menuOpen=false;
+ const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
+ const LIGHT='#fff4e0',DARK='#2a0a26';
+
+ /* granos de sal decorativos (posiciones deterministas) */
+ document.querySelectorAll('[data-grains]').forEach((box,k)=>{
+  const n=+box.dataset.grains;let s=17+k*31;const rnd=()=>{s=(s*9301+49297)%233280;return s/233280};
+  for(let i=0;i<n;i++){const el=document.createElement('span'),z=2+rnd()*6;
+   el.style.cssText=`left:${(rnd()*120-10).toFixed(1)}%;top:${(rnd()*100).toFixed(1)}%;width:${z.toFixed(1)}px;height:${z.toFixed(1)}px;animation-delay:${(-rnd()*5).toFixed(2)}s;animation-duration:${(3+rnd()*4).toFixed(1)}s`;
+   box.appendChild(el)}
+ });
+
+ /* inclinación suave con el mouse (solo punteros finos) */
+ if(!reduced&&matchMedia('(pointer:fine)').matches){
+  addEventListener('pointermove',e=>{stage.style.setProperty('--mx',((e.clientX/innerWidth-.5)*2).toFixed(3));stage.style.setProperty('--my',((e.clientY/innerHeight-.5)*2).toFixed(3))},{passive:true});
+ }
+ /* teclado: flechas izquierda y derecha dentro del recorrido */
+ addEventListener('keydown',e=>{
+  if(!['ArrowRight','ArrowLeft'].includes(e.key)||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+  const r=stage.getBoundingClientRect();if(r.top>innerHeight*.5||r.bottom<innerHeight*.5)return;
+  e.preventDefault();goSlide(clamp(Math.round(position)+(e.key==='ArrowRight'?1:-1),0,panels.length-1));
+ });
+ /* resaltar ingrediente al pasar por los chips */
+ const ingArt=document.getElementById('ingArt');
+ if(ingArt){const items=[...ingArt.querySelectorAll('[data-ing]')];
+  const on=n=>items.forEach(el=>{const m=el.dataset.ing===n;el.classList.toggle('hl',m);el.classList.toggle('dim',!m)});
+  const off=()=>items.forEach(el=>el.classList.remove('hl','dim'));
+  document.querySelectorAll('[data-chip]').forEach(c=>{const n=c.dataset.chip;['mouseenter','focus'].forEach(e=>c.addEventListener(e,()=>on(n)));['mouseleave','blur'].forEach(e=>c.addEventListener(e,off));c.addEventListener('click',()=>on(n))})}
+ const vItems=[...document.querySelectorAll('[data-vspeed]')];
+ function vertical(){
+  if(reduced)return;
+  vItems.forEach(el=>{const host=el.parentElement,r=host.getBoundingClientRect();
+   if(r.bottom<-250||r.top>innerHeight+250)return;
+   const c=r.top+r.height/2-innerHeight/2;
+   el.style.transform=`translate3d(0,${(c*parseFloat(el.dataset.vspeed)).toFixed(1)}px,0)`});
+ }
+
+ function render(){
+  const rect=stage.getBoundingClientRect(),maxScroll=Math.max(1,stage.offsetHeight-innerHeight);
+  target=clamp(-rect.top/maxScroll,0,1)*(panels.length-1);
+  position=reduced?target:position+(target-position)*.12;
+  if(Math.abs(target-position)<.0008)position=target;
+  track.style.transform=`translate3d(${-position*innerWidth}px,0,0)`;
+  const active=Math.round(position);
+  current.textContent=String(active+1).padStart(2,'0');
+  navButtons.forEach((b,i)=>{b.classList.toggle('active',i===active);b.setAttribute('aria-current',i===active?'true':'false')});
+  const scrollMax=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=`${scrollMax>0?scrollY/scrollMax*100:0}%`;
+  header.classList.toggle('compact',scrollY>35);
+  const pastStage=rect.bottom<innerHeight*.6;
+  header.classList.toggle('solid',pastStage);
+  const tone=panels[active].dataset.tone==='dark'?DARK:LIGHT;
+  header.style.color=pastStage?'':tone;productNav.style.setProperty('--ui',tone);meta.style.setProperty('--ui',tone);
+  panels.forEach((panel,i)=>{
+   const delta=i-position;if(Math.abs(delta)>1.7){return}
+   const copy=panel.querySelector('.panel-copy'),art=panel.querySelector('[data-art]'),side=panel.querySelector('.panel-side');
+   if(!reduced){
+    copy.style.transform=`translate3d(${delta*innerWidth*.105}px,${Math.abs(delta)*9}px,0)`;
+    copy.style.opacity=String(clamp(1-Math.abs(delta)*.8,.08,1));
+    art.style.transform=`translate3d(${delta*-innerWidth*.115}px,${Math.sin((position-i)*1.1)*10}px,0) scale(${1-Math.min(Math.abs(delta),1)*.06})`;
+    if(side){side.style.opacity=String(clamp(.75-Math.abs(delta)*.85,0,.75))}
+    panel.querySelectorAll('[data-depth]').forEach(el=>{el.style.transform=`translate3d(${(delta*-innerWidth*parseFloat(el.dataset.depth)).toFixed(1)}px,0,0)`});
+   }
+  });
+  vertical();
+  if(!reduced&&Math.abs(target-position)>.0008)raf=requestAnimationFrame(render);else raf=0;
+ }
+ const requestRender=()=>{if(!raf)raf=requestAnimationFrame(render)};
+ addEventListener('scroll',requestRender,{passive:true});addEventListener('resize',requestRender);addEventListener('orientationchange',requestRender);
+
+ function goSlide(i){
+  const start=stage.getBoundingClientRect().top+scrollY,max=stage.offsetHeight-innerHeight;
+  scrollTo({top:start+max*i/(panels.length-1),behavior:reduced?'auto':'smooth'});
+ }
+ navButtons.forEach(b=>b.addEventListener('click',()=>goSlide(Number(b.dataset.slide))));
+ document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();closeMenu();goSlide(Number(el.dataset.go))}));
+
+ function closeMenu(){menuOpen=false;menu.classList.remove('open');menu.setAttribute('aria-hidden','true');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú');glyph.textContent='☰'}
+ toggle.addEventListener('click',()=>{menuOpen=!menuOpen;menu.classList.toggle('open',menuOpen);menu.setAttribute('aria-hidden',String(!menuOpen));toggle.setAttribute('aria-expanded',String(menuOpen));toggle.setAttribute('aria-label',menuOpen?'Cerrar menú':'Abrir menú');glyph.textContent=menuOpen?'×':'☰'});
+ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&menuOpen)closeMenu()});
+
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+ if(reduced)document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+
+ /* formulario */
+ const form=document.getElementById('contactForm'),st=document.getElementById('fStatus'),out=document.getElementById('fOut'),copyBtn=document.getElementById('fCopy');
+ form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const bad=[...form.querySelectorAll('input:not([name=_honey]),textarea,select')].filter(f=>!f.checkValidity());
+  form.querySelectorAll('[aria-invalid]').forEach(f=>f.removeAttribute('aria-invalid'));
+  st.className='f-status';out.hidden=true;copyBtn.hidden=true;
+  if(bad.length){bad.forEach(f=>f.setAttribute('aria-invalid','true'));bad[0].focus();
+   const names={'f-nombre':'nombre','f-negocio':'negocio','f-correo':'un correo válido','f-tipo':'tipo de negocio','f-msg':'mensaje','f-ok':'la autorización de datos'};
+   st.classList.add('err');st.textContent='Falta completar: '+bad.map(f=>names[f.id]).join(', ')+'.';return}
+  const d=new FormData(form);
+  if(d.get('_honey')){return}  /* trampa anti spam: un bot rellenó el campo oculto */
+  const body=`Hola, soy ${d.get('nombre')} de ${d.get('negocio')} (${d.get('tipo')}).\n\n${d.get('mensaje')}\n\nCorreo de respuesta: ${d.get('correo')}`;
+  const fallback=msg=>{out.value=body;out.hidden=false;copyBtn.hidden=false;st.classList.add('err');st.textContent=msg};
+  if(!CONTACT_EMAIL){fallback('El envío automático aún no está configurado. Copia el mensaje y escríbenos por correo.');return}
+  const send=document.getElementById('fSend');send.disabled=true;send.firstChild.textContent='Enviando… ';st.textContent='Enviando tu mensaje…';
+  try{
+   const res=await fetch(FORM_ENDPOINT+CONTACT_EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({name:d.get('nombre'),negocio:d.get('negocio'),email:d.get('correo'),tipo_de_negocio:d.get('tipo'),message:d.get('mensaje'),_subject:'Nuevo contacto desde la web de Brisa al borde',_template:'table',_captcha:'false'})});
+   const data=await res.json().catch(()=>({}));
+   if(!res.ok||String(data.success)!=='true')throw new Error(data.message||'Error de envío');
+   st.classList.add('ok');st.textContent=`Gracias, ${String(d.get('nombre')).split(' ')[0]}. Recibimos tu mensaje y te responderemos al correo que indicaste.`;
+   form.reset();
+  }catch(err){
+   fallback('No pudimos enviar el mensaje en este momento. Copia el texto y escríbenos por correo, o inténtalo de nuevo en unos minutos.');
+  }finally{send.disabled=false;send.firstChild.textContent='Enviar mensaje '}
+ });
+ copyBtn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(out.value);st.textContent='Mensaje copiado.'}catch(_){out.select();st.textContent='Selecciona y copia el mensaje.'}});
+
+ form.addEventListener('input',e=>e.target.removeAttribute&&e.target.removeAttribute('aria-invalid'));
+ document.getElementById('year').textContent=new Date().getFullYear();
+ render();
+})();
+</script>
+</body>
+</html>

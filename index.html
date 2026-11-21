@@ -44,19 +44,53 @@ button{font:inherit}
 .logo img{width:44px;height:44px;object-fit:contain;transition:transform .6s var(--ease)}
 .logo:hover img{transform:rotate(24deg) scale(1.08)}
 .logo span{font-family:var(--script);font-size:30px;line-height:1;white-space:nowrap}
-.top-links{display:flex;gap:clamp(18px,2.6vw,40px);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
-.top-links a{position:relative;padding:6px 0}
+.top-links{display:flex;gap:clamp(14px,1.9vw,30px);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
+.top-links a{position:relative;padding:6px 0;opacity:.88;transition:opacity .25s}
 .top-links a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:currentColor;transition:right .35s var(--ease)}
-.top-links a:hover:after{right:0}
-.menu-toggle{width:46px;height:46px;border-radius:50%;border:1.5px solid currentColor;background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center;font-size:19px;transition:transform .3s,background .3s,color .3s;position:relative;z-index:70}
-.menu-toggle:hover{transform:rotate(90deg)}
-.menu-panel{position:fixed;z-index:65;top:0;right:0;bottom:0;width:min(560px,100vw);background:var(--plum);color:var(--cream);padding:120px 5vw 34px;display:flex;flex-direction:column;justify-content:space-between;transform:translateX(102%);transition:transform .78s var(--ease);box-shadow:-30px 0 80px #00000040;overflow:auto}
-.menu-panel.open{transform:translateX(0)}
-.menu-items{display:flex;flex-direction:column;gap:4px}
-.menu-items a,.menu-items button{font-family:var(--display);font-size:clamp(28px,4.2vw,46px);font-weight:700;line-height:1.12;letter-spacing:-.02em;text-align:left;background:none;border:0;color:inherit;cursor:pointer;display:flex;align-items:baseline;gap:14px;transition:transform .25s,color .25s}
-.menu-items a small,.menu-items button small{font-family:var(--body);font-size:11px;letter-spacing:.16em;color:var(--orange);font-weight:700}
-.menu-items a:hover,.menu-items button:hover{transform:translateX(8px);color:var(--orange)}
-.menu-foot{display:flex;justify-content:space-between;gap:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-top:30px}
+.top-links a:hover,.top-links a.active{opacity:1}
+.top-links a:hover:after,.top-links a.active:after{right:0}
+.header-right{display:flex;align-items:center;gap:12px}
+.header-cta{display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 18px;border-radius:100px;background:var(--orange);color:var(--ink);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;transition:transform .25s,background .25s,color .25s;white-space:nowrap}
+.header-cta:hover{transform:translateY(-2px);background:var(--magenta);color:#fff}
+.menu-toggle{height:44px;padding:0 16px 0 18px;border-radius:100px;border:1.5px solid currentColor;background:transparent;color:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;transition:background .3s,color .3s,transform .3s;position:relative}
+.menu-toggle:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+.mt-lines{display:grid;gap:5px;width:18px}
+.mt-lines i{display:block;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease),width .35s var(--ease)}
+.mt-lines i:last-child{width:11px;justify-self:end}
+.menu-toggle:hover .mt-lines i:last-child{width:18px}
+
+/* menu lateral */
+.menu-backdrop{position:fixed;z-index:64;inset:0;background:#1d0719b8;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s .45s}
+.menu-backdrop.open{opacity:1;visibility:visible;transition-delay:0s}
+.menu-panel{position:fixed;z-index:65;top:0;right:0;bottom:0;width:min(440px,100vw);background:radial-gradient(120% 60% at 100% 0%,#6a1c55 0%,transparent 60%),var(--plum);color:var(--cream);display:flex;flex-direction:column;transform:translateX(102%);visibility:hidden;transition:transform .6s var(--ease),visibility 0s .6s;box-shadow:-30px 0 80px #00000050;overscroll-behavior:contain}
+.menu-panel.open{transform:translateX(0);visibility:visible;transition-delay:0s}
+.mp-head{flex:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 26px;border-bottom:1px solid #fbf1d31f}
+.mp-brand{display:flex;align-items:center;gap:10px;font-family:var(--script);font-size:26px;line-height:1}
+.mp-brand img{width:36px;height:36px;object-fit:contain}
+.mp-close{width:42px;height:42px;border-radius:50%;border:1.5px solid #fbf1d366;background:transparent;color:inherit;cursor:pointer;position:relative;transition:background .25s,transform .35s var(--ease)}
+.mp-close:hover{background:#fbf1d31c;transform:rotate(90deg)}
+.mp-close:before,.mp-close:after{content:"";position:absolute;left:50%;top:50%;width:16px;height:2px;border-radius:2px;background:currentColor;translate:-50% -50%;rotate:45deg}
+.mp-close:after{rotate:-45deg}
+.mp-body{flex:1;overflow-y:auto;padding:8px 14px 12px;scrollbar-width:thin;scrollbar-color:#fbf1d355 transparent}
+.mp-group{padding:10px 0 4px}
+.mp-group h3{padding:0 12px 8px;font-family:var(--body);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--orange)}
+.mp-group ul{list-style:none;display:grid;gap:2px}
+.mp-item{width:100%;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;padding:8px 12px;border:0;border-radius:14px;background:none;color:inherit;text-align:left;cursor:pointer;transition:background .25s,transform .25s var(--ease)}
+.mp-item i{font-style:normal;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;color:#fbf1d388;transition:color .25s}
+.mp-item b{display:block;font-family:var(--display);font-size:16.5px;font-weight:700;line-height:1.2;letter-spacing:-.005em}
+.mp-item em{display:block;margin-top:2px;font-style:normal;font-size:12.5px;line-height:1.35;color:#fbf1d3a6}
+.mp-item:after{content:"→";font-size:15px;opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s var(--ease);color:var(--orange)}
+.mp-item:hover,.mp-item:focus-visible{background:#fbf1d312}
+.mp-item:hover:after,.mp-item:focus-visible:after,.mp-item.active:after{opacity:1;transform:none}
+.mp-item.active{background:#f7a11a1f;box-shadow:inset 3px 0 0 var(--orange)}
+.mp-item.active i,.mp-item:hover i{color:var(--orange)}
+.mp-sub{display:flex;flex-wrap:wrap;gap:8px;padding:2px 12px 10px 58px}
+.mp-sub button{font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid #fbf1d340;background:transparent;color:inherit;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.mp-sub button:hover,.mp-sub button:focus-visible{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.mp-foot{flex:none;padding:16px 26px 22px;border-top:1px solid #fbf1d31f;display:grid;gap:12px;background:#2a0a2666}
+.mp-cta{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 20px;border-radius:100px;background:var(--orange);color:var(--ink);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;transition:background .25s,color .25s,transform .25s}
+.mp-cta:hover{background:var(--magenta);color:#fff;transform:translateY(-2px)}
+.mp-note{font-size:11.5px;line-height:1.5;color:#fbf1d399;text-align:center}
 
 /* pinned horizontal stage */
 .horizontal-stage{height:500vh;position:relative;background:var(--plum)}
@@ -69,8 +103,8 @@ button{font:inherit}
 .overline{display:flex;align-items:center;gap:10px;text-transform:uppercase;font-size:12px;letter-spacing:.2em;font-weight:800;margin-bottom:clamp(16px,2.6vh,30px)}
 .overline:before,.eyebrow:before{content:"";width:20px;height:20px;flex:none;background:currentColor;-webkit-mask:var(--leafmask) center/contain no-repeat;mask:var(--leafmask) center/contain no-repeat;rotate:-8deg}
 .panel h1,.panel h2{font-family:var(--display);font-weight:800;line-height:.92;letter-spacing:-.015em;font-variation-settings:"opsz" 96}
-.panel h1{font-size:clamp(58px,9vw,148px);margin-bottom:clamp(18px,3vh,32px)}
-.panel h2{font-size:clamp(38px,5.1vw,84px);margin-bottom:clamp(14px,2.4vh,26px)}
+.panel h1{font-size:clamp(58px,min(9vw,16.5vh),148px);margin-bottom:clamp(18px,3vh,32px)}
+.panel h2{font-size:clamp(38px,min(5.1vw,9.4vh),84px);margin-bottom:clamp(14px,2.4vh,26px)}
 .panel .script{font-size:1.16em;line-height:.7;display:inline-block;transform:translateY(.05em)}
 .panel-desc{font-size:clamp(14px,1.12vw,17px);line-height:1.65;max-width:440px;margin-bottom:clamp(16px,2.6vh,26px);opacity:.92}
 .pill-link{display:inline-flex;align-items:center;gap:20px;border:1.5px solid currentColor;border-radius:100px;padding:13px 18px 13px 24px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;background:transparent;color:inherit;cursor:pointer;transition:background .25s,color .25s,transform .25s}
@@ -95,14 +129,14 @@ button{font:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:clamp(14px,2.4vh,24px);max-width:520px}
 .ings{display:flex;gap:clamp(12px,1.8vw,26px);margin:0 0 clamp(18px,3vh,30px);max-width:560px}
 .ing{background:none;border:0;color:inherit;font:inherit;cursor:pointer;display:grid;justify-items:center;align-content:start;gap:8px;padding:6px 2px 10px;position:relative;flex:1 1 0;min-width:0}
-.ing img{width:clamp(50px,5.2vw,78px);height:clamp(50px,5.2vw,78px);object-fit:contain;filter:drop-shadow(0 10px 8px #2a0a2652);transition:transform .55s var(--ease)}
+.ing img{width:clamp(48px,min(5.2vw,8.6vh),78px);height:clamp(48px,min(5.2vw,8.6vh),78px);object-fit:contain;filter:drop-shadow(0 10px 8px #2a0a2652);transition:transform .55s var(--ease)}
 .ing span{font-family:var(--display);font-weight:700;font-size:clamp(13px,1.05vw,16px);line-height:1.1;text-align:center}
 .ing:after{content:"";position:absolute;left:50%;bottom:0;width:0;height:3px;border-radius:3px;background:currentColor;transform:translateX(-50%);transition:width .45s var(--ease)}
 .ing:hover img,.ing:focus-visible img{transform:translateY(-9px) rotate(-9deg) scale(1.14)}
 .ing:hover:after,.ing:focus-visible:after{width:62%}
 .stamps{display:flex;gap:clamp(12px,1.6vw,22px);align-items:center;margin:0 0 clamp(18px,3vh,28px);padding-left:4px}
-.stamp{display:grid;place-items:center;text-align:center;width:clamp(96px,8.4vw,122px);aspect-ratio:1;border-radius:58% 42% 55% 45%/48% 56% 44% 52%;rotate:-6deg;box-shadow:0 14px 22px #2a0a2645;transition:rotate .45s var(--ease),scale .45s var(--ease)}
-.stamp b{display:block;font-family:var(--display);font-size:clamp(28px,2.7vw,40px);font-weight:800;line-height:.9;letter-spacing:-.02em}
+.stamp{display:grid;place-items:center;text-align:center;width:clamp(88px,min(8.4vw,14vh),122px);aspect-ratio:1;border-radius:58% 42% 55% 45%/48% 56% 44% 52%;rotate:-6deg;box-shadow:0 14px 22px #2a0a2645;transition:rotate .45s var(--ease),scale .45s var(--ease)}
+.stamp b{display:block;white-space:nowrap;font-family:var(--display);font-size:clamp(22px,min(2.7vw,4.8vh),40px);font-weight:800;line-height:.9;letter-spacing:-.02em}
 .stamp small{display:block;margin-top:5px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
 .stamp.s1{background:var(--plum);color:var(--cream)}
 .stamp.s2{background:var(--leaf);color:var(--cream);rotate:5deg;border-radius:45% 55% 42% 58%/55% 45% 55% 45%}
@@ -161,8 +195,9 @@ button{font:inherit}
 .artwork .fx{height:auto}
 .artwork .fx img{position:static;width:100%;height:auto;display:block;filter:drop-shadow(0 16px 16px #2a0a2655)}
 .artwork [data-ing]{transition:opacity .45s var(--ease),scale .5s var(--ease),filter .5s}
-.artwork .dim{opacity:.5}
-.artwork .hl{scale:1.14;filter:drop-shadow(0 0 26px #fff9)}
+/* el ingrediente enfocado pasa al frente de todo; los demás se atenúan y quedan detrás */
+.artwork .dim{opacity:.3;filter:blur(1.6px) saturate(.7);z-index:1}
+.artwork .hl{scale:1.14;filter:drop-shadow(0 0 26px #fff9);z-index:9}
 .frame{border-radius:46% 8% 46% 8%;overflow:hidden;box-shadow:0 36px 60px #2a0a2688;border:6px solid var(--orange)}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pop{position:absolute;z-index:-1;pointer-events:none;filter:drop-shadow(0 14px 14px #0000004d);animation:bob 7s ease-in-out infinite}
@@ -351,7 +386,6 @@ noscript style{display:none}
   .band-item{grid-template-columns:60px 1fr}.band-item img{width:60px;height:60px}
   .f-row{grid-template-columns:1fr}
   .footer{flex-direction:column;padding:26px 6vw}
-  .menu-panel{padding:100px 6vw 26px}
 }
 @media(max-width:400px){.btn-row .pill-link{padding:12px 14px;font-size:10.5px;letter-spacing:.1em;gap:8px}.btn-row .pill-link b{font-size:15px}.btn-row{gap:8px}}
 @media(max-height:650px) and (min-width:761px){
@@ -363,6 +397,186 @@ noscript style{display:none}
   *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* =========================================================
+   AJUSTES v2: bloqueo de scroll, imágenes con respaldo,
+   bebida, tooltip del campesino, documentos y visor
+   ========================================================= */
+html.locked{overflow:hidden}
+html.locked body{overflow-x:visible;padding-right:var(--sbw,0px)}
+html.locked .header{padding-right:calc(4.4vw + var(--sbw,0px))}
+
+.media{position:relative}
+.media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.media.contain>img{object-fit:contain}
+.media.has-img>img{opacity:1}
+.media>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.media.has-img>svg{display:none}
+
+/* ---------- La bebida ---------- */
+.bebida{background:linear-gradient(135deg,#f9b52b 0%,#f7a11a 32%,#ef6b1a 72%,#d63f6a 125%);color:var(--ink);display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.bebida:before{content:"";position:absolute;width:70vw;height:70vw;border-radius:50%;right:-26vw;top:-30vw;border:1px solid #2a0a2626;pointer-events:none}
+.bebida:after{content:"";position:absolute;width:48vw;height:48vw;border-radius:50%;left:-18vw;bottom:-26vw;border:1px solid #2a0a2620;pointer-events:none}
+.bebida .grains{filter:none}
+.bebida .grains span:nth-child(3n+1){background:#fff4e0}
+.bebida>*{min-width:0}
+.bebida h2{font-size:clamp(38px,5.2vw,88px)}
+.bebida h2 .script{color:var(--plum-2)}
+.bebida .lead{opacity:.94;max-width:540px}
+.ritual-title{margin:30px 0 12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800}
+.ritual{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px}
+.ritual li{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;align-items:start;padding:14px 16px;border-radius:24px 24px 24px 6px;background:#fff4e0d9;box-shadow:0 12px 24px #2a0a2622;transition:transform .45s var(--ease)}
+.ritual li:hover{transform:translateY(-5px) rotate(-.6deg)}
+.ritual i{grid-row:1/3;font-style:normal;font-family:var(--display);font-weight:800;font-size:34px;line-height:.9;color:var(--magenta);letter-spacing:-.04em}
+.ritual b{font-family:var(--display);font-size:17px;font-weight:700;line-height:1.1}
+.ritual span{font-size:13.5px;line-height:1.4}
+.serve{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+.serve span{padding:8px 14px;border-radius:100px;border:1.5px solid var(--ink);font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.bebida .pill-link{border-color:var(--ink)}
+.bebida .pill-link.solid{background:var(--plum);border-color:var(--plum);color:var(--cream)}
+.bebida .pill-link.solid:hover{background:var(--cream);border-color:var(--cream);color:var(--plum)}
+.bebida .pill-link:not(.solid):hover{background:var(--ink);color:var(--cream)}
+
+.drink-stage{position:relative;width:min(100%,600px);justify-self:center;aspect-ratio:4/5}
+.drink-disc{position:absolute;inset:8% 3% 8%;border-radius:50%;background:radial-gradient(circle at 50% 38%,#8a2466 0%,#4b1240 55%,#2b0925 100%);box-shadow:0 40px 80px #2a0a2660,inset 0 0 0 10px #f7a11a33}
+.drink-ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed #2a0a2660;animation:spin 70s linear infinite;pointer-events:none}
+@keyframes spin{to{rotate:360deg}}
+.drink-media{position:absolute;z-index:3;left:19%;top:-4%;width:62%;height:100%;filter:drop-shadow(0 34px 30px #2a0a2699)}
+.drink-media>img,.drink-media>svg{animation:floatA 7s ease-in-out infinite}
+.drink-fruit{position:absolute;z-index:4;pointer-events:none;filter:drop-shadow(0 16px 16px #2a0a2677)}
+.drink-fruit.f1{width:20%;left:5%;top:16%;rotate:-14deg}
+.drink-fruit.f2{width:24%;right:-1%;top:34%;rotate:12deg}
+.drink-fruit.f3{width:22%;left:0;bottom:30%;rotate:-20deg}
+.drink-fruit.f4{width:18%;right:9%;bottom:14%;rotate:10deg}
+.drink-bag{position:absolute;z-index:5;width:30%;left:-2%;bottom:-3%;rotate:-7deg;filter:drop-shadow(0 26px 24px #2a0a26aa)}
+.drink-tag{position:absolute;z-index:6;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:100px;background:#fff4e0;color:var(--ink);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;box-shadow:0 12px 22px #2a0a2644;white-space:nowrap;animation:floatB 8s ease-in-out infinite}
+.drink-tag:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c,var(--magenta))}
+.drink-tag.t1{right:-2%;top:8%;--c:var(--orange)}
+.drink-tag.t2{left:-3%;top:50%;--c:var(--leaf);animation-delay:-2s}
+.drink-tag.t3{right:2%;bottom:2%;--c:var(--magenta);animation-delay:-4s}
+.bebida-pitch{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,26px);margin-top:clamp(4px,1.4vw,22px)}
+.pitch{padding:clamp(22px,2.4vw,34px) clamp(24px,2.6vw,38px);background:var(--ink);color:var(--cream);transition:transform .5s var(--ease),box-shadow .5s;box-shadow:0 22px 40px #2a0a2640}
+.pitch:hover{transform:translateY(-8px)}
+.pitch:nth-child(odd){border-radius:90px 28px 90px 28px}.pitch:nth-child(even){border-radius:28px 90px 28px 90px}
+.pitch .n{display:block;margin-bottom:8px;font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.14em;color:var(--orange)}
+.pitch h3{font-family:var(--display);font-size:clamp(20px,1.8vw,26px);font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.pitch p{font-size:14.5px;line-height:1.6;opacity:.9}
+
+/* ---------- Tooltip del campesino (sección de frutas) ---------- */
+.farm-wrap{position:absolute;right:6vw;bottom:-3vw;width:min(17vw,250px);aspect-ratio:236/258}
+.farm-pop{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;rotate:-10deg;pointer-events:none;filter:drop-shadow(0 20px 20px #0007)}
+.farm-hot{position:absolute;z-index:3;right:12%;top:12%;display:flex;flex-direction:row-reverse;align-items:center;gap:10px;border:0;background:none;color:inherit;cursor:pointer;padding:0}
+.farm-hot .dot{position:relative;flex:none;width:46px;height:46px;border-radius:50%;background:var(--orange);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-size:26px;font-weight:700;line-height:1;box-shadow:0 10px 22px #0006;transition:transform .35s var(--ease),background .3s}
+.farm-hot .dot:before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--orange);z-index:-1;animation:ping 2.2s ease-out infinite}
+.farm-hot .lbl{padding:9px 15px;border-radius:100px;background:#fff4e0;color:var(--ink);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;white-space:nowrap;box-shadow:0 10px 22px #0005}
+.farm-hot:hover .dot,.farm-wrap.open .dot{transform:rotate(45deg) scale(1.08);background:var(--magenta);color:#fff}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.5);opacity:0}}
+.farm-card{position:fixed;z-index:80;right:16px;bottom:16px;width:min(380px,calc(100vw - 32px));max-height:calc(100svh - 32px);overflow:auto;background:var(--cream);color:var(--ink);border-radius:28px 28px 28px 8px;box-shadow:0 30px 70px #1d0719a8;opacity:0;visibility:hidden;transform:translateY(16px) scale(.97);transform-origin:100% 100%;transition:opacity .35s var(--ease),transform .45s var(--ease),visibility 0s .45s;text-align:left}
+.farm-wrap.open .farm-card{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.farm-photo{position:relative;aspect-ratio:16/10;overflow:hidden;background:#2f9a58}
+.farm-note{position:absolute;left:12px;bottom:10px;padding:3px 9px;border-radius:100px;background:#1d0719a8;color:#fff4e0;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.farm-x{position:absolute;z-index:2;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:0;background:#fff4e0e6;color:var(--ink);cursor:pointer;font-size:20px;line-height:1;display:grid;place-items:center;transition:background .25s,color .25s}
+.farm-x:hover{background:var(--ink);color:var(--cream)}
+.farm-body{padding:18px 22px 22px}
+.farm-tag{display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--magenta)}
+.farm-tag:before{content:"";width:16px;height:16px;flex:none;background:currentColor;-webkit-mask:var(--leafmask) center/contain no-repeat;mask:var(--leafmask) center/contain no-repeat;rotate:-8deg}
+.farm-body h4{font-family:var(--display);font-size:clamp(20px,1.7vw,23px);line-height:1.12;letter-spacing:-.015em;font-weight:700;margin:8px 0}
+.farm-body p{font-size:14px;line-height:1.6}
+.farm-list{list-style:none;display:grid;gap:8px;margin:14px 0 16px;font-size:13.5px;font-weight:600;line-height:1.35}
+.farm-list li{display:grid;grid-template-columns:20px 1fr;gap:9px;align-items:start}
+.farm-list li:before{content:"";width:20px;height:20px;border-radius:50%;background:var(--leaf) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12l5 5 9-10'/></svg>") center/12px no-repeat}
+.farm-link{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;border-bottom:2px solid var(--magenta);padding-bottom:3px;transition:color .25s}
+.farm-link:hover{color:var(--magenta)}
+.band-trust{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:10px 16px 10px 12px;border-radius:100px;background:#ffffff1f;border:1px solid #ffffff44;backdrop-filter:blur(6px);font-size:13px;font-weight:700;cursor:pointer;color:inherit;font-family:inherit;transition:background .25s,transform .25s}
+.band-trust:hover{background:#ffffff33;transform:translateY(-2px)}
+.band-trust i{width:26px;height:26px;border-radius:50%;background:var(--orange);color:var(--ink);display:grid;place-items:center;font-style:normal;font-weight:800}
+
+/* ---------- Documentos ---------- */
+.docs{background:radial-gradient(90% 70% at 88% 0%,#238653 0%,transparent 62%),linear-gradient(160deg,#175a37,#0f3f27);color:var(--cream)}
+.docs h2{font-size:clamp(36px,4.7vw,76px)}
+.docs-head{display:grid;grid-template-columns:1.7fr 1fr;gap:6vw;align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,2vw,30px)}
+.doc-card{display:flex;flex-direction:column;gap:14px;padding:26px 26px 28px;background:var(--cream);color:var(--ink);box-shadow:0 26px 50px #00000045;transition:transform .5s var(--ease),box-shadow .5s}
+.doc-card:hover{transform:translateY(-8px);box-shadow:0 36px 60px #00000055}
+.docs-grid .doc-card:nth-child(odd){border-radius:28px 84px 28px 84px}
+.docs-grid .doc-card:nth-child(even){border-radius:84px 28px 84px 28px}
+.doc-thumb{position:relative;display:block;width:100%;aspect-ratio:4/3;border:0;padding:0;cursor:pointer;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px #3a0e3322,0 14px 26px #2a0a2630}
+.doc-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .9s var(--ease)}
+.doc-card:hover .doc-thumb img{transform:scale(1.05)}
+.doc-thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#2a0a2655);opacity:0;transition:opacity .4s}
+.doc-card:hover .doc-thumb:after{opacity:1}
+.doc-badge{position:absolute;z-index:2;left:12px;top:12px;padding:5px 11px;border-radius:100px;background:var(--plum);color:var(--cream);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.doc-zoom{position:absolute;z-index:2;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;background:var(--magenta);color:#fff;display:grid;place-items:center;box-shadow:0 10px 18px #2a0a2655;transition:transform .35s var(--ease)}
+.doc-card:hover .doc-zoom{transform:scale(1.12) rotate(-8deg)}
+.doc-zoom svg{width:20px;height:20px}
+.doc-num{font-family:var(--display);font-weight:800;color:var(--magenta);font-size:13px;letter-spacing:.14em}
+.doc-card h3{font-family:var(--display);font-size:clamp(22px,2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.doc-card p{font-size:14.5px;line-height:1.6;opacity:.9}
+.doc-actions{margin-top:auto;padding-top:6px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.doc-open{background:var(--leaf);border-color:var(--leaf);color:var(--cream)}
+.doc-open:hover{background:var(--plum);border-color:var(--plum);color:var(--cream)}
+.doc-dl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;border-bottom:2px solid currentColor;padding-bottom:2px;transition:color .25s}
+.doc-dl:hover{color:var(--magenta)}
+.docs-foot{margin-top:clamp(20px,2.4vw,34px);font-size:13px;line-height:1.7;opacity:.8;max-width:760px}
+
+/* ---------- Visor emergente ---------- */
+.viewer{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:clamp(10px,2.4vw,32px);visibility:hidden;opacity:0;transition:opacity .35s var(--ease),visibility 0s .35s}
+.viewer.open{visibility:visible;opacity:1;transition-delay:0s}
+.viewer-backdrop{position:absolute;inset:0;background:#1d0719ec;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.viewer-box{position:relative;width:min(1280px,100%);height:100%;display:grid;grid-template-rows:auto auto minmax(0,1fr);background:var(--cream);color:var(--ink);border-radius:28px;overflow:hidden;box-shadow:0 40px 100px #000b;transform:translateY(22px) scale(.98);transition:transform .5s var(--ease)}
+.viewer.open .viewer-box{transform:none}
+.viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;padding:14px 16px 12px 24px;border-bottom:1px solid #3a0e3318;flex-wrap:wrap}
+.v-title small{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--magenta)}
+.v-title h3{font-family:var(--display);font-size:clamp(20px,2.2vw,28px);letter-spacing:-.02em;line-height:1.1}
+.v-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.v-btn{height:40px;padding:0 16px;border-radius:100px;border:1.5px solid var(--plum);background:transparent;color:var(--plum);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;display:inline-flex;align-items:center;gap:8px;cursor:pointer;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.v-btn:hover{background:var(--plum);color:var(--cream)}
+.v-btn.solid{background:var(--magenta);border-color:var(--magenta);color:#fff}
+.v-btn.solid:hover{background:var(--plum);border-color:var(--plum)}
+.v-close{width:40px;padding:0;justify-content:center;font-size:22px;line-height:1}
+.v-tabs{display:flex;align-items:center;gap:8px;padding:10px 16px 10px 24px;overflow-x:auto;background:var(--cream-2);border-bottom:1px solid #3a0e3318;scrollbar-width:thin}
+.v-tab{flex:none;padding:8px 16px;border-radius:100px;border:0;background:transparent;color:var(--ink);font-size:12.5px;font-weight:800;cursor:pointer;transition:background .25s,color .25s}
+.v-tab:hover{background:#3a0e3318}
+.v-tab[aria-selected=true]{background:var(--plum);color:var(--cream)}
+.v-hint{margin-left:auto;flex:none;padding-left:14px;font-size:11.5px;opacity:.7;white-space:nowrap}
+.v-scroll{position:relative;overflow:hidden;background:#fffaf0}
+.v-scroll iframe{display:block;width:100%;height:100%;border:0;background:#fffaf0;opacity:0;transition:opacity .35s}
+.v-scroll iframe.ready{opacity:1}
+.v-loading{position:absolute;inset:0;display:grid;place-items:center;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;opacity:.55;pointer-events:none}
+.v-scroll iframe.ready~.v-loading{display:none}
+
+/* ---------- Responsive de lo nuevo ---------- */
+@media(max-width:1180px){.top-links,.header-cta{display:none}}
+@media(max-width:1440px){.farm-hot{right:8%}}
+@media(min-width:1440px){.farm-card{position:absolute;right:calc(100% + 30px);bottom:38%;left:auto;width:360px;max-height:none}}
+@media(max-width:1080px){
+  .bebida{grid-template-columns:1fr}
+  .bebida-pitch,.docs-head{grid-template-columns:1fr}
+  .drink-stage{width:min(100%,520px)}
+}
+@media(max-width:760px){
+  .menu-toggle{width:44px;padding:0;justify-content:center}.menu-toggle .mt-label{display:none}
+  .header-right{gap:8px}
+  .ritual{grid-template-columns:1fr}
+  .drink-tag{display:none}
+  .drink-stage{width:min(100%,420px)}
+  .farm-wrap{position:relative;right:auto;bottom:auto;width:150px;justify-self:end;margin:0 6vw 34px 0}
+  .farm-hot .lbl{font-size:10px;padding:8px 12px}
+  .viewer{padding:0}.viewer-box{border-radius:0}
+  .viewer-bar{padding:12px 12px 10px 16px;position:relative}
+  .v-title{padding-right:50px}
+  .v-close{position:absolute;top:10px;right:10px}
+  .v-tools .v-btn:not(.v-close){padding:0 12px;font-size:10.5px}
+  .v-hint{display:none}
+  .doc-card{padding:22px 22px 24px}
+}
+@media(max-height:820px) and (min-width:761px){
+  .panel .overline{margin-bottom:12px}
+  .panel-desc{margin-bottom:14px}
+  .ings{margin-bottom:12px}
+  .stamps{margin-bottom:14px}
+}
+@media(prefers-reduced-motion:reduce){.drink-ring,.drink-media>img,.drink-media>svg,.drink-tag,.farm-hot .dot:before{animation:none}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -380,29 +594,69 @@ noscript style{display:none}
     <span>Brisa al borde</span>
   </a>
   <nav class="top-links" aria-label="Navegación principal">
-    <a href="#producto" data-go="1">Producto</a>
-    <a href="#galeria">Galería</a>
-    <a href="#compromiso">Compromiso</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#producto" data-go="1" data-spy="slide-1 slide-2 slide-3 slide-4">Producto</a>
+    <a href="#bebida" data-spy="bebida">La bebida</a>
+    <a href="#galeria" data-spy="galeria">Galería</a>
+    <a href="#documentos" data-spy="documentos">Documentos</a>
+    <a href="#compromiso" data-spy="compromiso">Compromiso</a>
+    <a href="#contacto" data-spy="contacto">Contacto</a>
   </nav>
-  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuPanel" aria-label="Abrir menú"><span class="menu-glyph" aria-hidden="true">☰</span></button>
+  <div class="header-right">
+    <a class="header-cta" href="#contacto">Escríbenos <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuPanel" aria-label="Abrir menú"><span class="mt-label">Menú</span><span class="mt-lines" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
 </header>
 
-<nav class="menu-panel" id="menuPanel" aria-hidden="true" aria-label="Menú completo">
-  <div class="menu-items">
-    <button data-go="0">Inicio</button>
-    <button data-go="1">Nuestro producto</button>
-    <button data-go="2">¿A quién va dirigido?</button>
-    <button data-go="3">Propuesta de valor</button>
-    <button data-go="4">Presentación comercial</button>
-    <a href="#ingredientes">Ingredientes</a>
-    <a href="#galeria">Galería</a>
-    <a href="#compromiso">Compromiso y transparencia</a>
-    <a href="#madurez">CRL, BRL y TRL</a>
-    <a href="#contacto">Contacto</a>
+<div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+<aside class="menu-panel" id="menuPanel" aria-hidden="true" aria-label="Menú del sitio">
+  <div class="mp-head">
+    <span class="mp-brand"><img src="Emblema cóctel futurista brillante.png" alt=""><span>Brisa al borde</span></span>
+    <button type="button" class="mp-close" id="menuClose" aria-label="Cerrar menú"></button>
   </div>
-  <div class="menu-foot"><span>Brisa al borde</span><span>Sal con frutas deshidratadas para michelar</span></div>
-</nav>
+  <div class="mp-body">
+    <div class="mp-group">
+      <h3>Recorrido</h3>
+      <ul>
+        <li><button class="mp-item" data-go="0" data-spy="slide-0"><i>01</i><span><b>Inicio</b><em>Dale brisa al borde</em></span></button></li>
+        <li><button class="mp-item" data-go="1" data-spy="slide-1"><i>02</i><span><b>Nuestro producto</b><em>Sal marina con fruta deshidratada, 2 kg</em></span></button></li>
+        <li><button class="mp-item" data-go="2" data-spy="slide-2"><i>03</i><span><b>¿A quién va dirigido?</b><em>Hoteles, bares, restaurantes y eventos</em></span></button></li>
+        <li><button class="mp-item" data-go="3" data-spy="slide-3"><i>04</i><span><b>Propuesta de valor</b><em>Sabor propio, fruta con origen, fácil de usar</em></span></button></li>
+        <li><button class="mp-item" data-go="4" data-spy="slide-4"><i>05</i><span><b>Presentación comercial</b><em>Formato, precio de referencia y fases</em></span></button></li>
+      </ul>
+    </div>
+    <div class="mp-group">
+      <h3>Explora</h3>
+      <ul>
+        <li><a class="mp-item" href="#ingredientes" data-spy="ingredientes"><i>06</i><span><b>Ingredientes</b><em>Gulupa, limón mandarino y ají, del campo a tu borde</em></span></a></li>
+        <li><a class="mp-item" href="#bebida" data-spy="bebida"><i>07</i><span><b>La bebida</b><em>Micheladas y cócteles con un borde que enamora</em></span></a></li>
+        <li><a class="mp-item" href="#galeria" data-spy="galeria"><i>08</i><span><b>Galería del empaque</b><em>Frente, perfil y reverso de la bolsa</em></span></a></li>
+      </ul>
+    </div>
+    <div class="mp-group">
+      <h3>Dossier del proyecto</h3>
+      <ul>
+        <li>
+          <a class="mp-item" href="#documentos" data-spy="documentos"><i>09</i><span><b>Documentos</b><em>Matriz DOFA, Modelo Canvas y prototipo del empaque</em></span></a>
+          <div class="mp-sub" aria-label="Abrir un documento">
+            <button type="button" data-doc="dofa">Matriz DOFA</button><button type="button" data-doc="canvas">Modelo Canvas</button><button type="button" data-doc="empaque">Prototipo del empaque</button>
+          </div>
+        </li>
+        <li><a class="mp-item" href="#compromiso" data-spy="compromiso"><i>10</i><span><b>Compromiso y transparencia</b><em>Lo que hay en la bolsa y cómo lo decimos</em></span></a></li>
+        <li><a class="mp-item" href="#madurez" data-spy="madurez"><i>11</i><span><b>CRL, BRL y TRL</b><em>Dónde estamos hoy, con evidencias</em></span></a></li>
+      </ul>
+    </div>
+    <div class="mp-group">
+      <h3>Hablemos</h3>
+      <ul>
+        <li><a class="mp-item" href="#contacto" data-spy="contacto"><i>12</i><span><b>Contacto</b><em>Cuéntanos de tu barra y te respondemos</em></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mp-foot">
+    <a class="mp-cta" href="#contacto"><span>Quiero Brisa en mi barra</span><span aria-hidden="true">↗</span></a>
+    <p class="mp-note">Sal con frutas deshidratadas para michelar. Hecha en Colombia con fruta de origen.</p>
+  </div>
+</aside>
 
 <main id="inicio">
 <section class="horizontal-stage" id="experiencia" aria-label="Recorrido por Brisa al borde. Desplázate para avanzar por las secciones.">
@@ -581,9 +835,133 @@ noscript style{display:none}
       <div class="band-item reveal d2"><img src="img/limon.png" alt="" loading="lazy"><div><strong>Limón mandarino</strong><span>Frescura cítrica para cada sorbo.</span></div></div>
       <div class="band-item reveal d3"><img src="img/aji.png" alt="" loading="lazy"><div><strong>Ají</strong><span>Un golpe picante que acompaña la michelada.</span></div></div>
     </div>
+    <button type="button" class="band-trust reveal d3" data-farm-open aria-haspopup="true"><i aria-hidden="true">+</i>Fruta de familias campesinas de Colombia. Conoce su historia</button>
   </div>
-  <img class="band-pop" src="img/gulupa-entera.png" alt="" style="right:6vw;bottom:-3vw;width:min(17vw,250px);rotate:-10deg" data-vspeed=".14" loading="lazy">
+  <div class="farm-wrap" id="farmWrap">
+    <img class="farm-pop" src="img/gulupa-entera.png" alt="" data-vspeed=".14" loading="lazy">
+    <button type="button" class="farm-hot" id="farmHot" data-vspeed=".14" aria-expanded="false" aria-controls="farmCard"><span class="dot" aria-hidden="true">+</span><span class="lbl">Del campo a tu borde</span></button>
+    <div class="farm-card" id="farmCard" role="group" aria-label="Apoyamos a los cultivadores de nuestra fruta">
+      <button type="button" class="farm-x" id="farmClose" aria-label="Cerrar">×</button>
+      <div class="farm-photo media" data-media>
+        <img src="img/campesino.png" alt="Campesino colombiano con sombrero y ruana sosteniendo gulupas recién cosechadas">
+        <svg class="farm-fallback" viewBox="0 0 400 270" role="img" aria-label="Ilustración de un campesino colombiano con sombrero y ruana sosteniendo gulupas" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="fgSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#f58a3c"/></linearGradient>
+<linearGradient id="fgHill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f9a58"/><stop offset="1" stop-color="#175a37"/></linearGradient>
+</defs>
+<rect width="400" height="270" fill="url(#fgSky)"/>
+<circle cx="318" cy="64" r="34" fill="#fff4e0" fill-opacity=".85"/>
+<path d="M0 170 C60 120 120 140 180 160 C240 180 300 120 400 150 V270 H0Z" fill="#3aa965"/>
+<path d="M0 200 C80 160 150 190 220 200 C290 210 340 180 400 190 V270 H0Z" fill="url(#fgHill)"/>
+<g stroke="#0f3f27" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"><path d="M20 236 q40 -22 80 0"/><path d="M290 232 q36 -20 76 2"/><path d="M60 254 q50 -16 100 0"/></g>
+<!-- ruana -->
+<path d="M112 270 C112 214 140 190 200 186 C260 190 288 214 288 270Z" fill="#5a1848"/>
+<path d="M124 270 C126 226 148 204 200 200 C252 204 274 226 276 270Z" fill="#c8237f"/>
+<path d="M140 270 C142 238 160 218 200 214 C240 218 258 238 260 270Z" fill="#f7a11a"/>
+<path d="M156 270 C158 248 174 232 200 228 C226 232 242 248 244 270Z" fill="#fbf1d3"/>
+<!-- cuello y rostro -->
+<rect x="184" y="160" width="32" height="34" rx="12" fill="#b8744a"/>
+<ellipse cx="200" cy="132" rx="38" ry="44" fill="#cf8b5c"/>
+<ellipse cx="186" cy="132" rx="3.6" ry="4.4" fill="#2a0a26"/><ellipse cx="214" cy="132" rx="3.6" ry="4.4" fill="#2a0a26"/>
+<path d="M180 122 q6 -5 12 0M208 122 q6 -5 12 0" stroke="#2a0a26" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M200 134 v14" stroke="#a9693f" stroke-width="3" stroke-linecap="round"/>
+<path d="M184 156 q16 14 32 0" stroke="#2a0a26" stroke-width="4" fill="none" stroke-linecap="round"/>
+<ellipse cx="166" cy="140" rx="5" ry="9" fill="#cf8b5c"/><ellipse cx="234" cy="140" rx="5" ry="9" fill="#cf8b5c"/>
+<!-- sombrero -->
+<ellipse cx="200" cy="100" rx="82" ry="17" fill="#c99b5a"/>
+<path d="M150 98 C150 56 170 40 200 40 C230 40 250 56 250 98Z" fill="#dcb06a"/>
+<path d="M150 90 C170 98 230 98 250 90 L250 98 C230 106 170 106 150 98Z" fill="#3a0e33"/>
+<ellipse cx="200" cy="100" rx="82" ry="17" fill="none" stroke="#a87a3e" stroke-width="2"/>
+<!-- gulupas -->
+<g><circle cx="318" cy="228" r="28" fill="#6b1f6a"/><circle cx="310" cy="218" r="8" fill="#fff" fill-opacity=".35"/><path d="M304 202 q14 -12 28 0" stroke="#175a37" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<g><circle cx="86" cy="236" r="24" fill="#8d2a86"/><circle cx="79" cy="228" r="7" fill="#fff" fill-opacity=".35"/></g>
+</svg>
+        <span class="farm-note">Imagen ilustrativa</span>
+      </div>
+      <div class="farm-body">
+        <span class="farm-tag">Del campo a tu borde</span>
+        <h4>Detrás de cada gulupa hay una familia campesina.</h4>
+        <p>Apoyamos a los cultivadores de Boyacá y de otras regiones de Colombia: les compramos la fruta de forma directa para visibilizar y remunerar su trabajo.</p>
+        <ul class="farm-list">
+          <li>Compra directa a cultivadores colombianos</li>
+          <li>Fruta con origen y una historia para contar en tu barra</li>
+          <li>Deshidratar la fruta ayuda a reducir el desperdicio</li>
+        </ul>
+        <a class="farm-link" href="#compromiso" id="farmLink">Conoce nuestro compromiso ↗</a>
+      </div>
+    </div>
+  </div>
   <img class="band-pop" src="img/naranja-gajo.png" alt="" style="right:20vw;top:6vw;width:min(18vw,270px);rotate:14deg" data-vspeed="-.1" loading="lazy">
+</section>
+
+<!-- LA BEBIDA -->
+<section class="section bebida" id="bebida" aria-label="La michelada">
+  <div class="grains deco" data-grains="34" aria-hidden="true"></div>
+  <div class="bebida-copy">
+    <div class="eyebrow reveal">La michelada</div>
+    <h2 class="reveal d1">Tu michelada, con un borde que <span class="script multi">enamora.</span></h2>
+    <p class="lead reveal d2">El primer vistazo decide el pedido. Brisa al borde convierte el borde del vaso en la mejor parte del trago: sal marina con gulupa, limón mandarino y ají que da color, perfuma y deja sabor desde el primer sorbo.</p>
+    <p class="ritual-title reveal d2">Así se prepara</p>
+    <ol class="ritual reveal d3">
+      <li><i>1</i><b>Humedece</b><span>Pasa limón por el borde del vaso.</span></li>
+      <li><i>2</i><b>Escarcha</b><span>Gira el vaso sobre Brisa al borde.</span></li>
+      <li><i>3</i><b>Sirve</b><span>Prepara tu michelada o tu cóctel favorito.</span></li>
+      <li><i>4</i><b>Disfruta</b><span>Sal, fruta y un toque picante en cada sorbo.</span></li>
+    </ol>
+    <div class="serve reveal d3" aria-label="Ideas de servicio"><span>Michelada clásica</span><span>Cerveza con borde</span><span>Coctelería de autor</span></div>
+    <div class="btn-row reveal d3">
+      <a class="pill-link solid" href="#contacto">Quiero Brisa en mi barra <b>↗</b></a>
+      <a class="pill-link" href="#galeria">Ver el empaque <b>↓</b></a>
+    </div>
+  </div>
+  <div class="drink-stage reveal d1">
+    <div class="drink-disc" aria-hidden="true"></div>
+    <div class="drink-ring" aria-hidden="true"></div>
+    <img class="drink-fruit f1" src="img/limon.png" alt="" data-vspeed=".12" loading="lazy">
+    <img class="drink-fruit f2" src="img/naranja-gajo.png" alt="" data-vspeed="-.1" loading="lazy">
+    <img class="drink-fruit f3" src="img/aji.png" alt="" data-vspeed=".08" loading="lazy">
+    <img class="drink-fruit f4" src="img/gulupa-corte-fondo.png" alt="" data-vspeed="-.12" loading="lazy">
+    <div class="drink-media media contain" data-media data-vspeed="-.05">
+      <img src="img/michelada.png" alt="Michelada servida con el borde escarchado en Brisa al borde">
+      <svg class="drink-fallback" viewBox="0 0 400 600" role="img" aria-label="Ilustración de una michelada con el borde escarchado en sal con fruta" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="dgLiq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ee5a2c"/><stop offset=".45" stop-color="#c8231f"/><stop offset="1" stop-color="#6e0d1c"/></linearGradient>
+<linearGradient id="dgSheen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".3"/></linearGradient>
+<radialGradient id="dgShadow"><stop offset="0" stop-color="#2a0a26" stop-opacity=".5"/><stop offset="1" stop-color="#2a0a26" stop-opacity="0"/></radialGradient>
+<clipPath id="dgClip"><path d="M84 168 L110 515 Q113 534 134 534 L266 534 Q287 534 290 515 L316 168 Z"/></clipPath>
+</defs>
+<ellipse cx="200" cy="570" rx="140" ry="16" fill="url(#dgShadow)"/>
+<path d="M70 120 L105 520 Q108 548 136 548 L264 548 Q292 548 295 520 L330 120 Z" fill="#ffffff" fill-opacity=".14" stroke="#ffffff" stroke-opacity=".6" stroke-width="3"/>
+<g clip-path="url(#dgClip)">
+<rect x="70" y="160" width="270" height="390" fill="url(#dgLiq)"/>
+<rect x="150" y="240" width="72" height="72" rx="14" transform="rotate(-12 186 276)" fill="#fff" fill-opacity=".2" stroke="#fff" stroke-opacity=".65" stroke-width="2.5"/>
+<rect x="212" y="300" width="66" height="66" rx="14" transform="rotate(14 245 333)" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".6" stroke-width="2.5"/>
+<rect x="138" y="372" width="68" height="68" rx="14" transform="rotate(8 172 406)" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-opacity=".55" stroke-width="2.5"/>
+<circle cx="260" cy="440" r="5" fill="#fff" fill-opacity=".45"/><circle cx="276" cy="470" r="3.5" fill="#fff" fill-opacity=".4"/><circle cx="130" cy="330" r="4" fill="#fff" fill-opacity=".4"/>
+</g>
+<ellipse cx="200" cy="168" rx="116" ry="10" fill="#f56a3a"/>
+<path d="M92 130 L120 520 Q122 536 138 540" fill="none" stroke="url(#dgSheen)" stroke-width="16" stroke-linecap="round"/>
+<ellipse cx="200" cy="120" rx="130" ry="17" fill="#fff4e0" fill-opacity=".28" stroke="#fff4e0" stroke-width="9"/>
+<g><rect x="135.8" y="150.8" width="3.3" height="3.3" rx="1" fill="#fff4e0" transform="rotate(64 135.8 150.8)"/><rect x="226.0" y="150.8" width="2.4" height="2.4" rx="1" fill="#8d2a86" transform="rotate(15 226.0 150.8)"/><rect x="322.7" y="115.3" width="2.4" height="2.4" rx="1" fill="#8d2a86" transform="rotate(50 322.7 115.3)"/><rect x="319.7" y="133.7" width="3.8" height="3.8" rx="1" fill="#8d2a86" transform="rotate(39 319.7 133.7)"/><rect x="83.2" y="109.7" width="3.9" height="3.9" rx="1" fill="#fff4e0" transform="rotate(47 83.2 109.7)"/><rect x="307.3" y="130.4" width="3.7" height="3.7" rx="1" fill="#8d2a86" transform="rotate(54 307.3 130.4)"/><rect x="221.4" y="107.5" width="3.3" height="3.3" rx="1" fill="#fff4e0" transform="rotate(23 221.4 107.5)"/><rect x="156.6" y="104.6" width="3.8" height="3.8" rx="1" fill="#fff4e0" transform="rotate(57 156.6 104.6)"/><rect x="172.6" y="152.6" width="2.7" height="2.7" rx="1" fill="#8d2a86" transform="rotate(53 172.6 152.6)"/><rect x="326.2" y="126.8" width="4.8" height="4.8" rx="1" fill="#fff4e0" transform="rotate(43 326.2 126.8)"/><rect x="158.0" y="104.8" width="3.6" height="3.6" rx="1" fill="#fff4e0" transform="rotate(34 158.0 104.8)"/><rect x="75.7" y="118.4" width="4.1" height="4.1" rx="1" fill="#d9261c" transform="rotate(57 75.7 118.4)"/><rect x="168.2" y="151.2" width="2.7" height="2.7" rx="1" fill="#fff4e0" transform="rotate(63 168.2 151.2)"/><rect x="323.5" y="130.2" width="4.8" height="4.8" rx="1" fill="#fff4e0" transform="rotate(21 323.5 130.2)"/><rect x="79.1" y="129.2" width="4.8" height="4.8" rx="1" fill="#fff4e0" transform="rotate(53 79.1 129.2)"/><rect x="329.7" y="117.4" width="2.9" height="2.9" rx="1" fill="#fff4e0" transform="rotate(22 329.7 117.4)"/><rect x="276.3" y="129.0" width="2.7" height="2.7" rx="1" fill="#fff4e0" transform="rotate(0 276.3 129.0)"/><rect x="280.2" y="139.1" width="4.8" height="4.8" rx="1" fill="#b9d33a" transform="rotate(6 280.2 139.1)"/><rect x="81.2" y="129.1" width="3.9" height="3.9" rx="1" fill="#f7a11a" transform="rotate(51 81.2 129.1)"/><rect x="96.4" y="150.2" width="3.5" height="3.5" rx="1" fill="#fff4e0" transform="rotate(43 96.4 150.2)"/><rect x="92.0" y="110.6" width="3.8" height="3.8" rx="1" fill="#f7a11a" transform="rotate(78 92.0 110.6)"/><rect x="331.6" y="128.5" width="3.2" height="3.2" rx="1" fill="#f7a11a" transform="rotate(60 331.6 128.5)"/><rect x="298.5" y="148.3" width="2.5" height="2.5" rx="1" fill="#fff4e0" transform="rotate(43 298.5 148.3)"/><rect x="192.0" y="105.0" width="3.7" height="3.7" rx="1" fill="#fff4e0" transform="rotate(67 192.0 105.0)"/><rect x="119.6" y="137.1" width="3.1" height="3.1" rx="1" fill="#b9d33a" transform="rotate(11 119.6 137.1)"/><rect x="154.7" y="102.6" width="2.7" height="2.7" rx="1" fill="#d9261c" transform="rotate(28 154.7 102.6)"/><rect x="78.0" y="114.8" width="2.9" height="2.9" rx="1" fill="#d9261c" transform="rotate(24 78.0 114.8)"/><rect x="248.0" y="106.4" width="2.9" height="2.9" rx="1" fill="#8d2a86" transform="rotate(63 248.0 106.4)"/><rect x="114.1" y="136.0" width="4.3" height="4.3" rx="1" fill="#fff4e0" transform="rotate(57 114.1 136.0)"/><rect x="248.7" y="102.6" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(28 248.7 102.6)"/><rect x="304.8" y="149.1" width="4.0" height="4.0" rx="1" fill="#fff4e0" transform="rotate(61 304.8 149.1)"/><rect x="305.9" y="112.3" width="4.7" height="4.7" rx="1" fill="#fff4e0" transform="rotate(49 305.9 112.3)"/><rect x="228.8" y="103.1" width="2.7" height="2.7" rx="1" fill="#b9d33a" transform="rotate(42 228.8 103.1)"/><rect x="317.2" y="146.1" width="2.5" height="2.5" rx="1" fill="#fff4e0" transform="rotate(21 317.2 146.1)"/><rect x="322.2" y="120.2" width="3.6" height="3.6" rx="1" fill="#b9d33a" transform="rotate(18 322.2 120.2)"/><rect x="103.3" y="108.8" width="5.0" height="5.0" rx="1" fill="#fff4e0" transform="rotate(70 103.3 108.8)"/><rect x="72.1" y="117.9" width="4.4" height="4.4" rx="1" fill="#fff4e0" transform="rotate(67 72.1 117.9)"/><rect x="195.3" y="107.9" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(3 195.3 107.9)"/><rect x="196.0" y="134.4" width="3.0" height="3.0" rx="1" fill="#f7a11a" transform="rotate(16 196.0 134.4)"/><rect x="321.6" y="130.3" width="4.6" height="4.6" rx="1" fill="#8d2a86" transform="rotate(53 321.6 130.3)"/><rect x="264.2" y="101.3" width="2.7" height="2.7" rx="1" fill="#8d2a86" transform="rotate(2 264.2 101.3)"/><rect x="292.6" y="108.9" width="4.5" height="4.5" rx="1" fill="#fff4e0" transform="rotate(22 292.6 108.9)"/><rect x="284.4" y="145.7" width="3.8" height="3.8" rx="1" fill="#8d2a86" transform="rotate(13 284.4 145.7)"/><rect x="289.7" y="105.5" width="2.3" height="2.3" rx="1" fill="#fff4e0" transform="rotate(64 289.7 105.5)"/><rect x="70.7" y="135.3" width="5.1" height="5.1" rx="1" fill="#b9d33a" transform="rotate(65 70.7 135.3)"/><rect x="237.3" y="136.2" width="3.7" height="3.7" rx="1" fill="#fff4e0" transform="rotate(66 237.3 136.2)"/><rect x="296.7" y="105.7" width="3.9" height="3.9" rx="1" fill="#fff4e0" transform="rotate(57 296.7 105.7)"/><rect x="280.5" y="139.2" width="2.4" height="2.4" rx="1" fill="#d9261c" transform="rotate(38 280.5 139.2)"/><rect x="231.9" y="99.9" width="4.3" height="4.3" rx="1" fill="#b9d33a" transform="rotate(46 231.9 99.9)"/><rect x="287.9" y="160.1" width="3.4" height="3.4" rx="1" fill="#8d2a86" transform="rotate(20 287.9 160.1)"/><rect x="331.7" y="115.5" width="3.5" height="3.5" rx="1" fill="#8d2a86" transform="rotate(51 331.7 115.5)"/><rect x="128.4" y="132.6" width="2.3" height="2.3" rx="1" fill="#8d2a86" transform="rotate(58 128.4 132.6)"/><rect x="75.1" y="124.5" width="3.7" height="3.7" rx="1" fill="#fff4e0" transform="rotate(14 75.1 124.5)"/><rect x="330.9" y="123.1" width="2.5" height="2.5" rx="1" fill="#fff4e0" transform="rotate(34 330.9 123.1)"/><rect x="328.3" y="129.5" width="4.9" height="4.9" rx="1" fill="#fff4e0" transform="rotate(51 328.3 129.5)"/><rect x="280.7" y="134.4" width="2.5" height="2.5" rx="1" fill="#fff4e0" transform="rotate(23 280.7 134.4)"/><rect x="80.7" y="132.1" width="4.6" height="4.6" rx="1" fill="#fff4e0" transform="rotate(77 80.7 132.1)"/><rect x="274.0" y="110.3" width="3.6" height="3.6" rx="1" fill="#fff4e0" transform="rotate(70 274.0 110.3)"/><rect x="91.6" y="143.8" width="5.0" height="5.0" rx="1" fill="#fff4e0" transform="rotate(33 91.6 143.8)"/><rect x="319.6" y="136.7" width="3.1" height="3.1" rx="1" fill="#8d2a86" transform="rotate(22 319.6 136.7)"/><rect x="185.0" y="144.2" width="3.7" height="3.7" rx="1" fill="#fff4e0" transform="rotate(65 185.0 144.2)"/><rect x="78.8" y="118.7" width="3.5" height="3.5" rx="1" fill="#8d2a86" transform="rotate(69 78.8 118.7)"/><rect x="263.6" y="105.4" width="4.3" height="4.3" rx="1" fill="#fff4e0" transform="rotate(43 263.6 105.4)"/><rect x="249.1" y="163.5" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(1 249.1 163.5)"/><rect x="319.2" y="127.7" width="4.7" height="4.7" rx="1" fill="#8d2a86" transform="rotate(36 319.2 127.7)"/><rect x="98.2" y="105.6" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(57 98.2 105.6)"/><rect x="326.3" y="118.7" width="3.2" height="3.2" rx="1" fill="#fff4e0" transform="rotate(39 326.3 118.7)"/><rect x="224.0" y="143.6" width="4.2" height="4.2" rx="1" fill="#fff4e0" transform="rotate(64 224.0 143.6)"/><rect x="216.1" y="106.4" width="2.6" height="2.6" rx="1" fill="#b9d33a" transform="rotate(5 216.1 106.4)"/><rect x="94.1" y="152.0" width="4.8" height="4.8" rx="1" fill="#fff4e0" transform="rotate(76 94.1 152.0)"/><rect x="96.7" y="151.6" width="4.1" height="4.1" rx="1" fill="#fff4e0" transform="rotate(65 96.7 151.6)"/><rect x="113.6" y="110.9" width="2.6" height="2.6" rx="1" fill="#8d2a86" transform="rotate(64 113.6 110.9)"/><rect x="87.4" y="108.1" width="4.3" height="4.3" rx="1" fill="#d9261c" transform="rotate(29 87.4 108.1)"/><rect x="304.6" y="130.0" width="3.3" height="3.3" rx="1" fill="#f7a11a" transform="rotate(71 304.6 130.0)"/><rect x="316.8" y="131.1" width="3.6" height="3.6" rx="1" fill="#fff4e0" transform="rotate(64 316.8 131.1)"/><rect x="297.6" y="110.1" width="4.4" height="4.4" rx="1" fill="#f7a11a" transform="rotate(32 297.6 110.1)"/><rect x="250.7" y="101.5" width="4.5" height="4.5" rx="1" fill="#fff4e0" transform="rotate(58 250.7 101.5)"/><rect x="70.7" y="120.4" width="4.5" height="4.5" rx="1" fill="#b9d33a" transform="rotate(80 70.7 120.4)"/><rect x="115.1" y="103.2" width="3.0" height="3.0" rx="1" fill="#d9261c" transform="rotate(38 115.1 103.2)"/><rect x="102.9" y="108.1" width="3.7" height="3.7" rx="1" fill="#d9261c" transform="rotate(12 102.9 108.1)"/><rect x="156.6" y="102.0" width="3.7" height="3.7" rx="1" fill="#f7a11a" transform="rotate(59 156.6 102.0)"/><rect x="68.2" y="142.9" width="5.0" height="5.0" rx="1" fill="#fff4e0" transform="rotate(37 68.2 142.9)"/><rect x="78.8" y="134.3" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(9 78.8 134.3)"/><rect x="84.1" y="111.9" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(77 84.1 111.9)"/><rect x="254.8" y="108.5" width="4.3" height="4.3" rx="1" fill="#fff4e0" transform="rotate(63 254.8 108.5)"/><rect x="302.3" y="105.1" width="2.2" height="2.2" rx="1" fill="#8d2a86" transform="rotate(57 302.3 105.1)"/><rect x="95.5" y="132.5" width="3.2" height="3.2" rx="1" fill="#fff4e0" transform="rotate(43 95.5 132.5)"/><rect x="263.4" y="109.9" width="4.3" height="4.3" rx="1" fill="#d9261c" transform="rotate(37 263.4 109.9)"/><rect x="192.2" y="135.9" width="2.4" height="2.4" rx="1" fill="#f7a11a" transform="rotate(35 192.2 135.9)"/><rect x="275.3" y="102.0" width="4.2" height="4.2" rx="1" fill="#b9d33a" transform="rotate(19 275.3 102.0)"/><rect x="195.2" y="148.1" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(80 195.2 148.1)"/><rect x="99.7" y="133.7" width="5.0" height="5.0" rx="1" fill="#f7a11a" transform="rotate(57 99.7 133.7)"/><rect x="99.6" y="112.5" width="3.7" height="3.7" rx="1" fill="#8d2a86" transform="rotate(16 99.6 112.5)"/><rect x="262.9" y="151.3" width="4.2" height="4.2" rx="1" fill="#f7a11a" transform="rotate(30 262.9 151.3)"/><rect x="158.6" y="140.8" width="2.8" height="2.8" rx="1" fill="#8d2a86" transform="rotate(70 158.6 140.8)"/><rect x="231.3" y="147.0" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(22 231.3 147.0)"/><rect x="122.8" y="146.0" width="4.9" height="4.9" rx="1" fill="#d9261c" transform="rotate(52 122.8 146.0)"/><rect x="105.8" y="145.3" width="3.7" height="3.7" rx="1" fill="#8d2a86" transform="rotate(46 105.8 145.3)"/><rect x="290.1" y="133.4" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(31 290.1 133.4)"/><rect x="103.4" y="148.5" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(4 103.4 148.5)"/><rect x="89.0" y="130.7" width="3.7" height="3.7" rx="1" fill="#fff4e0" transform="rotate(50 89.0 130.7)"/><rect x="321.0" y="113.1" width="3.6" height="3.6" rx="1" fill="#f7a11a" transform="rotate(31 321.0 113.1)"/><rect x="223.1" y="99.9" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(58 223.1 99.9)"/><rect x="314.9" y="135.5" width="2.3" height="2.3" rx="1" fill="#d9261c" transform="rotate(38 314.9 135.5)"/><rect x="326.0" y="116.3" width="3.5" height="3.5" rx="1" fill="#d9261c" transform="rotate(14 326.0 116.3)"/><rect x="303.3" y="140.9" width="4.6" height="4.6" rx="1" fill="#fff4e0" transform="rotate(1 303.3 140.9)"/><rect x="81.5" y="113.8" width="3.1" height="3.1" rx="1" fill="#fff4e0" transform="rotate(60 81.5 113.8)"/><rect x="74.3" y="112.5" width="3.4" height="3.4" rx="1" fill="#b9d33a" transform="rotate(39 74.3 112.5)"/><rect x="316.7" y="129.6" width="2.4" height="2.4" rx="1" fill="#fff4e0" transform="rotate(54 316.7 129.6)"/><rect x="310.8" y="107.6" width="3.2" height="3.2" rx="1" fill="#f7a11a" transform="rotate(46 310.8 107.6)"/><rect x="143.8" y="107.5" width="4.4" height="4.4" rx="1" fill="#8d2a86" transform="rotate(8 143.8 107.5)"/><rect x="241.2" y="134.4" width="2.9" height="2.9" rx="1" fill="#fff4e0" transform="rotate(33 241.2 134.4)"/><rect x="206.0" y="107.6" width="3.7" height="3.7" rx="1" fill="#fff4e0" transform="rotate(28 206.0 107.6)"/><rect x="77.5" y="117.2" width="5.0" height="5.0" rx="1" fill="#fff4e0" transform="rotate(27 77.5 117.2)"/><rect x="327.7" y="121.7" width="2.8" height="2.8" rx="1" fill="#f7a11a" transform="rotate(40 327.7 121.7)"/><rect x="192.1" y="107.4" width="3.2" height="3.2" rx="1" fill="#fff4e0" transform="rotate(67 192.1 107.4)"/><rect x="191.4" y="104.6" width="3.3" height="3.3" rx="1" fill="#f7a11a" transform="rotate(42 191.4 104.6)"/><rect x="74.7" y="130.0" width="4.9" height="4.9" rx="1" fill="#8d2a86" transform="rotate(26 74.7 130.0)"/><rect x="109.8" y="129.7" width="2.5" height="2.5" rx="1" fill="#d9261c" transform="rotate(60 109.8 129.7)"/><rect x="246.4" y="154.6" width="3.6" height="3.6" rx="1" fill="#b9d33a" transform="rotate(52 246.4 154.6)"/><rect x="205.7" y="149.2" width="4.6" height="4.6" rx="1" fill="#fff4e0" transform="rotate(32 205.7 149.2)"/><rect x="240.6" y="146.8" width="5.1" height="5.1" rx="1" fill="#fff4e0" transform="rotate(33 240.6 146.8)"/><rect x="199.4" y="107.2" width="3.1" height="3.1" rx="1" fill="#d9261c" transform="rotate(76 199.4 107.2)"/><rect x="312.4" y="115.9" width="2.3" height="2.3" rx="1" fill="#fff4e0" transform="rotate(13 312.4 115.9)"/><rect x="78.0" y="131.8" width="3.5" height="3.5" rx="1" fill="#8d2a86" transform="rotate(16 78.0 131.8)"/><rect x="311.4" y="115.6" width="4.4" height="4.4" rx="1" fill="#d9261c" transform="rotate(19 311.4 115.6)"/><rect x="97.9" y="107.6" width="3.3" height="3.3" rx="1" fill="#b9d33a" transform="rotate(10 97.9 107.6)"/><rect x="71.1" y="115.3" width="3.4" height="3.4" rx="1" fill="#b9d33a" transform="rotate(4 71.1 115.3)"/><rect x="73.3" y="121.1" width="2.4" height="2.4" rx="1" fill="#b9d33a" transform="rotate(10 73.3 121.1)"/><rect x="232.2" y="141.3" width="2.7" height="2.7" rx="1" fill="#fff4e0" transform="rotate(53 232.2 141.3)"/><rect x="79.2" y="134.3" width="4.5" height="4.5" rx="1" fill="#d9261c" transform="rotate(37 79.2 134.3)"/><rect x="166.0" y="135.1" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(23 166.0 135.1)"/><rect x="199.6" y="140.8" width="3.2" height="3.2" rx="1" fill="#f7a11a" transform="rotate(32 199.6 140.8)"/><rect x="327.9" y="116.5" width="4.6" height="4.6" rx="1" fill="#b9d33a" transform="rotate(59 327.9 116.5)"/><rect x="323.0" y="118.8" width="4.7" height="4.7" rx="1" fill="#f7a11a" transform="rotate(47 323.0 118.8)"/><rect x="322.9" y="136.3" width="3.9" height="3.9" rx="1" fill="#fff4e0" transform="rotate(47 322.9 136.3)"/><rect x="68.5" y="119.7" width="4.5" height="4.5" rx="1" fill="#d9261c" transform="rotate(0 68.5 119.7)"/><rect x="303.7" y="140.5" width="2.6" height="2.6" rx="1" fill="#fff4e0" transform="rotate(32 303.7 140.5)"/><rect x="327.1" y="128.2" width="4.7" height="4.7" rx="1" fill="#f7a11a" transform="rotate(47 327.1 128.2)"/><rect x="248.5" y="132.6" width="3.8" height="3.8" rx="1" fill="#fff4e0" transform="rotate(52 248.5 132.6)"/><rect x="301.6" y="130.6" width="2.5" height="2.5" rx="1" fill="#fff4e0" transform="rotate(50 301.6 130.6)"/><rect x="155.9" y="101.8" width="3.1" height="3.1" rx="1" fill="#fff4e0" transform="rotate(39 155.9 101.8)"/><rect x="200.9" y="102.1" width="2.3" height="2.3" rx="1" fill="#d9261c" transform="rotate(46 200.9 102.1)"/><rect x="119.9" y="105.7" width="5.0" height="5.0" rx="1" fill="#f7a11a" transform="rotate(20 119.9 105.7)"/><rect x="90.3" y="126.9" width="3.6" height="3.6" rx="1" fill="#fff4e0" transform="rotate(16 90.3 126.9)"/><rect x="328.1" y="123.0" width="2.5" height="2.5" rx="1" fill="#b9d33a" transform="rotate(47 328.1 123.0)"/><rect x="185.8" y="101.5" width="2.7" height="2.7" rx="1" fill="#fff4e0" transform="rotate(8 185.8 101.5)"/><rect x="299.1" y="133.8" width="2.8" height="2.8" rx="1" fill="#fff4e0" transform="rotate(5 299.1 133.8)"/><rect x="326.3" y="112.9" width="5.0" height="5.0" rx="1" fill="#f7a11a" transform="rotate(11 326.3 112.9)"/><rect x="307.0" y="113.6" width="2.7" height="2.7" rx="1" fill="#fff4e0" transform="rotate(79 307.0 113.6)"/></g>
+<g transform="translate(322 118) rotate(-14)">
+<circle r="46" fill="#5f9f35"/><circle r="39" fill="#e3f19a"/>
+<g stroke="#b9d33a" stroke-width="3" stroke-linecap="round"><path d="M0 0V-36M0 0V36M0 0H-36M0 0H36M0 0L-25 -25M0 0L25 25M0 0L-25 25M0 0L25 -25"/></g>
+<circle r="5" fill="#fff9d6"/>
+</g>
+<path d="M64 112 C40 80 30 52 40 26" fill="none" stroke="#d9261c" stroke-width="15" stroke-linecap="round"/>
+<path d="M40 26 C38 14 46 8 52 4" fill="none" stroke="#175a37" stroke-width="7" stroke-linecap="round"/>
+</svg>
+    </div>
+    <img class="drink-bag" src="Diseño de bolsa tropical Brisa al Borde.png" alt="Bolsa de 2 kg de Brisa al borde junto a la michelada" data-vspeed=".08" loading="lazy">
+    <span class="drink-tag t1" aria-hidden="true">Borde con fruta</span>
+    <span class="drink-tag t2" aria-hidden="true">Limón y ají</span>
+    <span class="drink-tag t3" aria-hidden="true">Hecha para michelar</span>
+  </div>
+  <div class="bebida-pitch">
+    <article class="pitch reveal"><span class="n">01</span><h3>Entra por los ojos</h3><p>Un borde con color y textura de fruta que invita a pedir el trago antes del primer sorbo.</p></article>
+    <article class="pitch reveal d1"><span class="n">02</span><h3>Se queda en el paladar</h3><p>Gulupa, limón mandarino y ají en cada sorbo: ácido, fresco y con un toque picante.</p></article>
+    <article class="pitch reveal d2"><span class="n">03</span><h3>Cuenta una historia</h3><p>Fruta colombiana con origen, para que cada vaso tenga una razón más para ser elegido.</p></article>
+  </div>
 </section>
 
 <!-- 06 GALERIA -->
@@ -607,6 +985,61 @@ noscript style{display:none}
     <div class="g-slot reveal"><div class="g-card g-note" data-vspeed=".04">
       <p>Cuatro pasos y listo: humedece el borde con limón, decora con <span class="script">Brisa al borde</span>, sirve y disfruta tu michelada.</p></div></div>
   </div>
+</section>
+
+<!-- DOCUMENTOS -->
+<section class="section docs" id="documentos" aria-label="Documentos del proyecto">
+  <img class="deco" src="img/hojas.png" alt="" style="right:-4vw;top:2vw;width:min(24vw,340px);rotate:12deg;opacity:.9" data-vspeed=".1" loading="lazy">
+  <img class="deco" src="img/gotas.png" alt="" style="left:46vw;top:6vw;width:min(7vw,96px)" data-vspeed="-.12" loading="lazy">
+  <div class="docs-head">
+    <div class="reveal"><div class="eyebrow">Dossier del proyecto</div><h2>Tres documentos que <span class="script multi" style="color:var(--orange)">respaldan</span> la idea.</h2></div>
+    <p class="lead reveal d1">El análisis estratégico y el diseño del empaque, a la vista. Haz clic en cada documento para verlo en grande sin salir de la página.</p>
+  </div>
+  <div class="docs-grid">
+    <article class="doc-card reveal">
+      <button type="button" class="doc-thumb" data-doc="dofa" aria-label="Ver la Matriz DOFA">
+        <img src="docs/dofa-thumb.webp" alt="Vista previa de la Matriz DOFA" loading="lazy">
+        <span class="doc-badge">PDF</span>
+        <span class="doc-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+      </button>
+      <span class="doc-num">01 · Análisis</span>
+      <h3>Matriz DOFA</h3>
+      <p>Fortalezas, debilidades, oportunidades y amenazas de Brisa al borde frente al mercado hotelero de República Dominicana.</p>
+      <div class="doc-actions">
+        <button type="button" class="pill-link doc-open" data-doc="dofa">Ver documento <b>↗</b></button>
+        <a class="doc-dl" href="docs/Matriz-DOFA.pdf" download>Descargar PDF</a>
+      </div>
+    </article>
+    <article class="doc-card reveal d1">
+      <button type="button" class="doc-thumb" data-doc="canvas" aria-label="Ver el Modelo Canvas">
+        <img src="docs/canvas-thumb.webp" alt="Vista previa del Modelo Canvas para emprendimiento internacional" loading="lazy">
+        <span class="doc-badge">PDF</span>
+        <span class="doc-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+      </button>
+      <span class="doc-num">02 · Modelo de negocio</span>
+      <h3>Modelo Canvas</h3>
+      <p>Lienzo para emprendimiento internacional: segmentos, propuesta de valor, canales, ingresos, recursos, alianzas y costos.</p>
+      <div class="doc-actions">
+        <button type="button" class="pill-link doc-open" data-doc="canvas">Ver documento <b>↗</b></button>
+        <a class="doc-dl" href="docs/Modelo-Canvas.pdf" download>Descargar PDF</a>
+      </div>
+    </article>
+    <article class="doc-card reveal d2">
+      <button type="button" class="doc-thumb" data-doc="empaque" aria-label="Ver el prototipo del empaque">
+        <img src="docs/empaque-thumb.webp" alt="Vista previa de la ficha del prototipo del empaque" loading="lazy">
+        <span class="doc-badge">PDF · Canva</span>
+        <span class="doc-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+      </button>
+      <span class="doc-num">03 · Diseño de producto</span>
+      <h3>Prototipo del empaque</h3>
+      <p>Marca, bolsa de 2 kg, etiquetado, ficha técnica y embalaje de exportación, reunidos en una sola lámina.</p>
+      <div class="doc-actions">
+        <button type="button" class="pill-link doc-open" data-doc="empaque">Ver documento <b>↗</b></button>
+        <a class="doc-dl" href="docs/Prototipo-Empaque.pdf" download>Descargar PDF</a>
+      </div>
+    </article>
+  </div>
+  <p class="docs-foot reveal">Son documentos de trabajo del proyecto. Las cifras y supuestos que contienen son preliminares y están sujetos a validación.</p>
 </section>
 
 <!-- COMPROMISO Y TRANSPARENCIA -->
@@ -691,6 +1124,29 @@ noscript style{display:none}
   <a href="#inicio" data-go="0">Volver arriba ↑</a>
 </footer>
 
+<!-- VISOR EMERGENTE DE DOCUMENTOS -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="vTitle" aria-hidden="true">
+  <div class="viewer-backdrop" data-vclose></div>
+  <div class="viewer-box">
+    <div class="viewer-bar">
+      <div class="v-title"><small id="vKind">Documento</small><h3 id="vTitle">Documento</h3></div>
+      <div class="v-tools">
+        <button type="button" class="v-btn" id="vPrint">Imprimir</button>
+        <a class="v-btn solid" id="vDown" href="#" download>Descargar PDF</a>
+        <a class="v-btn" id="vCanva" href="#" target="_blank" rel="noopener" hidden>Abrir en Canva ↗</a>
+        <button type="button" class="v-btn v-close" id="vClose" aria-label="Cerrar visor">×</button>
+      </div>
+    </div>
+    <div class="v-tabs" role="tablist" aria-label="Documentos del proyecto">
+      <button type="button" class="v-tab" role="tab" data-vtab="dofa">Matriz DOFA</button>
+      <button type="button" class="v-tab" role="tab" data-vtab="canvas">Modelo Canvas</button>
+      <button type="button" class="v-tab" role="tab" data-vtab="empaque">Prototipo del empaque</button>
+      <span class="v-hint">Documento en vivo: el texto se puede seleccionar y copiar</span>
+    </div>
+    <div class="v-scroll" id="vScroll"><iframe id="vFrame" title="Documento del proyecto"></iframe><span class="v-loading">Cargando documento…</span></div>
+  </div>
+</div>
+
 <script>
 (()=>{
  const CONTACT_EMAIL='dasotelo08@gmail.com';  /* correo que recibirá los mensajes */
@@ -700,7 +1156,7 @@ noscript style{display:none}
  const panels=[...document.querySelectorAll('.panel')],navButtons=[...document.querySelectorAll('[data-slide]')];
  const current=document.getElementById('currentSlide'),progress=document.getElementById('progress'),header=document.getElementById('header');
  const productNav=document.getElementById('productNav'),meta=document.getElementById('panelMeta');
- const toggle=document.getElementById('menuToggle'),menu=document.getElementById('menuPanel'),glyph=toggle.querySelector('.menu-glyph');
+ const toggle=document.getElementById('menuToggle'),menu=document.getElementById('menuPanel'),menuBackdrop=document.getElementById('menuBackdrop'),menuClose=document.getElementById('menuClose');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  let raf=0,position=0,target=0,menuOpen=false;
  const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
@@ -720,7 +1176,7 @@ noscript style{display:none}
  }
  /* teclado: flechas izquierda y derecha dentro del recorrido */
  addEventListener('keydown',e=>{
-  if(!['ArrowRight','ArrowLeft'].includes(e.key)||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+  if(!['ArrowRight','ArrowLeft'].includes(e.key)||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||document.documentElement.classList.contains('locked'))return;
   const r=stage.getBoundingClientRect();if(r.top>innerHeight*.5||r.bottom<innerHeight*.5)return;
   e.preventDefault();goSlide(clamp(Math.round(position)+(e.key==='ArrowRight'?1:-1),0,panels.length-1));
  });
@@ -767,7 +1223,17 @@ noscript style{display:none}
    }
   });
   vertical();
+  spy(active,rect);
   if(!reduced&&Math.abs(target-position)>.0008)raf=requestAnimationFrame(render);else raf=0;
+ }
+ /* sección activa: marca el enlace correspondiente en el encabezado y en el menú */
+ const spyEls=[...document.querySelectorAll('[data-spy]')],spyIds=['ingredientes','bebida','galeria','documentos','compromiso','madurez','contacto'];
+ let spyKey='';
+ function spy(active,rect){
+  let key='slide-'+active;
+  if(rect.bottom<innerHeight*.6){key='ingredientes';spyIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=innerHeight*.42)key=id})}
+  if(key===spyKey)return;spyKey=key;
+  spyEls.forEach(el=>{const on=el.dataset.spy.split(' ').includes(key);el.classList.toggle('active',on);if(on)el.setAttribute('aria-current','true');else el.removeAttribute('aria-current')});
  }
  const requestRender=()=>{if(!raf)raf=requestAnimationFrame(render)};
  addEventListener('scroll',requestRender,{passive:true});addEventListener('resize',requestRender);addEventListener('orientationchange',requestRender);
@@ -779,10 +1245,112 @@ noscript style{display:none}
  navButtons.forEach(b=>b.addEventListener('click',()=>goSlide(Number(b.dataset.slide))));
  document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();closeMenu();goSlide(Number(el.dataset.go))}));
 
- function closeMenu(){menuOpen=false;menu.classList.remove('open');menu.setAttribute('aria-hidden','true');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú');glyph.textContent='☰'}
- toggle.addEventListener('click',()=>{menuOpen=!menuOpen;menu.classList.toggle('open',menuOpen);menu.setAttribute('aria-hidden',String(!menuOpen));toggle.setAttribute('aria-expanded',String(menuOpen));toggle.setAttribute('aria-label',menuOpen?'Cerrar menú':'Abrir menú');glyph.textContent=menuOpen?'×':'☰'});
- menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
- addEventListener('keydown',e=>{if(e.key==='Escape'&&menuOpen)closeMenu()});
+ /* bloqueo de scroll compartido por el menú y el visor (compensa el ancho de la barra para que nada salte) */
+ let locks=0;
+ function lockScroll(){if(locks++===0){document.documentElement.style.setProperty('--sbw',(innerWidth-document.documentElement.clientWidth)+'px');document.documentElement.classList.add('locked')}}
+ function unlockScroll(){if(locks>0&&--locks===0)document.documentElement.classList.remove('locked')}
+ /* atrapa el foco (Tab) dentro de un contenedor abierto */
+ function trapTab(e,box){
+  if(e.key!=='Tab')return;
+  const f=[...box.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el=>!el.hidden&&el.offsetParent!==null);
+  if(!f.length)return;const a=f[0],z=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
+ }
+ /* menú lateral: se abre con el botón, se cierra con la X, el fondo, Esc o al elegir una opción */
+ function openMenu(){
+  if(menuOpen)return;menuOpen=true;lockScroll();
+  menu.classList.add('open');menuBackdrop.classList.add('open');
+  menu.setAttribute('aria-hidden','false');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Cerrar menú');
+  setTimeout(()=>menuClose.focus({preventScroll:true}),60);
+ }
+ function closeMenu(restore){
+  if(!menuOpen)return;menuOpen=false;unlockScroll();
+  menu.classList.remove('open');menuBackdrop.classList.remove('open');
+  menu.setAttribute('aria-hidden','true');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú');
+  if(restore===true)toggle.focus({preventScroll:true});
+ }
+ toggle.addEventListener('click',()=>menuOpen?closeMenu(true):openMenu());
+ menuClose.addEventListener('click',()=>closeMenu(true));
+ menuBackdrop.addEventListener('click',()=>closeMenu(true));
+ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>closeMenu()));
+ menu.addEventListener('keydown',e=>trapTab(e,menu));
+ menu.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>closeMenu()));
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&menuOpen)closeMenu(true)});
+ /* cerrar el menú si se pasa a una pantalla donde ya no aplica el bloqueo (rotar el teléfono, etc.) */
+ addEventListener('resize',()=>{if(menuOpen&&innerWidth>2400)closeMenu()});
+
+ /* imágenes con respaldo: si el archivo aún no existe se muestra la ilustración incluida */
+ document.querySelectorAll('[data-media]').forEach(box=>{
+  const img=box.querySelector('img');if(!img)return;
+  const ok=()=>box.classList.add('has-img'),fail=()=>img.remove();
+  if(img.complete)(img.naturalWidth?ok():fail());else{img.addEventListener('load',ok,{once:true});img.addEventListener('error',fail,{once:true})}
+ });
+
+ /* tooltip del campesino (sección de ingredientes) */
+ const farm=document.getElementById('farmWrap');
+ if(farm){
+  const hot=document.getElementById('farmHot'),card=document.getElementById('farmCard'),fx=document.getElementById('farmClose');
+  const canHover=matchMedia('(hover:hover) and (pointer:fine) and (min-width:1440px)').matches;
+  let t=0;
+  const setFarm=on=>{clearTimeout(t);farm.classList.toggle('open',on);hot.setAttribute('aria-expanded',String(on))};
+  hot.addEventListener('click',()=>setFarm(!farm.classList.contains('open')));
+  fx.addEventListener('click',()=>{setFarm(false);hot.focus({preventScroll:true})});
+  document.querySelectorAll('[data-farm-open]').forEach(b=>b.addEventListener('click',()=>setFarm(true)));
+  if(canHover){
+   [hot,card].forEach(el=>{el.addEventListener('mouseenter',()=>setFarm(true));el.addEventListener('mouseleave',()=>{clearTimeout(t);t=setTimeout(()=>setFarm(false),260)})});
+  }
+  document.addEventListener('click',e=>{if(farm.classList.contains('open')&&!farm.contains(e.target)&&!e.target.closest('[data-farm-open]'))setFarm(false)});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&farm.classList.contains('open')){setFarm(false);hot.focus({preventScroll:true})}});
+  document.getElementById('farmLink').addEventListener('click',()=>setFarm(false));
+ }
+
+ /* visor emergente de documentos */
+ const DOCS={
+  dofa:{title:'Matriz DOFA',src:'docs/dofa.html',pdf:'docs/Matriz-DOFA.pdf',canva:''},
+  canvas:{title:'Modelo Canvas',src:'docs/canvas.html',pdf:'docs/Modelo-Canvas.pdf',canva:''},
+  empaque:{title:'Prototipo del empaque',src:'docs/empaque.html',pdf:'docs/Prototipo-Empaque.pdf',canva:'https://canva.link/fngzqeram1mvojd'}
+ };
+ const order=Object.keys(DOCS);
+ const viewer=document.getElementById('viewer'),vFrame=document.getElementById('vFrame'),vTitle=document.getElementById('vTitle'),vKind=document.getElementById('vKind'),
+  vDown=document.getElementById('vDown'),vCanva=document.getElementById('vCanva'),vPrint=document.getElementById('vPrint'),vTabs=[...viewer.querySelectorAll('[data-vtab]')];
+ let viewerOpen=false,opener=null,curDoc='';
+ function showDoc(key){
+  const d=DOCS[key];if(!d)return;curDoc=key;
+  vTitle.textContent=d.title;vKind.textContent='Documento '+(order.indexOf(key)+1)+' de '+order.length;
+  vDown.href=d.pdf;vDown.setAttribute('download',d.pdf.split('/').pop());
+  vCanva.hidden=!d.canva;if(d.canva)vCanva.href=d.canva;
+  vTabs.forEach(b=>{const on=b.dataset.vtab===key;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});
+  vFrame.classList.remove('ready');vFrame.title='Documento: '+d.title;
+  vFrame.onload=()=>vFrame.classList.add('ready');vFrame.src=d.src;
+ }
+ const nextDoc=dir=>showDoc(order[(order.indexOf(curDoc)+(dir>0?1:order.length-1))%order.length]);
+ function openViewer(key,from){
+  if(!viewerOpen){opener=from||document.activeElement;lockScroll();viewerOpen=true;viewer.classList.add('open');viewer.setAttribute('aria-hidden','false')}
+  showDoc(key);setTimeout(()=>document.getElementById('vClose').focus({preventScroll:true}),60);
+ }
+ function closeViewer(){
+  if(!viewerOpen)return;viewerOpen=false;unlockScroll();
+  viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');
+  if(opener&&opener.focus&&document.contains(opener))opener.focus({preventScroll:true});opener=null;
+ }
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-doc]');if(!b)return;
+  e.preventDefault();
+  const fromMenu=menuOpen;if(fromMenu)closeMenu();
+  openViewer(b.dataset.doc,fromMenu?toggle:b);
+ });
+ viewer.querySelectorAll('[data-vclose]').forEach(el=>el.addEventListener('click',closeViewer));
+ document.getElementById('vClose').addEventListener('click',closeViewer);
+ vTabs.forEach(b=>b.addEventListener('click',()=>showDoc(b.dataset.vtab)));
+ /* imprimir o guardar como PDF desde el propio documento (HTML en vivo) */
+ vPrint.addEventListener('click',()=>{try{vFrame.contentWindow.focus();vFrame.contentWindow.print()}catch(_){window.open(DOCS[curDoc].src,'_blank','noopener')}});
+ const viewerKey=k=>{if(k==='Escape')closeViewer();else if(k==='ArrowRight')nextDoc(1);else if(k==='ArrowLeft')nextDoc(-1)};
+ viewer.addEventListener('keydown',e=>{
+  trapTab(e,viewer);
+  if(['Escape','ArrowRight','ArrowLeft'].includes(e.key)){e.preventDefault();viewerKey(e.key)}
+ });
+ /* los documentos avisan las teclas cuando el foco está dentro del marco */
+ addEventListener('message',e=>{if(viewerOpen&&e.source===vFrame.contentWindow&&e.data&&e.data.brisaKey)viewerKey(e.data.brisaKey)});
 
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));

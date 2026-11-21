@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prototipo del empaque | Brisa al borde</title>
+<link rel="stylesheet" href="doc.css">
+<style>
+@page{size:1200px 3250px;margin:0}
+:root{--pill:#4b1240;--lime2:#b6ee5b;--lime3:#5a9a12}
+.page{max-width:1180px;background:#fffaee}
+.top{text-align:center;margin-bottom:clamp(16px,2.4vw,30px)}
+.top .em{width:clamp(46px,5vw,66px);height:clamp(46px,5vw,66px);margin:0 auto 6px;object-fit:contain}
+.top h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,5.6vw,70px);line-height:1;letter-spacing:.14em;color:var(--leaf);text-transform:none}
+.top h1 span{font-family:var(--script);font-weight:400;letter-spacing:0;font-size:1.18em;color:var(--plum)}
+.top p{margin-top:8px;font-weight:800;font-size:clamp(12.5px,1.4vw,18px);color:var(--lime3);letter-spacing:.02em}
+
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(14px,1.8vw,24px) clamp(12px,1.5vw,20px);align-items:stretch}
+.sec{display:flex;flex-direction:column;min-width:0;break-inside:avoid}
+.hd{position:relative;display:flex;align-items:center;min-height:44px;margin:0 0 -22px;padding:6px 22px 6px 58px;border-radius:100px;background:var(--pill);color:var(--cream);font-family:var(--display);font-weight:700;font-size:clamp(15px,1.5vw,20px);letter-spacing:.005em;z-index:2;width:fit-content;max-width:100%}
+.hd .n{position:absolute;left:-2px;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:var(--lime2);color:var(--leaf-2);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:22px;box-shadow:0 6px 12px #2a0a2622}
+.bd{position:relative;flex:1;background:#fff;border:3px solid var(--pill);border-radius:30px;padding:36px clamp(14px,1.6vw,22px) clamp(14px,1.6vw,20px);font-size:clamp(13px,1.18vw,15.5px);line-height:1.5;box-shadow:0 14px 26px #2a0a2614}
+.bd p+p{margin-top:8px}
+.lab{display:block;margin:10px 0 2px;font-family:var(--display);font-weight:800;color:var(--lime3);font-size:1.08em}
+.lab:first-child{margin-top:0}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:1/-1}
+.stack{grid-column:span 4;display:flex;flex-direction:column;gap:clamp(14px,1.8vw,24px);min-width:0}.stack .sec{flex:1}.stack .big,.stack .pil{flex:1}
+.r2{grid-row:span 2}
+
+/* 2 descripcion */
+.desc{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.desc img{width:clamp(110px,14vw,170px);filter:drop-shadow(0 14px 14px #2a0a2650);margin-bottom:-4px}
+/* 3 marca */
+.logos{display:flex;gap:12px;align-items:center;margin:6px 0 4px}
+.logos .l1,.logos .l2{width:clamp(76px,8vw,100px);height:clamp(76px,8vw,100px);border-radius:50%;display:grid;place-items:center;flex:none}
+.logos .l1{background:#fff;border:2px solid #3a0e3322}.logos .l2{background:var(--orange)}
+.logos img{width:74%;height:74%;object-fit:contain}
+.logos .l2 img{filter:brightness(0) invert(1)}
+.quote{font-family:var(--display);font-weight:600;font-size:clamp(16px,1.6vw,21px);line-height:1.2;letter-spacing:-.01em;color:var(--plum)}
+/* 4 empaque */
+.pk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(10px,1.4vw,18px);align-items:center}
+.pk .front img,.pk .back img{margin:0 auto;filter:drop-shadow(0 16px 14px #2a0a2650)}
+.pk .front img,.pk .back img{height:340px;width:auto;max-width:100%;object-fit:contain}
+.ck{list-style:none;display:grid;gap:3px;font-family:var(--display);font-weight:700;color:#8a1c1c;font-size:1.08em}
+.ck li:before{content:"✓";margin-right:8px;color:var(--lime3);font-weight:800}
+.certs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.certs span{padding:5px 10px;border-radius:100px;border:1.5px solid #3a0e3330;background:#fbf6e8;font-size:11px;font-weight:800;letter-spacing:.04em;color:#46264a}
+.certs-note{margin-top:7px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#8a6a86}
+.exp{margin-top:10px;font-size:.92em}
+.exp b{font-family:var(--display);color:var(--lime3);font-size:1.1em}
+/* 5 prototipo visual */
+.views{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;text-align:center;padding-bottom:18px}
+.views figure img{margin:0 auto;height:clamp(200px,24vw,300px);width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 12px 10px #2a0a2646)}
+.views figcaption{margin-top:6px;font-family:var(--display);font-weight:800;color:var(--lime3);font-size:1.02em}
+/* 6 ficha */
+.fx{display:grid;gap:0;font-size:.95em;height:100%;align-content:space-between}
+.fx div{display:grid;grid-template-columns:minmax(120px,150px) 1fr;gap:12px;padding:7px 0;border-bottom:1px solid #3a0e3318}
+.fx div:last-child{border-bottom:0}
+.fx dt{font-family:var(--display);font-weight:800;color:#c0392b}
+.fx dd{color:#3a2a3a}
+/* 8 etiquetado */
+.lbl{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+.lbl .ck{font-size:.98em;color:var(--leaf-2)}
+.lbl .ck li{display:block}
+.codes{display:grid;gap:8px;justify-items:center}
+.codes svg{display:block}
+/* 9 embalaje */
+.box{display:grid;grid-template-columns:minmax(150px,.9fr) 1.1fr;gap:clamp(10px,1.4vw,18px);align-items:center}
+.box svg{width:100%;height:auto;max-height:230px;filter:drop-shadow(0 14px 10px #2a0a2640)}
+.spec{display:grid;gap:7px;font-size:.96em}
+.spec b{display:block;font-family:var(--display);color:var(--lime3);font-size:1.05em;line-height:1.1}
+.marks{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.marks span{display:grid;justify-items:center;gap:2px;width:46px;font-size:8.5px;line-height:1.1;text-align:center;font-weight:700;color:#46264a}
+.marks svg{width:32px;height:32px;stroke:#2a0a26;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;background:#fff;border:1.5px solid #2a0a26;border-radius:4px;padding:3px}
+/* 11 / 12 */
+.rb{width:100%;border-collapse:collapse;font-size:.98em}
+.rb th{text-align:left;font-family:var(--display);color:var(--lime3);font-size:1.1em;padding:4px 0 8px;border-bottom:2px solid var(--pill)}
+.rb th:last-child,.rb td:last-child{text-align:right;width:70px}
+.rb td{padding:6px 0;border-bottom:1px solid #3a0e3318}
+.rb td:last-child{font-family:var(--display);font-weight:800;color:var(--magenta)}
+.rb tfoot td{border-bottom:0;font-family:var(--display);font-weight:800;color:var(--plum);font-size:1.08em;padding-top:10px}
+.rb tfoot td:last-child{font-size:1.5em;color:var(--plum)}
+
+/* relleno con intención: cifras, paleta, pilares */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:14px}
+.stats div{padding:9px 10px;border-radius:14px;background:linear-gradient(135deg,#fff3d6,#ffe2b0);text-align:left}
+.stats b{display:block;font-family:var(--display);font-weight:800;font-size:1.45em;line-height:1;color:var(--plum)}
+.stats small{display:block;margin-top:3px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#a05a14}
+.pal{display:flex;gap:6px;margin-top:auto;padding-top:14px}
+.pal i{flex:1;height:34px;border-radius:10px;box-shadow:inset 0 -10px 14px #0002}
+.pal-l{margin-top:12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#8a6a86}
+.big{display:flex;flex-direction:column;justify-content:center;gap:12px;font-size:clamp(14px,1.35vw,17.5px);line-height:1.5}
+.big p{margin:0!important}
+.big .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.big .tags span{padding:5px 11px;border-radius:100px;background:#f4ffd2;border:1.5px solid #b6ee5b;color:var(--leaf-2);font-size:11.5px;font-weight:800;letter-spacing:.03em}
+.pil{display:grid;gap:10px;align-content:center}
+.pil div{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:center;padding:10px 12px;border-radius:16px;background:#f7fde6}
+.pil svg{width:42px;height:42px;padding:8px;border-radius:50%;background:var(--lime2);stroke:var(--leaf-2);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.pil p{margin:0!important;font-size:.97em;line-height:1.38}
+.views{background:radial-gradient(ellipse at 50% 38%,#fff6dc 0,#fff 70%)}
+/* muro de certificaciones */
+.wall{margin-top:16px;padding:14px 16px 12px;border-radius:20px;background:linear-gradient(180deg,#fefbea,#fff6d9);border:1.5px dashed #3a0e3340}
+.wall-t{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:12px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#8a6a86}
+.wall-t b{color:var(--plum);font-family:var(--display);font-size:12px;letter-spacing:.1em}
+.wall-g{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 12px}
+.wall-g figure{display:grid;place-items:center;padding:9px 14px;background:#fefbea;border-radius:12px;border:1px solid #3a0e3314;box-shadow:0 4px 10px #2a0a2610}
+.wall-g img{height:50px;width:auto;max-width:none}
+.wall-g .dian img{height:42px}
+/* checklist de entrega en tarjetas */
+.ev ul{display:grid;grid-template-columns:1fr 1fr;gap:8px;height:100%;align-content:stretch}
+.ev li{display:flex;align-items:center;padding:8px 12px;border-radius:14px;background:#f7fde6;border:1.5px solid #d9f3a6;line-height:1.25;font-size:.95em}
+.ev li:last-child{grid-column:1/-1}
+.ev:after{display:none}
+@media(max-width:1000px){
+  .g{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g>.sec{grid-column:span 1;grid-row:auto}
+  .g>.c8,.g>.c6,.g>.c7,.g>.c12{grid-column:1/-1}.g>.stack{grid-column:1/-1}
+  .pk{grid-template-columns:1fr 1fr}.pk .info{grid-column:1/-1;order:3}
+  .ev ul{grid-template-columns:1fr}.ev li:last-child{grid-column:auto}
+}
+@media(max-width:640px){
+  .g{grid-template-columns:1fr}.g>.sec,.g>.c8,.g>.c6,.g>.c7,.g>.c12,.g>.stack{grid-column:1/-1}
+  .top h1{letter-spacing:.06em}
+  .desc{grid-template-columns:1fr}.desc img{margin:0 auto}
+  .box,.lbl{grid-template-columns:1fr}.wall-g img{height:40px}.wall-t{flex-direction:column}
+  .hd{font-size:15px}
+}
+@media print{.sec,.bd{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="top">
+    <img class="em" src="../Emblema cóctel futurista brillante.png" alt="">
+    <h1><span>Brisa</span> al Borde</h1>
+    <p>Sal de micheladas colombiana para comercializar en República Dominicana</p>
+  </header>
+
+  <div class="g">
+    <section class="sec c3"><h2 class="hd"><span class="n">1</span>Objetivo</h2>
+      <div class="bd" style="display:flex;flex-direction:column"><p>Diseñar y presentar un prototipo de mezcla de sal marina con frutas deshidratadas para michelar, dirigida al mercado hotelero de República Dominicana, integrando marketing, comercio internacional, diseño de producto y requisitos de exportación desde Colombia.</p>
+        <div class="stats"><div><b>2 kg</b><small>Peso neto</small></div><div><b>18 meses</b><small>Vida útil</small></div><div><b>Boyacá</b><small>Origen</small></div><div><b>Marítimo</b><small>Transporte</small></div></div></div></section>
+    <section class="sec c6"><h2 class="hd"><span class="n">2</span>Descripción del producto</h2>
+      <div class="bd desc"><div>
+        <span class="lab">Nombre Comercial</span><p>“Brisa al Borde”</p>
+        <span class="lab">Producto</span><p>Sal marina con mango biche deshidratado (50 % mango / 50 % sal), ají y limón mandarina. Para escarchar el borde</p>
+        <span class="lab">Presentación</span><p>Bolsa tipo doypack de 2 kg, con cierre y barrera contra la humedad.</p>
+        <span class="lab">Público objetivo</span><p>Venta B2B a hoteles. Proveedor sin contacto directo con el cliente final</p>
+      </div><img src="../Diseño de bolsa tropical Brisa al Borde.png" alt="Bolsa de 2 kg de Brisa al borde"></div></section>
+    <section class="sec c3"><h2 class="hd"><span class="n">3</span>Diseño de marca</h2>
+      <div class="bd" style="display:flex;flex-direction:column"><span class="lab">Logo</span>
+        <div class="logos"><span class="l1"><img src="../Emblema cóctel futurista brillante.png" alt="Logo de Brisa al borde"></span><span class="l2"><img src="../Emblema cóctel futurista brillante.png" alt="Logo de Brisa al borde en blanco sobre naranja"></span></div>
+        <span class="lab">Eslogan</span><p class="quote">“El borde que marca la diferencia.”</p>
+        <p class="pal-l" style="margin-top:auto;padding-top:12px">Paleta de marca</p><div class="pal" style="padding-top:6px;margin-top:0"><i style="background:#3a0e33"></i><i style="background:#c8237f"></i><i style="background:#f7a11a"></i><i style="background:#ef6b1a"></i><i style="background:#175a37"></i><i style="background:#fbf1d3"></i></div></div></section>
+    <section class="sec c12"><h2 class="hd"><span class="n">4</span>Diseño del empaque</h2>
+      <div class="bd pk">
+        <div class="front"><img src="../Diseño de bolsa tropical Brisa al Borde.png" alt="Frente de la bolsa"></div>
+        <div class="info">
+          <ul class="ck"><li>Marca</li><li>Logo</li><li>Peso neto (2 kg)</li><li>Sal para michelar</li><li>Origen Colombia</li><li>Imagen representativa</li><li>Certificación (simulada)</li></ul>
+        </div>
+        <div class="back"><img src="../Etiqueta tropical de sal para micheladas Gulupa.png" alt="Reverso de la bolsa con información del producto">
+          <div class="exp"><b>Datos del exportador</b><br>Empresa exportadora S.A.S<br>Tunja, Boyacá, Colombia<br>www.brisaalborde.co</div></div>
+        <div class="wall" style="grid-column:1/-1" aria-label="Entidades y certificaciones de referencia">
+          <div class="wall-t"><b>Cumplimiento y entidades de referencia</b><span>Certificación simulada</span></div>
+          <div class="wall-g">
+            <figure><img src="../img/logos/salud.png" alt="Ministerio de Salud y Protección Social"></figure>
+            <figure><img src="../img/logos/invima.png" alt="INVIMA"></figure>
+            <figure class="dian"><img src="../img/logos/dian.png" alt="DIAN"></figure>
+            <figure><img src="../img/logos/indocal.png" alt="INDOCAL"></figure>
+            <figure><img src="../img/logos/sae.png" alt="SAE International"></figure>
+            <figure><img src="../img/logos/digemaps.png" alt="Gobierno de la República Dominicana, DIGEMAPS"></figure>
+          </div>
+        </div>
+      </div></section>
+    <section class="sec c12"><h2 class="hd"><span class="n">5</span>Prototipo visual</h2>
+      <div class="bd views">
+        <figure><img src="../Diseño de bolsa tropical Brisa al Borde.png" alt="Vista frontal"><figcaption>Vista frontal</figcaption></figure>
+        <figure><img src="../img/envase-perfil.png" alt="Vista lateral"><figcaption>Vista lateral</figcaption></figure>
+        <figure><img src="../Etiqueta tropical de sal para micheladas Gulupa.png" alt="Vista posterior"><figcaption>Vista posterior</figcaption></figure>
+      </div></section>
+
+    <section class="sec c4"><h2 class="hd"><span class="n">6</span>Ficha técnica del producto</h2>
+      <div class="bd"><dl class="fx">
+        <div><dt>Nombre comercial</dt><dd>Brisa al borde</dd></div>
+        <div><dt>Producto</dt><dd>Sal marina con fruta deshidratada para michelar</dd></div>
+        <div><dt>Variedad</dt><dd>Sal marina con fruta deshidratada</dd></div>
+        <div><dt>Origen</dt><dd>Boyacá, Colombia</dd></div>
+        <div><dt>Peso</dt><dd>2 kg</dd></div>
+        <div><dt>Presentación</dt><dd>Doy pack laminado con zipper y sello térmico</dd></div>
+        <div><dt>Vida útil</dt><dd>18 meses</dd></div>
+        <div><dt>Mercado objetivo</dt><dd>República Dominicana</dd></div>
+        <div><dt>Subpartida arancelaria</dt><dd>2103.90.20.00 - condimentos y sazonadores, compuestos</dd></div>
+        <div><dt>Modo de transporte</dt><dd>Marítimo</dd></div>
+      </dl></div></section>
+    <div class="stack">
+    <section class="sec"><h2 class="hd"><span class="n">7</span>Propuesta de valor</h2>
+      <div class="bd big"><p>Escarchados de <b>sal con frutos colombianos</b> (mango biche, limón mandarino y ají) para enriquecer la mixtología de <b>Hodelpa Hotels</b>. Una alternativa innovadora que destaca por sus <b>ingredientes autóctonos</b> y apoya directamente a <b>agricultores colombianos</b>.</p><div class="tags"><span>Hodelpa Hotels</span><span>Ingredientes autóctonos</span><span>Agricultores colombianos</span></div></div></section>
+    <section class="sec"><h2 class="hd"><span class="n">10</span>Propuesta de sostenibilidad</h2>
+      <div class="bd pil">
+        <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg><p>Compromiso social mediante la <b>compra directa a campesinos colombianos</b> para visibilizar y remunerar su trabajo.</p></div>
+        <div><svg viewBox="0 0 24 24"><path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14zM5 19l7-7"/></svg><p>Conservación eficiente de las frutas mediante deshidratación para <b>reducir desperdicios</b> y optimizar la logística.</p></div>
+        <div><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4-3.4 6.8-8 8-4.6-1.2-8-4-8-8V7z"/><path d="M8.5 12l2.5 2.5L15.5 10"/></svg><p>Implementación de <b>empaques amigables con el medio ambiente</b> para minimizar el impacto ecológico.</p></div>
+      </div></section>
+    </div>
+    <div class="stack">
+    <section class="sec"><h2 class="hd"><span class="n">8</span>Etiquetado internacional</h2>
+      <div class="bd lbl"><ul class="ck">
+        <li>Brisa al Borde</li><li>Colombia</li><li>Peso neto (2 kg)</li><li>Lote: L 250825</li><li>25/03/2028</li><li>Información nutricional</li><li>Conservar en un lugar fresco, seco y protegido de la luz.</li><li>Cod. Barras</li><li>QR</li></ul>
+        <div class="codes"><svg id="qr" width="74" height="74" viewBox="0 0 29 29" role="img" aria-label="Código QR de ejemplo"></svg><svg id="bar" width="86" height="40" viewBox="0 0 86 40" role="img" aria-label="Código de barras de ejemplo"></svg></div>
+      </div></section>
+    <section class="sec"><h2 class="hd"><span class="n">11</span>Evidencia entrega</h2>
+      <div class="bd ev"><ul class="ck" style="color:#8a1c1c"><li>Logo y marca</li><li>Empaque diseñado (frontal, posterior y lateral)</li><li>Mockup del producto</li><li>Ficha técnica</li><li>Propuesta de valor</li><li>Diseño de embalaje de exportación</li><li>Presentación tipo pitch</li></ul></div></section>
+    </div>
+    <section class="sec c6"><h2 class="hd"><span class="n">9</span>Diseño - embalaje de exportación</h2>
+      <div class="bd box">
+        <svg viewBox="0 0 260 230" role="img" aria-label="Caja de exportación de cartón corrugado con el logo de Brisa al borde">
+          <polygon points="130,18 244,62 130,108 16,62" fill="#e2c08a"/>
+          <polygon points="16,62 130,108 130,214 16,166" fill="#c9995a"/>
+          <polygon points="130,108 244,62 244,166 130,214" fill="#b3834a"/>
+          <polygon points="112,24 148,38 134,44 98,30" fill="#d4ad73" opacity=".0"/>
+          <path d="M130 18 L130 108" stroke="#a9763d" stroke-width="2" opacity=".5"/>
+          <rect x="52" y="104" width="56" height="42" rx="3" transform="skewY(24) translate(0 -22)" fill="#fffaf0" opacity=".0"/>
+          <g transform="matrix(.88,.38,0,1,26,84)"><circle cx="38" cy="30" r="22" fill="#fffaf0"/><image href="../Emblema cóctel futurista brillante.png" x="20" y="12" width="36" height="36"/><text x="38" y="66" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="11" fill="#3a0e33">Brisa al borde</text><text x="38" y="78" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="6.2" fill="#3a0e33">Colombia - República Dominicana</text></g>
+          <g transform="matrix(.88,-.38,0,1,138,138)"><rect x="6" y="0" width="92" height="36" rx="3" fill="#fffaf0" opacity=".85"/><text x="52" y="15" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-weight="800" font-size="8" fill="#3a0e33">10 bolsas x 2 kg</text><text x="52" y="28" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="7" fill="#3a0e33">Cartón corrugado</text></g>
+        </svg>
+        <div class="spec">
+          <div><b>Caja de exportación</b></div>
+          <div><b>Capacidad</b>10 bolsas de 2 kg</div>
+          <div><b>Material</b>Cartón corrugado</div>
+          <div><b>Información externa</b>Brisa al borde<br>Colombia - República Dominicana<br>Peso neto 20 kg (10 bolsas x 2 kg)<br>Peso bruto 21,2 kg aprox.</div>
+          <div class="marks" aria-label="Marcas de manejo">
+            <span><svg viewBox="0 0 24 24"><path d="M8 20V6M5 9l3-3 3 3M16 20V6M13 9l3-3 3 3M4 20h16"/></svg>Este lado arriba</span>
+            <span><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0zM12 12v6a2 2 0 0 1-4 0"/></svg>Mantener seco</span>
+            <span><svg viewBox="0 0 24 24"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v6M8 20h8"/></svg>Frágil</span>
+            <span><svg viewBox="0 0 24 24"><rect x="6" y="14" width="12" height="6"/><rect x="8" y="8" width="8" height="6"/><path d="M12 3v3M10 4l2-2 2 2"/></svg>Apilamiento máx.</span>
+            <span><svg viewBox="0 0 24 24"><path d="M9 4v8a3 3 0 0 0 6 0V9M4 4l16 16"/></svg>No usar ganchos</span>
+          </div>
+        </div>
+      </div></section>
+    <section class="sec c6"><h2 class="hd"><span class="n">12</span>Rúbrica sugerida</h2>
+      <div class="bd"><table class="rb"><thead><tr><th>Criterio</th><th>Valor</th></tr></thead><tbody>
+        <tr><td>Diseño de marca</td><td>10</td></tr>
+        <tr><td>Presentación del empaque</td><td>15</td></tr>
+        <tr><td>Ficha técnica</td><td>9</td></tr>
+        <tr><td>Propuesta de valor</td><td>15</td></tr>
+        <tr><td>Cumplimiento requisitos internacionales</td><td>25</td></tr>
+        <tr><td>Diseño y embalaje</td><td>11</td></tr>
+        <tr><td>Creatividad e innovación</td><td>15</td></tr></tbody>
+        <tfoot><tr><td>Total</td><td>100</td></tr></tfoot></table></div></section>
+  </div>
+
+  <footer class="dfoot"><span><b>Brisa al borde</b> &nbsp; Sal con frutas deshidratadas para michelar</span><span>Prototipo del empaque · documento de trabajo</span></footer>
+</main>
+<script>
+/* QR y código de barras de ejemplo (decorativos, no codifican datos) */
+(function(){
+  let s=11;const r=()=>{s=(s*9301+49297)%233280;return s/233280};
+  const qr=document.getElementById('qr');let q='<rect width="29" height="29" fill="#fff"/>';
+  const fin=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7" fill="#111"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#111"/>`;
+  for(let y=0;y<29;y++)for(let x=0;x<29;x++){
+    const inF=(x<9&&y<9)||(x>19&&y<9)||(x<9&&y>19);
+    if(!inF&&r()>.52)q+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#111"/>`;
+  }
+  q+=fin(1,1)+fin(21,1)+fin(1,21);qr.innerHTML=q;
+  const bar=document.getElementById('bar');let b='<rect width="86" height="40" fill="#fff"/>',x=3;
+  while(x<82){const w=1+Math.floor(r()*3);b+=`<rect x="${x}" y="2" width="${w}" height="30" fill="#111"/>`;x+=w+1+Math.floor(r()*2)}
+  b+='<text x="43" y="39" text-anchor="middle" font-size="6" font-family="monospace" fill="#111">7 709990 123456</text>';bar.innerHTML=b;
+})();
+addEventListener('keydown',e=>{if(parent!==window&&['Escape','ArrowLeft','ArrowRight'].includes(e.key)){parent.postMessage({brisaKey:e.key},'*')}});
+</script>
+</body>
+</html>

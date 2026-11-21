@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matriz DOFA | Brisa al borde</title>
+<link rel="stylesheet" href="doc.css">
+<style>
+@page{size:1240px 1090px;margin:0}
+.dofa{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,22px)}
+.q{position:relative;overflow:hidden;padding:clamp(20px,2.4vw,34px) clamp(20px,2.6vw,38px) clamp(22px,2.6vw,36px);border-radius:28px 28px 28px 28px;border:2px solid var(--c2);background:var(--c1);box-shadow:0 18px 34px #2a0a2618;break-inside:avoid}
+.q:nth-child(1){border-radius:90px 28px 28px 28px}.q:nth-child(2){border-radius:28px 90px 28px 28px}
+.q:nth-child(3){border-radius:28px 28px 28px 90px}.q:nth-child(4){border-radius:28px 28px 90px 28px}
+.q .big{position:absolute;right:-.06em;bottom:-.22em;font-family:var(--display);font-weight:800;font-size:clamp(150px,20vw,260px);line-height:1;color:var(--c2);opacity:.14;pointer-events:none;letter-spacing:-.05em}
+.q header{display:flex;align-items:center;gap:14px;margin-bottom:clamp(12px,1.6vw,20px)}
+.q .ico{flex:none;width:clamp(44px,4.4vw,58px);height:clamp(44px,4.4vw,58px);border-radius:70% 12% 70% 12%;display:grid;place-items:center;background:var(--c2);color:#fff;font-family:var(--display);font-weight:800;font-size:clamp(22px,2.4vw,30px)}
+.q h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.2vw,29px);line-height:1;letter-spacing:-.015em;color:var(--ink)}
+.q h2 small{display:block;margin-top:5px;font-family:var(--body);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--c2)}
+.q ul{list-style:none;display:grid;gap:clamp(7px,.9vw,11px);position:relative}
+.q li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;font-size:clamp(14px,1.35vw,17.5px);line-height:1.38;font-weight:500}
+.q li:before{content:"";width:20px;height:20px;margin-top:1px;background:var(--c2);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M8 192C8 86 86 8 192 8c0 106-78 184-184 184Z'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M8 192C8 86 86 8 192 8c0 106-78 184-184 184Z'/></svg>") center/contain no-repeat}
+.f{--c1:#e3eefb;--c2:#2f6fb5}
+.d{--c1:#fde6dc;--c2:#d4572c}
+.o{--c1:#e2f0dc;--c2:#2f8a4a}
+.a{--c1:#fff0c8;--c2:#c98a07}
+.axis{display:flex;justify-content:space-between;gap:12px;margin:0 6px 10px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:#7a5576}
+@media(max-width:760px){.dofa{grid-template-columns:1fr}.axis{display:none}.q:nth-child(n){border-radius:28px 70px 28px 28px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="dh">
+    <img class="em" src="../Emblema cóctel futurista brillante.png" alt="">
+    <div>
+      <div class="kick">Análisis estratégico</div>
+      <h1>Matriz <em>DOFA</em></h1>
+      <p>Fortalezas, debilidades, oportunidades y amenazas de Brisa al borde.</p>
+    </div>
+    <div class="brand">Brisa al borde<small>Sal con frutas deshidratadas</small></div>
+  </header>
+
+  <div class="axis" aria-hidden="true"><span>Fortalezas y debilidades · factores internos</span><span>Oportunidades y amenazas · factores externos</span></div>
+  <section class="dofa" aria-label="Matriz DOFA">
+    <article class="q f">
+      <header><span class="ico" aria-hidden="true">F</span><h2>FORTALEZAS<small>(internas)</small></h2></header>
+      <ul>
+        <li>No perecedero y larga vida útil</li>
+        <li>Mango biche colombiano y storytelling</li>
+        <li>Cliente ancla y plan por fases</li>
+        <li>Exportación indirecta vía C.I.</li>
+        <li>Análisis logístico sustentado</li>
+        <li>Marca SIC y fórmula protegida</li>
+        <li>Equipo con roles definidos</li>
+      </ul>
+      <span class="big" aria-hidden="true">F</span>
+    </article>
+    <article class="q d">
+      <header><span class="ico" aria-hidden="true">D</span><h2>DEBILIDADES<small>(internas)</small></h2></header>
+      <ul>
+        <li>Un solo cliente y un solo mercado</li>
+        <li>Posible desajuste de escala</li>
+        <li>Margen por validar</li>
+        <li>Producción dependiente de terceros</li>
+        <li>Producto higroscópico</li>
+        <li>Portafolio poco desarrollado</li>
+        <li>Marca nueva</li>
+      </ul>
+      <span class="big" aria-hidden="true">D</span>
+    </article>
+    <article class="q o">
+      <header><span class="ico" aria-hidden="true">O</span><h2>OPORTUNIDADES<small>(externas)</small></h2></header>
+      <ul>
+        <li>Demanda turística en República Dominicana</li>
+        <li>Coctelería de autor e ingredientes de origen</li>
+        <li>Expansión a otras cadenas del Caribe</li>
+        <li>Apoyo de ProColombia, DIAN y cámaras</li>
+        <li>Nuevas líneas y experiencias</li>
+        <li>Ruta marítima corta</li>
+        <li>Posibles preferencias arancelarias</li>
+      </ul>
+      <span class="big" aria-hidden="true">O</span>
+    </article>
+    <article class="q a">
+      <header><span class="ico" aria-hidden="true">A</span><h2>AMENAZAS<small>(externas)</small></h2></header>
+      <ul>
+        <li>Competencia de escarchados tradicionales</li>
+        <li>Controles sanitarios y aduaneros</li>
+        <li>Volatilidad de fletes bajo CIF</li>
+        <li>Riesgo cambiario (costos COP, ingresos USD)</li>
+        <li>Estacionalidad del mango biche</li>
+        <li>Poder de negociación del comprador</li>
+        <li>Dependencia del turismo</li>
+      </ul>
+      <span class="big" aria-hidden="true">A</span>
+    </article>
+  </section>
+
+  <footer class="dfoot"><span><b>Brisa al borde</b> &nbsp; Sal con frutas deshidratadas para michelar</span><span>Matriz DOFA · documento de trabajo</span></footer>
+</main>
+<script>
+/* El visor de la página principal escucha estas teclas aunque el foco esté dentro del documento */
+addEventListener('keydown',e=>{if(parent!==window&&['Escape','ArrowLeft','ArrowRight'].includes(e.key)){parent.postMessage({brisaKey:e.key},'*')}});
+</script>
+</body>
+</html>

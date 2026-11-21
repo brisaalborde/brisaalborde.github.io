@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modelo Canvas | Brisa al borde</title>
+<link rel="stylesheet" href="doc.css">
+<style>
+@page{size:1280px 1510px;margin:0}
+.dh h1{font-size:clamp(22px,3.3vw,42px);letter-spacing:-.015em}
+.dh h1 span{color:#1fa6b8}
+.meta{display:grid;gap:5px;margin:-4px 0 clamp(16px,2vw,24px);font-size:clamp(12.5px,1.05vw,14px);line-height:1.55;color:#4b2a47;max-width:105ch}
+.meta b{color:var(--plum)}
+.cv{display:grid;gap:clamp(10px,1.1vw,14px)}
+.row1{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,.9vw,12px)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(8px,.9vw,12px)}
+.b{position:relative;border:2px solid var(--c2);background:var(--c1);border-radius:20px;padding:clamp(12px,1.2vw,16px) clamp(12px,1.2vw,16px) clamp(14px,1.3vw,18px);break-inside:avoid;overflow:hidden}
+.b h2{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:clamp(11.5px,.98vw,13.5px);line-height:1.15;letter-spacing:.02em;text-transform:uppercase;font-weight:800;color:var(--c2);margin-bottom:10px}
+.b h2 i{flex:none;width:26px;height:26px;border-radius:70% 12% 70% 12%;display:grid;place-items:center;background:var(--c2);color:#fff;font-style:normal;font-size:13px;letter-spacing:0}
+.b ul{list-style:none;display:grid;gap:7px}
+.b li{position:relative;padding-left:12px;font-size:clamp(12px,.98vw,13.4px);line-height:1.42}
+.b li:before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--c2)}
+.b li b{color:var(--ink);font-weight:800}
+.c1{--c1:#fff6d9;--c2:#b8860b}.c2{--c1:#e6f4df;--c2:#2f8a4a}.c3{--c1:#e1edfb;--c2:#2f6fb5}
+.c4{--c1:#ece6f7;--c2:#7a4fb3}.c5{--c1:#fde8dc;--c2:#d4572c}.c6{--c1:#dcf2f4;--c2:#18909f}
+.c7{--c1:#fbe3ec;--c2:#c8237f}.c8{--c1:#e6f4df;--c2:#3b8f3d}.c9{--c1:#e5e9fa;--c2:#3a56b4}.c10{--c1:#fff0c8;--c2:#c98a07}
+.row2 .b ul{grid-template-columns:1fr;}
+.pr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-radius:20px;overflow:hidden;border:1px solid #3a0e3322;background:#f6f3ee;margin-top:clamp(2px,.4vw,6px)}
+.pr div{padding:14px 16px 16px;border-top:5px solid var(--c);border-right:1px solid #3a0e3316}
+.pr div:last-child{border-right:0}
+.pr h3{font-family:var(--display);font-size:clamp(12px,1.05vw,14.5px);letter-spacing:.04em;text-transform:uppercase;font-weight:800;color:var(--c);margin-bottom:6px}
+.pr p{font-size:clamp(12px,.98vw,13.4px);line-height:1.45}
+@media(max-width:1180px){.row1{grid-template-columns:repeat(3,minmax(0,1fr))}.pr{grid-template-columns:repeat(3,minmax(0,1fr))}.pr div{border-bottom:1px solid #3a0e3316}}
+@media(max-width:760px){.row1,.row2,.pr{grid-template-columns:1fr}.pr div{border-right:0}.b li{font-size:14px}.b h2{font-size:13.5px}.pr p{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="dh">
+    <img class="em" src="../Emblema cóctel futurista brillante.png" alt="">
+    <div>
+      <div class="kick">Modelo de negocio</div>
+      <h1><span>Lienzo Canvas</span> para emprendimiento internacional</h1>
+      <p>Brisa al borde · Herramienta estratégica para diseñar y escalar negocios en mercados globales</p>
+    </div>
+    <div class="brand">Brisa al borde<small>Modelo Canvas</small></div>
+  </header>
+
+  <div class="meta">
+    <p><b>Integrantes:</b> Daniel Sotelo, Nicol González, Valentina Velandia, Alejandro Vega y Mateo Carreño.</p>
+    <p>Línea de sales para escarchar bebidas con sal marina y gulupa deshidratada, dirigida a República Dominicana mediante exportación indirecta. Estructura basada en el Modelo Canvas (Osterwalder &amp; Pigneur, 2010) adaptado a emprendimiento internacional.</p>
+  </div>
+
+  <div class="cv">
+    <section class="row1">
+      <article class="b c1"><h2><i>1</i>Segmentos de clientes internacionales</h2><ul>
+        <li><b>Mercados:</b> República Dominicana (Juan Dolio); luego el Caribe y otras zonas turísticas de América.</li>
+        <li><b>Clientes:</b> hoteles, resorts y gastrobares (HORECA); cliente ancla: Hodelpa Hotels.</li>
+        <li><b>Necesidades:</b> escarchados diferenciados, rápidos y de calidad constante para turistas que buscan sabores nuevos.</li>
+        <li><b>Mayor potencial:</b> el turismo dominicano, empezando por Hodelpa.</li></ul></article>
+      <article class="b c2"><h2><i>2</i>Propuesta de valor internacional</h2><ul>
+        <li><b>Problema:</b> frutas tropicales perecederas y difíciles de exportar; coctelería sin identidad; barras poco estandarizadas.</li>
+        <li><b>Valor único:</b> sal con fruta 100 % colombiana (gulupa), lista para usar y no perecedera.</li>
+        <li><b>Adaptación:</b> se ajustan sabor, empaque, precio y etiqueta a cada país.</li>
+        <li><b>Beneficios:</b> sabor colombiano, contraste que realza la bebida y experiencia turística.</li></ul></article>
+      <article class="b c3"><h2><i>3</i>Canales globales</h2><ul>
+        <li><b>Canales:</b> exportación indirecta con la C.I. Global Products International; cliente final: Hodelpa.</li>
+        <li><b>Tipo:</b> indirecto en la exportación (la C.I. gestiona SAE y DEX; IVA 0 %) y directo con el cliente final.</li>
+        <li><b>Aliados:</b> C.I., ProColombia, navieras, puertos de Caucedo y Haina, agente de aduanas.</li>
+        <li><b>Logística:</b> Incoterm CIF; 12 a 15 días puerta a puerta; contenedor de 20 pies (USD 3.660).</li></ul></article>
+      <article class="b c4"><h2><i>4</i>Relaciones con clientes globales</h2><ul>
+        <li><b>Relación:</b> B2B de largo plazo con contratos de suministro continuo.</li>
+        <li><b>Confianza:</b> storytelling del origen de la fruta, degustaciones y descuentos por volumen.</li>
+        <li><b>Servicio por región:</b> sabor, empaque, precio y etiqueta según el destino.</li>
+        <li><b>Comunicación:</b> negociación intercultural y etiquetado traducido.</li></ul></article>
+      <article class="b c5"><h2><i>5</i>Fuentes de ingresos globales</h2><ul>
+        <li><b>Ingresos:</b> venta mayorista B2B a Hodelpa, eventos, bodas y degustaciones.</li>
+        <li><b>Monetización:</b> contratos de suministro; precio = costos + competencia + margen; descuentos por volumen.</li>
+        <li><b>Moneda:</b> USD con transferencias internacionales.</li>
+        <li><b>Más rentables:</b> turismo dominicano; utilidad de USD 1.800 por envío (≈ 33 %).</li></ul></article>
+      <article class="b c6"><h2><i>6</i>Recursos clave internacionales</h2><ul>
+        <li><b>Recursos:</b> bolsas de 2 kg con barrera a la humedad; INVIMA, RUT exportador, certificado de origen y código de barras.</li>
+        <li><b>Capacidades:</b> producción y calidad, comercio exterior y negociación; equipo en Producción, Comercial y Exportaciones, Marketing y Logística.</li>
+        <li><b>Intangibles:</b> marca registrada ante la SIC, mango biche, formulación y know-how.</li>
+        <li><b>Alianzas:</b> C.I., proveedores (Alivital, cooperativas), ProColombia y DIAN.</li></ul></article>
+    </section>
+
+    <section class="row2">
+      <article class="b c7"><h2><i>7</i>Actividades clave internacionales</h2><ul>
+        <li><b>Clave:</b> abastecimiento, deshidratación y formulación, empaque, exportación, y comercial y marketing.</li>
+        <li><b>Críticas:</b> exportación y logística, y control de calidad por lote.</li>
+        <li><b>Adaptación local:</b> empaque, etiqueta y portafolio por mercado; investigación de mercado.</li>
+        <li><b>Calidad:</b> control de formulación y humedad, pruebas sensoriales y vida útil.</li></ul></article>
+      <article class="b c8"><h2><i>8</i>Asociaciones clave internacionales</h2><ul>
+        <li><b>Aliados:</b> la C.I. (Colombia); agente de aduanas y puertos de Caucedo y Haina (R. Dominicana).</li>
+        <li><b>Socios:</b> importadores HORECA, aduanas, logísticos, navieras y proveedores de materia prima.</li>
+        <li><b>Acuerdos:</b> exportación indirecta CIF y contratos con Hodelpa; sin joint ventures ni franquicias.</li>
+        <li><b>Apoyo:</b> ProColombia, DIAN y cámaras de comercio; DGA y DIGEMAPS en destino.</li></ul></article>
+      <article class="b c9"><h2><i>9</i>Estructura de costos internacionales</h2><ul>
+        <li><b>Principales:</b> materia prima, producción y empaque, y logística internacional.</li>
+        <li><b>Según el país:</b> flete, seguro, trámites y marketing; en destino paga el comprador (aranceles, aduanas y 30 km de transporte).</li>
+        <li><b>Escala:</b> contenedor de 20 pies (USD 174,29/t) más eficiente que el de 40 pies (USD 191,82/t); descuentos por volumen.</li>
+        <li><b>Cadena de suministro:</b> la C.I. consolida en Barranquilla; fruta de Boyacá; producto no perecedero.</li>
+        <li><b>Riesgos:</b> cobro en USD y margen incluido en el precio.</li></ul></article>
+      <article class="b c10"><h2><i>10</i>Fuentes de ingresos y financiación</h2><ul>
+        <li><b>Crecimiento:</b> expansión en 3 fases; el contenedor de 20 pies exige menos capital de trabajo.</li>
+        <li><b>Fuentes:</b> generación interna (USD 1.800 por envío).</li>
+        <li><b>Programas:</b> ProColombia, DIAN y cámaras de comercio.</li>
+        <li><b>Reinversión:</b> priorizar variedades rentables según margen y rotación.</li></ul></article>
+    </section>
+
+    <section class="pr" aria-label="Principios">
+      <div style="--c:#2f6fb5"><h3>Piensa global</h3><p>Llevar el sabor colombiano a destinos turísticos; inicio en República Dominicana.</p></div>
+      <div style="--c:#d4572c"><h3>Actúa local</h3><p>Ajustar sabor, empaque, precio y etiqueta a cada país.</p></div>
+      <div style="--c:#18909f"><h3>Gestiona riesgos</h3><p>Producto no perecedero, cobro en USD y apoyo de la C.I. en aduanas.</p></div>
+      <div style="--c:#2f8a4a"><h3>Genera valor sostenible</h3><p>Fruta de productores boyacenses y menos pérdidas por descomposición.</p></div>
+      <div style="--c:#7a4fb3"><h3>Escala global</h3><p>Tres fases de expansión hasta el Caribe.</p></div>
+    </section>
+  </div>
+
+  <footer class="dfoot"><span><b>Brisa al borde</b> &nbsp; Sal con frutas deshidratadas para michelar</span><span>Modelo Canvas · documento de trabajo</span></footer>
+</main>
+<script>
+addEventListener('keydown',e=>{if(parent!==window&&['Escape','ArrowLeft','ArrowRight'].includes(e.key)){parent.postMessage({brisaKey:e.key},'*')}});
+</script>
+</body>
+</html>
